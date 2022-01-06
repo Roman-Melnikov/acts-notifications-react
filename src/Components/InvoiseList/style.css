@@ -1,0 +1,9 @@
+.invoise-list {
+    margin: 0 auto 1% auto;
+    padding-bottom: 3%;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-around; 
+    align-items: center;
+    max-width: 70%;
+}

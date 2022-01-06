@@ -1,0 +1,1 @@
+export const numberAct_52_constantSelector = ( store ) => store.numberAct_52_constant;

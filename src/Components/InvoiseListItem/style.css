@@ -1,0 +1,7 @@
+.invoise-item {
+    border-bottom: black 2px solid;
+}
+
+.invoise-list .invoise-item:last-child {
+    border-bottom: none;
+}

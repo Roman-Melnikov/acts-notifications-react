@@ -1,0 +1,82 @@
+.header {
+    padding-top: 10%;
+    margin-bottom: 5%;
+}
+
+.header-wrp {
+    display: flex;
+    margin-bottom: 8%;
+}
+
+.header-left {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 3%;
+    margin-right: 27%;
+}
+
+.header-left-txt-uppercase {
+    text-transform: uppercase;
+}
+
+.header-left-txt {
+    text-transform: capitalize;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-right-txt-uppercase {
+    text-transform: uppercase;
+    position: relative;
+}
+
+.header-right-txt-uppercase:before {
+    content: 'ф.№52';
+    position: absolute;
+    right: 8%;
+    top: -100%;
+    text-transform: lowercase;
+}
+
+.header-right-txt {
+
+}
+
+.header-date {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3%;
+    box-sizing: border-box;
+}
+
+.header-date-wrp-left {
+    display: flex;
+    width: 250px;
+    justify-content: flex-start;
+    border-top: 1px solid black;
+}
+
+.header-date-number {
+    border-bottom: 1px solid black;
+    width: 34px;
+}
+
+.header-date-mounth {
+    width: 183px;
+    border-bottom: 1px solid black;
+}
+
+.header-date-year {
+    margin-right: 20px;
+}
+
+.header-date-wrp-right {
+    display: flex;
+    width: 250px;
+    justify-content: flex-end;
+    border-top: 1px solid black;
+}

@@ -1,0 +1,1 @@
+export const actList_52_Selector = (store) => store.actList_52;
