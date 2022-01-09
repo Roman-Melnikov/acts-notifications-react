@@ -7,7 +7,7 @@ export const InvoiseList = React.memo(( {invoiseList, changeInvoiseList} ) => {
         <fieldset className="invoise-list">
             <legend>Общая накладная</legend>
             {invoiseList.map((invoiseItem) => {
-                return <InvoiseListItem invoiseItem={invoiseItem, changeInvoiseList} />
+                return <InvoiseListItem invoiseItem={invoiseItem} changeInvoiseList={changeInvoiseList} />
             })}
         </fieldset>
     )

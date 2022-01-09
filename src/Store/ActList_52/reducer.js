@@ -7,17 +7,31 @@ const initialState = {
 export const actList_52_Reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_PARAMETRS_ACT:
-      console.log(payload);
+      const { invoiseList, surnamePosition, dateArrival, timeArrival, numberAct, numberFlight, id, city, airLine, contract } =
+        payload;
       return {
         ...state,
         actList_52: [
           ...state.actList_52,
           {
-            [payload.actFlightNumbersAndArrivalDate.numberAct]: {
-              name: `${payload.actFlightNumbersAndArrivalDate.datetimeArrival}" "${payload.actFlightNumbersAndArrivalDate.numberAct}" с "${payload.actFlightNumbersAndArrivalDate.numberFlight}`,
+            [id]: {
+              numberAct: numberAct,
+              name: `${dateArrival}"  №"${numberAct}" с "${numberFlight}`,
               flight: {
-                number: payload.actFlightNumbersAndArrivalDate.numberAct,
+                number: numberFlight,
+                airLine: airLine,
+                city:  city,
+                contract: contract,
               },
+              dateArrival: dateArrival,
+              timeArrival: timeArrival,
+              surnamePosition: {
+                firstFamily: surnamePosition.firstFamily ?? "Мельников Р.В.",
+                secondFamily: surnamePosition.secondFamily,
+                thirdFamily: surnamePosition.thirdFamily,
+                fourthFamily: surnamePosition.fourthFamily,
+              },
+              invoiseList: invoiseList,
             },
           },
         ],

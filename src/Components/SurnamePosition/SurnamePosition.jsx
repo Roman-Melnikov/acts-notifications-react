@@ -80,7 +80,7 @@ export const SurnamePosition = ({surnamePosition, changeSurnamePosition}) => {
                     class="family-name-input"
                     list="thirdFamily"
                     value={surnamePosition.thirdFamilyFamily}
-                    onChange={(e) => { changeSurnamePosition("thirdFamilyFamily", e.target.value) }}
+                    onChange={(e) => { changeSurnamePosition("thirdFamily", e.target.value) }}
                 />
                 <label class="family-name-label">Фамилия</label>
                 <datalist id="thirdFamily">

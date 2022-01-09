@@ -6,8 +6,8 @@ import { setParametrsActActionThink } from "../../Store/ActList_52";
 import { InvoiseList } from "../../Components/InvoiseList";
 import { useCallback, useEffect, useState } from "react";
 import { SurnamePosition } from "../../Components/SurnamePosition";
-import "./style.css";
 import { ActFlightNumbersAndArrivalDate } from "../../Components/ActFlightNumbersAndArrivalDate/ActFlightNumbersAndArrivalDate";
+import "./style.css";
 
 export const ParametrsAct = () => {
     const [invoiseList, setInvoiseList] = useState([]);
@@ -38,7 +38,7 @@ export const ParametrsAct = () => {
     }, [invoiseList]);
 
     const changeInvoiseList = useCallback((id, name, value) => {
-        const newInvoiseList = invoiseList;
+        const [...newInvoiseList] = invoiseList;
         newInvoiseList.forEach((item) => {
             if (item.id === id) {
                 item[name] = value;
@@ -56,13 +56,17 @@ export const ParametrsAct = () => {
         setActFlightNumbersAndArrivalDate({ ...actFlightNumbersAndArrivalDate, [name]: value });
     }, [actFlightNumbersAndArrivalDate]);
 
+    const transferDataToStore = useCallback((e) => {
+        dispatch(setParametrsActActionThink(invoiseList, surnamePosition, actFlightNumbersAndArrivalDate))
+    }, [invoiseList, surnamePosition, actFlightNumbersAndArrivalDate]);
+
     return (
         <Box className="parametrs-act">
             <ActFlightNumbersAndArrivalDate actFlightNumbersAndArrivalDate={actFlightNumbersAndArrivalDate} changeActFlightNumbersAndArrivalDate={changeActFlightNumbersAndArrivalDate} />
             <InvoiseList invoiseList={invoiseList} changeInvoiseList={changeInvoiseList} />
             <Button className="invoise-list-btn" variant="contained" onClick={addInvoiseItem}>Добавить общую накладную</Button>
             <SurnamePosition surnamePosition={surnamePosition} changeSurnamePosition={changeSurnamePosition} />
-            <Button onClick={() => { dispatch(setParametrsActActionThink(invoiseList, surnamePosition, actFlightNumbersAndArrivalDate)) }} variant="contained" endIcon={<SendIcon />} className="parametrs-act-btn">Отправить данные</Button>
+            <Button onClick={transferDataToStore} variant="contained" endIcon={<SendIcon />} className="parametrs-act-btn">Отправить данные</Button>
         </Box>
     )
 } 
