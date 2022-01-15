@@ -1,0 +1,1 @@
+export const actList_51_defectiveSelector = (store) => store.actList_51_defective;

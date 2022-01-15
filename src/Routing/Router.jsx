@@ -2,8 +2,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ROUTES } from "./constants";
 import { Navigation } from "../Components/Navigation";
 import { Container } from "@mui/material";
-import { ParametrsAct } from "../Screens/ParametrsAct/ParametrsAct";
+import { ParametrsActInput } from "../Screens/ParametrsActInput/ParametrsActInput";
 import { AddFlight } from "../Screens/AddFlight";
+import { ParametrsThingsInput } from "../Screens/ParametrsThingsInput/ParametrsThingsInput";
 import "./style.css";
 
 export const Router = () => {
@@ -13,7 +14,10 @@ export const Router = () => {
                 <Navigation />
                 <Switch>
                     <Route exact path={ROUTES.PARAMETRS_ACT}>
-                        <ParametrsAct />
+                        <ParametrsActInput />
+                    </Route>
+                    <Route exact path={ROUTES.PARAMETRS_THINGS}>
+                        <ParametrsThingsInput />
                     </Route>
                     <Route exact path={ROUTES.ADD_FLIGHT}>
                         <AddFlight />

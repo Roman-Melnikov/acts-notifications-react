@@ -1,4 +1,5 @@
 .container {
     background-color: #cfe8fc;
     text-align: center;
+    min-height: 100vh;
 }
