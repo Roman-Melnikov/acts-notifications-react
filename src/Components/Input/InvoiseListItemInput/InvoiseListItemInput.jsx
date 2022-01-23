@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import "./style.css";
 
-export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput }) => {
+export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput, ourAddresses, citiAddresses }) => {
     const [id, setId] = useState(null);
 
     useEffect(() => {
@@ -54,6 +54,36 @@ export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput }) =>
                 fullWidth="true"
                 margin="normal"
             />
+            <input
+                name="ourAddress"
+                class="our-address-input"
+                list="ourAddress"
+                value={invoiseItem.ourAddress ?? ourAddresses.default}
+                onChange={(e) => { changeInvoiseListInput(id, "ourAddress", e.target.value) }}
+            />
+            <label class="our-address-label">Куда адресована</label>
+            <datalist id="ourAddress">
+                {ourAddresses.outherOurAddresses.map((item) => {
+                    return (
+                        <option value={item} />
+                    )
+                })}
+            </datalist>
+            <input
+                name="citiAddress"
+                class="citi-address-input"
+                list="citiAddress"
+                value={invoiseItem.citiAddress ?? citiAddresses.default}
+                onChange={(e) => { changeInvoiseListInput(id, "citiAddress", e.target.value) }}
+            />
+            <label class="citi-address-label">Откуда адресована</label>
+            <datalist id="citiAddress">
+                {citiAddresses.allCitiAddresses?.map((item) => {
+                    return (
+                        <option value={item} />
+                    )
+                })}
+            </datalist>
         </Box>
     )
 }

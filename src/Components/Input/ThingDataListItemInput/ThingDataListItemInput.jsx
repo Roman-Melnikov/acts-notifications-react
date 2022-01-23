@@ -83,7 +83,7 @@ export const ThingDataListItemInput = React.memo((props) => {
                                 name="numberAct_51_defectiveAndIdThing"
                                 label="Номер акта 51-д"
                                 variant="filled"
-                                value={props.numberAct_51_defectiveAndIdThing.find((item) => item.id === id).numberAct}
+                                value={props.numberAct_51_defectiveAndIdThing.find((item) => item.id === id)?.numberAct}
                                 onChange={(e) => { props.changeNumberAct_51_defective(e, id) }}
                                 margin="normal"
                             />}

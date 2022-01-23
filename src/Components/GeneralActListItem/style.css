@@ -1,0 +1,24 @@
+.general-act-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1%;
+}
+
+.general-act-list-item-52 {
+    margin-bottom: 0.5%;
+    text-decoration: none;
+}
+
+.general-act-list-item-52:hover {
+    color: rgb(0, 195, 255);
+}
+
+.general-act-list-defective-item-51 {
+    margin-left: 5%;
+    text-decoration: none;
+}
+
+.general-act-list-defective-item-51:hover {
+    color: rgb(0, 195, 255);
+}

@@ -9,8 +9,8 @@ import { actList_52_Selector } from "../../Store/ActList_52/selectors";
 import { numberAct_51_constantSelector } from "../../Store/NumberAct_51_D_constant/selectors";
 import { DESCRIPTION } from "./constants";
 import { setParametrsThingsActionThink } from "../../Store/ActList_52";
-import "./style.css";
 import { setActList_51_defectiveItemActionThink } from "../../Store/ActList_51_defective";
+import "./style.css";
 
 export const ParametrsThingsInput = () => {
     const [valueSelectionAct_52_Input, setValueSelectionAct_52_Input] = useState("");
@@ -28,8 +28,18 @@ export const ParametrsThingsInput = () => {
     }, []);
 
     useEffect(() => {
-        setNumberAct_51_defectiveAndIdThing([{ id: things[0]?.id, numberAct: numberAct_51_defectiveConstant }]);
-    }, [things[0]?.id]);
+        let newNumberAct_51_defectiveAndIdThing = [];
+        things.forEach((thingsItem) => {
+            if (thingsItem.values.defective) {
+                newNumberAct_51_defectiveAndIdThing = [...newNumberAct_51_defectiveAndIdThing, {
+                    id: thingsItem.id, numberAct: numberAct_51_defectiveAndIdThing.find((numberAct_51_defectiveAndIdThingItem) => {
+                        return numberAct_51_defectiveAndIdThingItem.id === thingsItem.id;
+                    })?.numberAct || numberAct_51_defectiveConstant
+                }];
+            };
+        });
+        setNumberAct_51_defectiveAndIdThing(newNumberAct_51_defectiveAndIdThing);
+    }, [things]);
 
     useEffect(() => {
         window.scrollBy(0, window.innerHeight);// прокрутить страницу вниз,а чтобы вверх: window.scrollBy(0, -window.innerHeight);
@@ -49,7 +59,6 @@ export const ParametrsThingsInput = () => {
             values: { data: "", description: "", weight: "", notReceived: false, excess: false, defective: false, differenceWeight: false },
         };
         setThings([...things, newThing]);
-        setNumberAct_51_defectiveAndIdThing([...numberAct_51_defectiveAndIdThing, { id: newThing.id, numberAct: numberAct_51_defectiveConstant }]);
     };
 
     const changeThingData = (id, name, value) => {
@@ -95,7 +104,9 @@ export const ParametrsThingsInput = () => {
     }, [things, valueSelectionAct_52_Input]);
 
     const transferActList_51_defectiveItemToStore = useCallback(() => {
-        dispatch(setActList_51_defectiveItemActionThink(valueSelectionAct_52_Input, numberAct_51_defectiveAndIdThing))
+        if (numberAct_51_defectiveAndIdThing.length !== 0) {
+            dispatch(setActList_51_defectiveItemActionThink(valueSelectionAct_52_Input, numberAct_51_defectiveAndIdThing));
+        }
     }, [valueSelectionAct_52_Input, numberAct_51_defectiveAndIdThing]);
 
     return (
