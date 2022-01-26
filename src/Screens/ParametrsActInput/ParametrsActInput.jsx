@@ -35,7 +35,7 @@ export const ParametrsActInput = () => {
             weight: "",
             date: "",
             time: "",
-            ourAddress: null,
+            ourAddress: ourAddresses.default,
             citiAddress: null,
         }])
     }, []);
@@ -64,6 +64,19 @@ export const ParametrsActInput = () => {
     }, [actFlightNumbersAndArrivalDateInput.numberFlight]);
 
     /**
+     * изменение нашего адреса в накладных при изменении ourAddresses.default(наш адрес по умолчанию)
+     */
+    useEffect(() => {
+        if (actFlightNumbersAndArrivalDateInput.numberFlight !== undefined) {
+            setInvoiseListInput(() => {
+                const [...newInvoiseListInput] = invoiseListInput;
+                newInvoiseListInput.forEach((item) => item.ourAddress = ourAddresses.default);
+                return newInvoiseListInput;
+            });
+        }
+    }, [ourAddresses.default]);
+
+    /**
      * изменение адреса(ов) города из которого прибыл рейс, при изменении номера рейса
      */
     useEffect(() => {
@@ -74,13 +87,26 @@ export const ParametrsActInput = () => {
                         default: citi.fromAddressDefault,
                         allCitiAddresses: citi.fromAddressesAll,
                     }
-                    console.log(newCitiAddresses);
                     return newCitiAddresses;
                 });
                 return;
             };
         })
     }, [actFlightNumbersAndArrivalDateInput.numberFlight]);
+
+    /**
+     * изменение адреса города, из которого прибыл рейс, в накладных при изменении citiAddresses.default(адрес * * города по умолчанию)
+     */
+    useEffect(() => {
+        if(actFlightNumbersAndArrivalDateInput.numberFlight !== undefined) {
+            setInvoiseListInput(() => {
+            const [...newInvoiseListInput] = invoiseListInput;
+            console.log(citiAddresses.default);
+            newInvoiseListInput.forEach((item) => item.citiAddress = citiAddresses.default);
+            return newInvoiseListInput;
+        });
+        }
+    }, [citiAddresses.default]);
 
     const addInvoiseItem = useCallback(() => {
         setInvoiseListInput([...invoiseListInput, {
@@ -90,7 +116,7 @@ export const ParametrsActInput = () => {
             weight: "",
             date: "",
             time: "",
-            ourAddress: null,
+            ourAddress: ourAddresses.default,
             citiAddress: null,
         }])
     }, [invoiseListInput]);

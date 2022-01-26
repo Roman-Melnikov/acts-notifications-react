@@ -58,7 +58,7 @@ export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput, ourA
                 name="ourAddress"
                 class="our-address-input"
                 list="ourAddress"
-                value={invoiseItem.ourAddress ?? ourAddresses.default}
+                value={invoiseItem.ourAddress}
                 onChange={(e) => { changeInvoiseListInput(id, "ourAddress", e.target.value) }}
             />
             <label class="our-address-label">Куда адресована</label>
@@ -73,7 +73,7 @@ export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput, ourA
                 name="citiAddress"
                 class="citi-address-input"
                 list="citiAddress"
-                value={invoiseItem.citiAddress ?? citiAddresses.default}
+                value={invoiseItem.citiAddress ?? ""}
                 onChange={(e) => { changeInvoiseListInput(id, "citiAddress", e.target.value) }}
             />
             <label class="citi-address-label">Откуда адресована</label>
