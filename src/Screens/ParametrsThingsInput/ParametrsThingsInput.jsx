@@ -23,7 +23,7 @@ export const ParametrsThingsInput = () => {
     useEffect(() => {
         setThings([...things, {
             id: faker.datatype.uuid(),
-            values: { data: "", description: "", weight: "", notReceived: false, excess: false, defective: false, differenceWeight: false },
+            values: { data: "", description: "", giviWeight: "", notReceived: false, excess: false, defective: false, differenceWeight: false },
         }]);
     }, []);
 
@@ -56,7 +56,7 @@ export const ParametrsThingsInput = () => {
     const addThing = () => {
         const newThing = {
             id: faker.datatype.uuid(),
-            values: { data: "", description: "", weight: "", notReceived: false, excess: false, defective: false, differenceWeight: false },
+            values: { data: "", description: "", giviWeight: "", notReceived: false, excess: false, defective: false, differenceWeight: false },
         };
         setThings([...things, newThing]);
     };

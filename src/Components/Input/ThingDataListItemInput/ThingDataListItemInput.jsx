@@ -68,11 +68,11 @@ export const ThingDataListItemInput = React.memo((props) => {
                         <Grid item xs={3}>
                             {(props.item.values.defective || props.item.values.differenceWeight) && <TextField
                                 className="thing-data-weight"
-                                name="weight"
+                                name="giviWeight"
                                 label="Подавательский вес"
                                 variant="filled"
-                                value={props.item.values.weight}
-                                onChange={(e) => { props.changeThingData(id, "weight", e.target.value) }}
+                                value={props.item.values.giviWeight}
+                                onChange={(e) => { props.changeThingData(id, "giviWeight", e.target.value) }}
                                 margin="normal"
                                 autoFocus="true"
                             />}

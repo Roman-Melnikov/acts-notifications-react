@@ -101,7 +101,6 @@ export const ParametrsActInput = () => {
         if(actFlightNumbersAndArrivalDateInput.numberFlight !== undefined) {
             setInvoiseListInput(() => {
             const [...newInvoiseListInput] = invoiseListInput;
-            console.log(citiAddresses.default);
             newInvoiseListInput.forEach((item) => item.citiAddress = citiAddresses.default);
             return newInvoiseListInput;
         });
@@ -117,7 +116,7 @@ export const ParametrsActInput = () => {
             date: "",
             time: "",
             ourAddress: ourAddresses.default,
-            citiAddress: null,
+            citiAddress: citiAddresses.default,
         }])
     }, [invoiseListInput]);
 
@@ -141,6 +140,7 @@ export const ParametrsActInput = () => {
     }, [actFlightNumbersAndArrivalDateInput]);
 
     const transferDataToStore = useCallback(() => {
+        window.scrollTo(0, 0);
         dispatch(setParametrsActActionThink(invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput))
     }, [invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput]);
 

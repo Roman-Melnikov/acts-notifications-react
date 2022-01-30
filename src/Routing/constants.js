@@ -1,6 +1,6 @@
 export const ROUTES = {
   PARAMETRS_ACT: "/parametrsAct",
   PARAMETRS_THINGS: "/parametrsThings",
-  GENERAL_ACT_LIST: "/generalActList",
+  ACT_LIST_ITEM: "/actListItem",
   ADD_FLIGHT: "/addFlight",
 };

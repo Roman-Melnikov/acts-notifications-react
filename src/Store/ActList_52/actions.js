@@ -4,6 +4,13 @@ import { SET_PARAMETRS_ACT } from "./constants";
 import { getAirLine } from "./func";
 import { getContract } from "./func";
 import { SET_PARAMETRS_THINGS } from "./constants";
+import {
+  getActualWeightThing,
+  getFromAddress,
+  getNumberThing,
+  getTypeThing,
+  getWhereAddress,
+} from "./index";
 
 export const setParametrsActActionThink =
   (invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput) =>
@@ -15,7 +22,7 @@ export const setParametrsActActionThink =
     const numberAct =
       actFlightNumbersAndArrivalDateInput.numberAct.substring(18);
     const numberFlight = actFlightNumbersAndArrivalDateInput.numberFlight;
-    const id = faker.datatype.uuid();
+    const id = `type52${faker.datatype.uuid()}`;
     const city = getCity(getState, numberFlight);
     const airLine = getAirLine(getState, numberFlight);
     const contract = getContract(getState, numberFlight);
@@ -40,19 +47,24 @@ export const setParametrsActActionThink =
 export const setParametrsThingsActionThink =
   (things, valueSelectionAct_52_Input) => (dispatch, getState) => {
     const { actList_52: newActList_52 } = getState();
-    const notReceived = things.filter((thing) => thing.values.notReceived);
-    const excess = things.filter(
-      (thing) =>
-        thing.values.excess &&
-        !thing.values.defective &&
-        !thing.values.differenceWeight
-    );
-    const excessAndDefectiveThingOrDifferenceWeight = things.filter((thing) => {
-      return (
-        thing.values.excess &&
-        (thing.values.defective || thing.values.differenceWeight)
-      );
+    console.log(things);
+    /**
+     * получение данных о вещи, при помощи регулярных выражений
+     */
+    things.forEach((thing) => {
+      const newDataThing = {
+        typeThing: getTypeThing(thing.values.data).typeThing,
+        typeIdForSort: getTypeThing(thing.values.data).typeIdForSort,
+        numberThing: getNumberThing(thing.values.data),
+        actualWeight: getActualWeightThing(thing.values.data),
+        whereAddress: getWhereAddress(thing.values.data),
+        fromAddress: getFromAddress(thing.values.data),
+      };
+      thing.values.data = newDataThing;
     });
+
+    const notReceived = things.filter((thing) => thing.values.notReceived);
+    const excess = things.filter((thing) => thing.values.excess);
     const differenceWeight = things.filter(
       (thing) =>
         thing.values.differenceWeight &&
@@ -62,41 +74,29 @@ export const setParametrsThingsActionThink =
     const defective = things.filter(
       (thing) => thing.values.defective && !thing.values.excess
     );
+
+    /**
+     * добавление к текущим разделам reasons новых
+     */
     newActList_52.actList_52.forEach((item, index) => {
       if (item.name === valueSelectionAct_52_Input) {
-        const currentNotReceived = newActList_52.actList_52[index].reasons?.notReceived ?? [];
-        const currentExcess = newActList_52.actList_52[index].reasons?.excess ?? [];
-        const currentExcessAndDefectiveThingOrDifferenceWeight = newActList_52.actList_52[index].reasons?.excessAndDefectiveThingOrDifferenceWeight ?? [];
-        const currentDifferenceWeight = newActList_52.actList_52[index].reasons?.differenceWeight ?? [];
-        const currentDefective = newActList_52.actList_52[index].reasons?.defective ?? [];
+        const currentNotReceived = item.reasons?.notReceived ?? [];
+        const currentExcess = item.reasons?.excess ?? [];
+        const currentDifferenceWeight = item.reasons?.differenceWeight ?? [];
+        const currentDefective = item.reasons?.defective ?? [];
         newActList_52.actList_52[index] = {
           ...item,
           reasons: {
-            notReceived: [
-              ...currentNotReceived,
-              ...notReceived,
-            ],
-            excess: [
-              ...currentExcess,
-              ...excess,
-            ],
-            excessAndDefectiveThingOrDifferenceWeight: [
-              ...currentExcessAndDefectiveThingOrDifferenceWeight,
-              ...excessAndDefectiveThingOrDifferenceWeight,
-            ],
-            differenceWeight: [
-              ...currentDifferenceWeight,
-              ...differenceWeight,
-            ],
-            defective: [
-              ...currentDefective,
-              ...defective,
-            ],
+            notReceived: [...currentNotReceived, ...notReceived],
+            excess: [...currentExcess, ...excess],
+            differenceWeight: [...currentDifferenceWeight, ...differenceWeight],
+            defective: [...currentDefective, ...defective],
           },
         };
         return;
       }
     });
+
     dispatch({
       type: SET_PARAMETRS_THINGS,
       payload: newActList_52.actList_52,

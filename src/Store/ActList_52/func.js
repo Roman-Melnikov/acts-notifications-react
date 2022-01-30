@@ -1,3 +1,5 @@
+import { OBJ_FOR_CHECK_TYPE_THING } from ".";
+
 export const getCity = (getState, numberFlight) => {
   const { parametrsFlights: state } = getState();
   let city = null;
@@ -33,3 +35,45 @@ export const getContract = (getState, numberFlight) => {
   });
   return contract;
 };
+
+export const getTypeThing = (thingData) => {
+  for (let key in OBJ_FOR_CHECK_TYPE_THING) {
+    let bool = OBJ_FOR_CHECK_TYPE_THING[key][0].test(thingData);
+    if (bool) {
+      return {
+        typeThing: OBJ_FOR_CHECK_TYPE_THING[key][1],
+        typeIdForSort: OBJ_FOR_CHECK_TYPE_THING[key][2],
+      };
+    }
+  }
+};
+
+export const getNumberThing = (thingData) => {
+  const regExp = /идентификатор\n(.+)/i;
+  const arrResult = regExp.exec(thingData);
+  arrResult[1] = arrResult[1].replaceAll(' ', '');
+  return arrResult[1];
+};
+
+export const getActualWeightThing = (thingData) => {
+  const regExp = /вес\n(\d{1,3})\sкг\s(\d{1,3})/i;
+  const arrResult = regExp.exec(thingData);
+  if (+arrResult[2] < 100) {
+      arrResult[2] = `0${arrResult[2]}`;
+  }
+  return [arrResult[1], arrResult[2]].join(',');
+};
+
+export const getWhereAddress = (thingData) => {
+  const regExp = /куда\n(.+)/i;
+  const arrResult = regExp.exec(thingData);
+  arrResult[1] = arrResult[1].replace(',', '');
+  return arrResult[1];
+};
+
+export const getFromAddress = (thingData) => {
+  const regExp = /откуда\n(.+)/i;
+  const arrResult = regExp.exec(thingData);
+  arrResult[1] = arrResult[1].replace(',', '');
+  return arrResult[1];
+}

@@ -8,7 +8,7 @@ export const Navigation = () => {
     <Breadcrumbs className="breadcrumbs">
       <NavLink exact activeClassName="selected" to={ROUTES.PARAMETRS_ACT}>ParametrsActInput</NavLink>
       <NavLink exact activeClassName="selected" to={ROUTES.PARAMETRS_THINGS}>ParametrsThingsInput</NavLink>
-      <NavLink exact activeClassName="selected" to={ROUTES.GENERAL_ACT_LIST}>GeneralActList</NavLink>
+      <NavLink exact activeClassName="selected" to={ROUTES.ACT_LIST_ITEM}>ActListItem</NavLink>
       <NavLink exact activeClassName="selected" to={ROUTES.ADD_FLIGHT}>AddFlight</NavLink>
     </Breadcrumbs>
   )

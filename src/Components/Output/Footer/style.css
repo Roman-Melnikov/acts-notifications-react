@@ -1,0 +1,84 @@
+.footer {
+    background: #FFF;
+    height: 50%;/* новый стиль */
+}
+
+.footer-txt {
+
+
+}
+.footer-family {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-family .footer-family-wrp:last-child {
+    margin-bottom: 0;
+}
+
+.footer-family-wrp {
+    display: flex;
+    margin-bottom: 14px;
+}
+
+.footer-family-wrp .footer-family-item:first-child {
+    width: 573px;
+}
+
+.footer-family-item {
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 370px;
+}
+
+.footer-family-item-position {
+    font-size: 14px;
+    width: 70%;
+}
+
+.footer-family-item-position-operator {
+    font-size: 14px;
+    width: 49%;
+}
+
+.footer-family-item-name {
+    font-size: 18px;
+}
+
+.footer-type-51-defective {
+    background: #FFF;
+    text-align: left;
+    padding-left: 8%;
+}
+
+.footer-type-51-defective-first {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-right: 8%;
+}
+
+.footer-type-51-defective-first-position {
+    width: 40%
+}
+
+.footer-type-51-defective-first-family {
+    
+}
+
+.footer-type-51-defective-second {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-right: 8%;
+}
+
+.footer-type-51-defective-second-position {
+    width: 40%
+}
+
+.footer-type-51-defective-second-family {
+    
+}

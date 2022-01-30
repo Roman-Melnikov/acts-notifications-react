@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 import { ParametrsActInput } from "../Screens/ParametrsActInput/ParametrsActInput";
 import { AddFlight } from "../Screens/AddFlight";
 import { ParametrsThingsInput } from "../Screens/ParametrsThingsInput/ParametrsThingsInput";
-import { GeneralActList } from "../Screens/GeneralActList/GeneralActList";
+import { ActListItem } from "../Screens/ActListItem/ActListItem";
 import "./style.css";
 
 export const Router = () => {
@@ -20,8 +20,8 @@ export const Router = () => {
                     <Route exact path={ROUTES.PARAMETRS_THINGS}>
                         <ParametrsThingsInput />
                     </Route>
-                    <Route exact path={ROUTES.GENERAL_ACT_LIST}>
-                        <GeneralActList />
+                    <Route exact path={`${ROUTES.ACT_LIST_ITEM}/:actId?`}>
+                        <ActListItem />
                     </Route>
                     <Route exact path={ROUTES.ADD_FLIGHT}>
                         <AddFlight />

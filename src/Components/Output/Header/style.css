@@ -1,6 +1,7 @@
 .header {
     padding-top: 10%;
     margin-bottom: 5%;
+    background:#fff;
 }
 
 .header-wrp {
@@ -79,4 +80,8 @@
     width: 250px;
     justify-content: flex-end;
     border-top: 1px solid black;
+}
+
+.header-type-51-d {
+    margin-left: 92%;
 }
