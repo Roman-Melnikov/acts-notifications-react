@@ -1,7 +1,6 @@
 import "./style.css";
 
 export const Footer = ({ typeAct, currentAct }) => {
-    console.log(currentAct);
     return (
         <>
             {(currentAct && typeAct === "type52") &&
@@ -10,24 +9,24 @@ export const Footer = ({ typeAct, currentAct }) => {
                     <div class="footer-family">
                         <div class="footer-family-wrp">
                             <div class="footer-family-item">
-                                <p class="footer-family-item-position">{currentAct.surnamePosition.firstPosition}</p>
-                                <span class="footer-family-item-name">{currentAct.surnamePosition.firstFamily}</span>
+                                <p class="footer-family-item-position">{currentAct.surnamePosition?.firstPosition}</p>
+                                <span class="footer-family-item-name">{currentAct.surnamePosition?.firstFamily}</span>
                             </div>
                             <div class="footer-family-item">
-                                <p class="footer-family-item-position">{currentAct.surnamePosition.thirdPosition}</p>
-                                <span class="footer-family-item-name">{currentAct.surnamePosition.thirdFamily}</span>
+                                <p class="footer-family-item-position">{currentAct.surnamePosition?.thirdPosition}</p>
+                                <span class="footer-family-item-name">{currentAct.surnamePosition?.thirdFamily}</span>
                             </div>
                         </div>
                         <div class="footer-family-wrp">
                             <div class="footer-family-item">
                                 <p class="footer-family-item-position-operator footer-family-item-position-margin">
-                                    {currentAct.surnamePosition.secondPosition}</p>
-                                <span class="footer-family-item-name">{currentAct.surnamePosition.secondFamily}</span>
+                                    {currentAct.surnamePosition?.secondPosition}</p>
+                                <span class="footer-family-item-name">{currentAct.surnamePosition?.secondFamily}</span>
                             </div>
                             <div class="footer-family-item">
                                 <p class="footer-family-item-position">
-                                    {currentAct.surnamePosition.fourthPosition}</p>
-                                <span class="footer-family-item-name">{currentAct.surnamePosition.fourthFamily}</span>
+                                    {currentAct.surnamePosition?.fourthPosition}</p>
+                                <span class="footer-family-item-name">{currentAct.surnamePosition?.fourthFamily}</span>
                             </div>
                         </div>
                     </div>
@@ -35,7 +34,8 @@ export const Footer = ({ typeAct, currentAct }) => {
             }
             {(currentAct && typeAct === "tp51-d") &&
                 <footer class="footer-type-51-defective">
-                    <p>Постановили {currentAct.typeThing === "РПО" ? "РПО" : `емкость ${currentAct.typeThing}`} дополнительно оклеить скотчем с логотипом УФПС Новосибирской области «Почта России» ,  составить акт  в  4-х экземплярах:</p>
+                    <p>Постановили {currentAct.values?.data.typeThing === "РПО" ? "РПО" : `емкость ${currentAct.values?.data.typeThing} `}
+                        дополнительно оклеить скотчем с логотипом УФПС Новосибирской области «Почта России» ,  составить акт  в  4-х экземплярах:</p>
                     <p>1-экземпляр отправить с емкостью до места назначения .</p>
                     <p>2-экземпляр сдать в КСУ.</p>
                     <p>3-экземпляр приобщить к документам.</p>

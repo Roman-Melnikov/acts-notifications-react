@@ -5,6 +5,7 @@ import { getAirLine } from "./func";
 import { getContract } from "./func";
 import { SET_PARAMETRS_THINGS } from "./constants";
 import {
+  changeFormatDateUndTimeInInvoiseList,
   getActualWeightThing,
   getFromAddress,
   getNumberThing,
@@ -15,6 +16,8 @@ import {
 export const setParametrsActActionThink =
   (invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput) =>
   (dispatch, getState) => {
+    const newInvoiseListInput =
+      changeFormatDateUndTimeInInvoiseList(invoiseListInput);
     const dateArrival =
       actFlightNumbersAndArrivalDateInput.datetimeArrival.substring(0, 10);
     const timeArrival =
@@ -30,7 +33,7 @@ export const setParametrsActActionThink =
     dispatch({
       type: SET_PARAMETRS_ACT,
       payload: {
-        invoiseListInput,
+        invoiseListInput: newInvoiseListInput,
         surnamePosition,
         dateArrival,
         timeArrival,
@@ -47,7 +50,6 @@ export const setParametrsActActionThink =
 export const setParametrsThingsActionThink =
   (things, valueSelectionAct_52_Input) => (dispatch, getState) => {
     const { actList_52: newActList_52 } = getState();
-    console.log(things);
     /**
      * получение данных о вещи, при помощи регулярных выражений
      */
@@ -66,14 +68,9 @@ export const setParametrsThingsActionThink =
     const notReceived = things.filter((thing) => thing.values.notReceived);
     const excess = things.filter((thing) => thing.values.excess);
     const differenceWeight = things.filter(
-      (thing) =>
-        thing.values.differenceWeight &&
-        !thing.values.defective &&
-        !thing.values.excess
+      (thing) => thing.values.differenceWeight && !thing.values.defective
     );
-    const defective = things.filter(
-      (thing) => thing.values.defective && !thing.values.excess
-    );
+    const defective = things.filter((thing) => thing.values.defective);
 
     /**
      * добавление к текущим разделам reasons новых

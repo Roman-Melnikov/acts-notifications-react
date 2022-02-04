@@ -51,7 +51,7 @@ export const getTypeThing = (thingData) => {
 export const getNumberThing = (thingData) => {
   const regExp = /идентификатор\n(.+)/i;
   const arrResult = regExp.exec(thingData);
-  arrResult[1] = arrResult[1].replaceAll(' ', '');
+  arrResult[1] = arrResult[1].replaceAll(" ", "");
   return arrResult[1];
 };
 
@@ -59,21 +59,31 @@ export const getActualWeightThing = (thingData) => {
   const regExp = /вес\n(\d{1,3})\sкг\s(\d{1,3})/i;
   const arrResult = regExp.exec(thingData);
   if (+arrResult[2] < 100) {
-      arrResult[2] = `0${arrResult[2]}`;
+    arrResult[2] = `0${arrResult[2]}`;
   }
-  return [arrResult[1], arrResult[2]].join(',');
+  return [arrResult[1], arrResult[2]].join(",");
 };
 
 export const getWhereAddress = (thingData) => {
   const regExp = /куда\n(.+)/i;
   const arrResult = regExp.exec(thingData);
-  arrResult[1] = arrResult[1].replace(',', '');
+  arrResult[1] = arrResult[1].replace(",", "");
   return arrResult[1];
 };
 
 export const getFromAddress = (thingData) => {
   const regExp = /откуда\n(.+)/i;
   const arrResult = regExp.exec(thingData);
-  arrResult[1] = arrResult[1].replace(',', '');
+  arrResult[1] = arrResult[1].replace(",", "");
   return arrResult[1];
-}
+};
+
+export const changeFormatDateUndTimeInInvoiseList = (invoiseList) => {
+  invoiseList.forEach((item) => {
+    item.date = item.date.split("-").reverse().join(".");
+    if (item.time) {//если есть замедление, то здесь стоит время в формате 03:00
+      item.time = `${item.time.replace(":", "ч:")}м`;
+    }
+  });
+  return invoiseList;
+};

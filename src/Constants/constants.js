@@ -51,3 +51,6 @@ export const FROM_WHERE = {
   NOYABRSK: "Ноябрьска",
   VORONEZH: "Воронежа",
 };
+
+export const NUMBER_ACT_52_CONSTANT = "№7.1.40.2.1.2.1-2/";
+export const NUMBER_ACT_51_DEFECTIVE_CONSTANT = "№7.1.40.2.1.2.1-3/";

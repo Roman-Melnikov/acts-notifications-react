@@ -1,0 +1,13 @@
+.content-header {
+    font-size: 18px;
+    text-align: justify;
+}
+
+.content-header-indent {
+    margin-left: 45px;
+}
+
+.content-header-item {
+    margin-top: 0;
+    margin-bottom: 0;
+}

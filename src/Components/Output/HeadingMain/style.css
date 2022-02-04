@@ -1,0 +1,91 @@
+.heading {
+    margin-bottom: 1%;
+}
+.heading-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+}
+.heading-title-txt {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 4px;
+}
+
+.heading-title-number {
+
+
+}
+
+.heading-wrp-date {
+    margin-left: 2%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+.heading-date {
+
+}
+
+.heading-date:after {
+    content: "дата";
+    text-align: center;
+    display: block;
+    width: 110px;
+    font-size: 9px;
+}
+
+.heading-airport {
+    margin-right: 3%;
+    padding-top: 15px;
+}
+
+.heading-airport:after {
+    content: "наименование аэропорта";
+    text-align: center;
+    display: block;
+    width: 200px;
+    font-size: 9px;
+    border-top: 1px solid black;
+}
+
+.heading-where-compiled {
+    font-size: 16px;
+    text-align: left;
+}
+
+.heading-where-compiled-first {
+    text-transform: capitalize;
+    margin-left: 2%;
+    margin-right: 4px;
+}
+.heading-where-compiled-worker {
+    text-transform: capitalize;
+    font-size: 18px;
+    text-align: center;
+    margin: 0;
+}
+
+.heading-where-compiled-family-position-txt {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+.heading-where-compiled-border {
+    border-bottom: 1px solid black;
+    margin-bottom: 0;
+}
+
+.heading-where-compiled-company {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.heading-where-compiled-type-51-defective {
+    font-size: 18px;
+    text-align: left;
+    margin-top: 4%;
+}

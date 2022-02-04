@@ -132,7 +132,7 @@ export const ThingDataListItemInput = React.memo((props) => {
                                             color="primary"
                                         />
                                     </ListItemIcon>
-                                    <ListItemText>Деффектная емкость</ListItemText>
+                                    <ListItemText>С доступом</ListItemText>
                                 </ListItemButton>
                             </ListItem>
                         </List>

@@ -1,8 +1,3 @@
-.footer {
-    background: #FFF;
-    height: 50%;/* новый стиль */
-}
-
 .footer-txt {
 
 
@@ -10,6 +5,7 @@
 .footer-family {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .footer-family .footer-family-wrp:last-child {
@@ -22,7 +18,8 @@
 }
 
 .footer-family-wrp .footer-family-item:first-child {
-    width: 573px;
+    width: 500px;
+    margin-right: 35px;
 }
 
 .footer-family-item {
@@ -35,12 +32,14 @@
 
 .footer-family-item-position {
     font-size: 14px;
-    width: 70%;
+    width: 77%;
+    margin-top: 0;
 }
 
 .footer-family-item-position-operator {
     font-size: 14px;
     width: 49%;
+    margin-top: 0;
 }
 
 .footer-family-item-name {
@@ -50,7 +49,7 @@
 .footer-type-51-defective {
     background: #FFF;
     text-align: left;
-    padding-left: 8%;
+    margin-top: 10%;
 }
 
 .footer-type-51-defective-first {

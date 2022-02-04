@@ -1,7 +1,6 @@
 .header {
-    padding-top: 10%;
+    padding-top: 7%;
     margin-bottom: 5%;
-    background:#fff;
 }
 
 .header-wrp {
@@ -15,6 +14,8 @@
     flex-direction: column;
     padding-left: 3%;
     margin-right: 27%;
+    margin-bottom: 0;
+    text-align: left;
 }
 
 .header-left-txt-uppercase {
@@ -28,6 +29,8 @@
 .header-right {
     display: flex;
     flex-direction: column;
+    text-align: left;
+    margin-bottom: 0;
 }
 
 .header-right-txt-uppercase {

@@ -13,7 +13,9 @@ import { getNumberThing } from "./func";
 import { getActualWeightThing } from "./func";
 import { getWhereAddress } from "./func";
 import { getFromAddress } from "./func";
+import { changeFormatDateUndTimeInInvoiseList } from "./func";
 
+export { changeFormatDateUndTimeInInvoiseList };
 export { getFromAddress };
 export { getWhereAddress };
 export { getActualWeightThing };

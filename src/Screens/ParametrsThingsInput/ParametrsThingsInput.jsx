@@ -6,18 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { SelectionAct_52_Input } from "../../Components/Input/SelectionAct_52_Input/SelectionAct_52_Input";
 import { ThingDataListInput } from "../../Components/Input/ThingDataListInput/ThingDataListInput";
 import { actList_52_Selector } from "../../Store/ActList_52/selectors";
-import { numberAct_51_constantSelector } from "../../Store/NumberAct_51_D_constant/selectors";
 import { DESCRIPTION } from "./constants";
 import { setParametrsThingsActionThink } from "../../Store/ActList_52";
 import { setActList_51_defectiveItemActionThink } from "../../Store/ActList_51_defective";
+import { NUMBER_ACT_51_DEFECTIVE_CONSTANT } from "../../Constants/constants";
 import "./style.css";
+
 
 export const ParametrsThingsInput = () => {
     const [valueSelectionAct_52_Input, setValueSelectionAct_52_Input] = useState("");
     const [things, setThings] = useState([]);
     const { actList_52 } = useSelector(actList_52_Selector);
     const dispatch = useDispatch();
-    const { numberAct_51_constant: numberAct_51_defectiveConstant } = useSelector(numberAct_51_constantSelector);
     const [numberAct_51_defectiveAndIdThing, setNumberAct_51_defectiveAndIdThing] = useState([]);
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export const ParametrsThingsInput = () => {
                 newNumberAct_51_defectiveAndIdThing = [...newNumberAct_51_defectiveAndIdThing, {
                     id: thingsItem.id, numberAct: numberAct_51_defectiveAndIdThing.find((numberAct_51_defectiveAndIdThingItem) => {
                         return numberAct_51_defectiveAndIdThingItem.id === thingsItem.id;
-                    })?.numberAct || numberAct_51_defectiveConstant
+                    })?.numberAct || NUMBER_ACT_51_DEFECTIVE_CONSTANT
                 }];
             };
         });
