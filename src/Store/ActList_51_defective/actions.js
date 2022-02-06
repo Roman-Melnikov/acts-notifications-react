@@ -1,4 +1,4 @@
-import faker from "faker";
+import { v4 as uuidv4 } from 'uuid';
 import { SET_ACT_LIST_51_DEFECTIVE_ITEM } from "./constants";
 
 export const setActList_51_defectiveItemActionThink =
@@ -8,7 +8,7 @@ export const setActList_51_defectiveItemActionThink =
       dispatch({
         type: SET_ACT_LIST_51_DEFECTIVE_ITEM,
         payload: {
-          idAct: `tp51-d${faker.datatype.uuid()}`,
+          idAct: `tp51-d${uuidv4()}`,
           name_52: valueSelectionAct_52_Input,
           idThing: item.id,
           numberAct: item.numberAct,

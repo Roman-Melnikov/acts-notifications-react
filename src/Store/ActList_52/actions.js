@@ -1,4 +1,4 @@
-import faker from "faker";
+import { v4 as uuidv4 } from 'uuid';
 import { getCity } from "./func";
 import { SET_PARAMETRS_ACT } from "./constants";
 import { getAirLine } from "./func";
@@ -25,7 +25,7 @@ export const setParametrsActActionThink =
     const numberAct =
       actFlightNumbersAndArrivalDateInput.numberAct.substring(18);
     const numberFlight = actFlightNumbersAndArrivalDateInput.numberFlight;
-    const id = `type52${faker.datatype.uuid()}`;
+    const id = `type52${uuidv4()}`;
     const city = getCity(getState, numberFlight);
     const airLine = getAirLine(getState, numberFlight);
     const contract = getContract(getState, numberFlight);

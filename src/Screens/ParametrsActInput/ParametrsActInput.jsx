@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import faker from "faker";
+import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from "react-redux";
 import { setParametrsActActionThink } from "../../Store/ActList_52";
 import { InvoiseListInput } from "../../Components/Input/InvoiseListInput";
@@ -29,7 +29,7 @@ export const ParametrsActInput = () => {
 
     useEffect(() => {
         setInvoiseListInput([{
-            id: faker.datatype.uuid(),
+            id: uuidv4(),
             number: "",
             thingAmount: "",
             weight: "",
@@ -109,7 +109,7 @@ export const ParametrsActInput = () => {
 
     const addInvoiseItem = useCallback(() => {
         setInvoiseListInput([...invoiseListInput, {
-            id: faker.datatype.uuid(),
+            id: uuidv4(),
             number: "",
             thingAmount: "",
             weight: "",

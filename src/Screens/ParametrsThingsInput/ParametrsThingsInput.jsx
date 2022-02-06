@@ -1,5 +1,5 @@
 import { Box, Button } from "@material-ui/core";
-import faker from "faker";
+import { v4 as uuidv4 } from 'uuid';
 import SendIcon from '@mui/icons-material/Send';
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +22,7 @@ export const ParametrsThingsInput = () => {
 
     useEffect(() => {
         setThings([...things, {
-            id: faker.datatype.uuid(),
+            id: uuidv4(),
             values: { data: "", description: "", giviWeight: "", notReceived: false, excess: false, defective: false, differenceWeight: false },
         }]);
     }, []);
@@ -55,7 +55,7 @@ export const ParametrsThingsInput = () => {
 
     const addThing = () => {
         const newThing = {
-            id: faker.datatype.uuid(),
+            id: uuidv4(),
             values: { data: "", description: "", giviWeight: "", notReceived: false, excess: false, defective: false, differenceWeight: false },
         };
         setThings([...things, newThing]);
