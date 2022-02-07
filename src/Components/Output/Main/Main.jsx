@@ -78,11 +78,10 @@ export const Main = ({ currentAct, typeAct, dateArrival }) => {
                 {currentAct?.reasons?.excess &&
                     <ExcessList excessList={currentAct.reasons.excess} />}
                 <DefectiveList defectiveList={defectiveList} />
-                {((currentAct?.reasons?.excess?.length !==0 || currentAct?.reasons?.notReceived?.length !==0) &&
-                 (currentAct?.reasons/*иначе,когда только замедление, расписка выходит, т.к. undefined !==0 */)) &&
+                {((currentAct?.reasons?.excess?.length !== 0 || currentAct?.reasons?.notReceived?.length !== 0) &&
+                    (currentAct?.reasons/*иначе,когда только замедление, расписка выходит, т.к. undefined !==0 */)) &&
                     <p class="content-main-receipt">Расписка дана за {amountThingReceived} вещей.</p>}
-                {(currentAct?.reasons?.excess?.length !==0 || currentAct?.reasons?.notReceived?.length !==0 ||
-                    currentAct?.reasons?.differenceWeight?.length !==0 || currentAct?.reasons?.defective?.length !==0) &&
+                {currentAct?.reasons &&
                     <p class="content-main-copy">Копия акта ф.51 прилагается.</p>}
                 {deceleration &&
                     <p class="content-main-deceleration">Замедление почты составило более суток.</p>}
