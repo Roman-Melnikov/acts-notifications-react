@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getMounthStringByNumber, getDataForActType_51_defective} from "./func";
 import { Footer } from "../../Components/Output/Footer/Footer";
 import { Header } from "../../Components/Output/Header";
-import { Main } from "../../Components/Output/Main"
+import { Main } from "../../Components/Output/Main";
 import { SidebarList } from "../../Components/Output/SidebarList";
 import { actList_51_defectiveSelector } from "../../Store/ActList_51_defective/selectors";
 import { actList_52_Selector } from "../../Store/ActList_52/selectors";
@@ -85,15 +85,25 @@ export const ActListItem = () => {
     }, [currentAct]);
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={3} className="not-print">
+        // <Grid container >
+        //     <Grid item xs={0} className="not-print">
+        //         <SidebarList sidebarList={sidebarList} />
+        //     </Grid>
+        //     <Grid item xs={9} className="act-list-item-right">
+        //         <Header typeAct={typeAct} />
+        //         <Main typeAct={typeAct} currentAct={currentAct} dateArrival={dateArrival} />
+        //         <Footer typeAct={typeAct} currentAct={currentAct} />
+        //     </Grid>
+        // </Grid>
+        <div class="act-list-item" >
+            <div class="not-print act-list-item-left">
                 <SidebarList sidebarList={sidebarList} />
-            </Grid>
-            <Grid item xs={12} className="act-list-item-right">
+            </div>
+            <div class="act-list-item-right">
                 <Header typeAct={typeAct} />
                 <Main typeAct={typeAct} currentAct={currentAct} dateArrival={dateArrival} />
                 <Footer typeAct={typeAct} currentAct={currentAct} />
-            </Grid>
-        </Grid>
+            </div>
+        </div>
     )
 }

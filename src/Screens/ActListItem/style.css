@@ -1,3 +1,22 @@
+.act-list-item {
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.act-list-item-left {
+    /* max-width: 30%; */
+    width: 18%;
+    background-color: #cfe8fc;
+
+}
+
 .act-list-item-right {
+    padding-left: 2%;
+    padding-right: 2%;
+    /* max-width: 70%; */
+    width: 82%;
     background-color: #fff;
 }

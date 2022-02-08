@@ -1,4 +1,4 @@
-import { NotReceivedList } from "../NotReceivedList/NotReceivedList";
+import { NotReceivedList } from "../NotReceivedList";
 import { HeadingMain } from "../HeadingMain/HeadingMain";
 import { Where } from "../Where/Where";
 import { Why } from "../Why/Why";
@@ -83,7 +83,7 @@ export const Main = ({ currentAct, typeAct, dateArrival }) => {
                     <p class="content-main-receipt">Расписка дана за {amountThingReceived} вещей.</p>}
                 {currentAct?.reasons &&
                     <p class="content-main-copy">Копия акта ф.51 прилагается.</p>}
-                {deceleration &&
+                {(deceleration && typeAct === "type52") &&
                     <p class="content-main-deceleration">Замедление почты составило более суток.</p>}
                 {typeAct === "type52" && <FooterMain />}
             </section>
