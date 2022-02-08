@@ -2,7 +2,7 @@ import { Box, Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from "react-redux";
-import { setParametrsActActionThink } from "../../Store/ActList_52";
+import { setParametrsActActionThink } from "../../Store/ActList52";
 import { InvoiseListInput } from "../../Components/Input/InvoiseListInput";
 import { useCallback, useEffect, useState } from "react";
 import { SurnamePositionInput } from "../../Components/Input/SurnamePositionInput";

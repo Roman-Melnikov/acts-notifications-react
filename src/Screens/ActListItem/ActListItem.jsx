@@ -7,8 +7,8 @@ import { Footer } from "../../Components/Output/Footer/Footer";
 import { Header } from "../../Components/Output/Header";
 import { Main } from "../../Components/Output/Main";
 import { SidebarList } from "../../Components/Output/SidebarList";
-import { actList_51_defectiveSelector } from "../../Store/ActList_51_defective/selectors";
-import { actList_52_Selector } from "../../Store/ActList_52/selectors";
+import { actList_51_defectiveSelector } from "../../Store/ActList51defective/selectors";
+import { actList_52_Selector } from "../../Store/ActList52/selectors";
 import "./style.css";
 
 

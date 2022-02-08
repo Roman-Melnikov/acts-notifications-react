@@ -3,12 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 import SendIcon from '@mui/icons-material/Send';
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SelectionAct_52_Input } from "../../Components/Input/SelectionAct_52_Input/SelectionAct_52_Input";
+import { SelectionAct52Input } from "../../Components/Input/SelectionAct52Input/SelectionAct52Input";
 import { ThingDataListInput } from "../../Components/Input/ThingDataListInput/ThingDataListInput";
-import { actList_52_Selector } from "../../Store/ActList_52/selectors";
+import { actList_52_Selector } from "../../Store/ActList52/selectors";
 import { DESCRIPTION } from "./constants";
-import { setParametrsThingsActionThink } from "../../Store/ActList_52";
-import { setActList_51_defectiveItemActionThink } from "../../Store/ActList_51_defective";
+import { setParametrsThingsActionThink } from "../../Store/ActList52";
+import { setActList_51_defectiveItemActionThink } from "../../Store/ActList51defective";
 import { NUMBER_ACT_51_DEFECTIVE_CONSTANT } from "../../Constants/constants";
 import "./style.css";
 
@@ -111,7 +111,7 @@ export const ParametrsThingsInput = () => {
 
     return (
         <Box className="parametrs-things">
-            <SelectionAct_52_Input actList_52={actList_52} valueSelectionAct_52_Input={valueSelectionAct_52_Input}
+            <SelectionAct52Input actList_52={actList_52} valueSelectionAct_52_Input={valueSelectionAct_52_Input}
                 changeValueSelectionAct_52_Input={changeValueSelectionAct_52_Input} />
             <ThingDataListInput things={things} changeThingData={changeThingData} handleToogleReasons={handleToogleReasons}
                 changeNumberAct_51_defective={changeNumberAct_51_defective}

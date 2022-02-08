@@ -1,6 +1,6 @@
 import { Box, MenuItem, TextField } from "@material-ui/core";
 
-export const SelectionAct_52_Input = ({ actList_52, valueSelectionAct_52_Input, changeValueSelectionAct_52_Input }) => {
+export const SelectionAct52Input = ({ actList_52, valueSelectionAct_52_Input, changeValueSelectionAct_52_Input }) => {
 
     return (
         <Box>
