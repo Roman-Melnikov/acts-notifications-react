@@ -76,7 +76,7 @@ export const Main = ({ currentAct, typeAct, dateArrival }) => {
                     dateArrival={dateArrival} />
                 <NotReceivedList notReceivedList={currentAct?.reasons?.notReceived ?? []} />
                 <ExcessList excessList={currentAct?.reasons?.excess ?? []} fromGA={currentAct?.fromGA} />
-                <DefectiveList defectiveList={defectiveList} />
+                <DefectiveList defectiveList={defectiveList} typeAct={typeAct} />
                 {((currentAct?.reasons?.excess?.length !== 0 || currentAct?.reasons?.notReceived?.length !== 0) &&
                     (currentAct?.reasons/*иначе,когда только замедление, расписка выходит, т.к. undefined !==0 */)) &&
                     <p class="content-main-receipt">Расписка дана за {amountThingReceived} вещей.</p>}

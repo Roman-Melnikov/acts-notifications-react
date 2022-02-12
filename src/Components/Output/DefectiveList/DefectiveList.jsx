@@ -1,12 +1,12 @@
 import { DefectiveListItem } from "../DefectiveListItem/DefectiveListItem";
 import "./style.css";
 
-export const DefectiveList = ({ defectiveList }) => {
+export const DefectiveList = ({ defectiveList, typeAct }) => {
     console.log(defectiveList);
 
     return (
         <>
-            {/* {defectiveList?.length === 1 &&
+            {(typeAct === "tp51-d" && defectiveList?.length === 1) &&
                 <div class="content-main-defective-list" >
                     {defectiveList[0]?.values.data.typeThing !== "РПО" &&
                         <span class="content-main-defective-list-indent" >Поступила дефектная емкость </span>}
@@ -22,8 +22,8 @@ export const DefectiveList = ({ defectiveList }) => {
                                     defectiveListLength={defectiveList?.length} />
                             </>)
                     })}
-                </div>} */}
-            {defectiveList?.length >= 1 &&
+                </div>}
+            {(typeAct === "type52" && defectiveList?.length >= 1) &&
                 <div class="content-main-defective-list" >
                     <span class="content-main-defective-list-indent">При </span>
                     <span>

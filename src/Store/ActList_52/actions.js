@@ -39,7 +39,7 @@ export const setParametrsActActionThink =
     const contract = getContract(getState, numberFlight);
     const name = !checkedFromGA
       ? `${dateArrival}  №${numberAct} р${numberFlight}`
-      : `${dateArrival}  №${numberAct}`;
+      : `${dateArrival}  №${numberAct} от ГА`;
 
     dispatch({
       type: SET_PARAMETRS_ACT,

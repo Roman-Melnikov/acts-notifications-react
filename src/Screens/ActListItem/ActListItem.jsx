@@ -25,6 +25,8 @@ export const ActListItem = () => {
     const { actList_51_defective } = useSelector(actList_51_defectiveSelector);
     const { actId } = useParams();
 
+    console.log(currentAct);
+
     useEffect(() => {
         setSidebarList(() => {
             const newSidebarList = actList_52.map((itemActList_52) => {
@@ -82,6 +84,15 @@ export const ActListItem = () => {
             }
         })
     }, [currentAct]);
+
+    /**
+     * Получение данных для справки(компонент Reference)
+     */
+    // useEffect(() => {
+    //     setDateArrival(() => {
+    //         const forTmsTotalWeight = 
+    //     })
+    // }, [currentAct]);
 
     return (
         /**
