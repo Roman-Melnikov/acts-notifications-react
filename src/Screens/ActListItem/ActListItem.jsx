@@ -1,8 +1,8 @@
-import { Grid } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getMounthStringByNumber, getDataForActType_51_defective} from "./func";
+import { getMounthStringByNumber, getDataForActType_51_defective } from "./func";
 import { Footer } from "../../Components/Output/Footer/Footer";
 import { Header } from "../../Components/Output/Header";
 import { Main } from "../../Components/Output/Main";
@@ -10,7 +10,6 @@ import { SidebarList } from "../../Components/Output/SidebarList";
 import { actList_51_defectiveSelector } from "../../Store/ActList_51_defective/selectors";
 import { actList_52_Selector } from "../../Store/ActList_52/selectors";
 import "./style.css";
-
 
 export const ActListItem = () => {
     const [sidebarList, setSidebarList] = useState([]);
@@ -85,6 +84,11 @@ export const ActListItem = () => {
     }, [currentAct]);
 
     return (
+        /**
+         * не смог сделать увеличение ширины второго Grid item при выводе на печать, для акта ф51-д.
+         *  Хотя,для акта ф52 ширина менялась.
+         *  Поэтому переделал на divы. 
+         */
         // <Grid container >
         //     <Grid item xs={0} className="not-print">
         //         <SidebarList sidebarList={sidebarList} />
@@ -100,6 +104,7 @@ export const ActListItem = () => {
                 <SidebarList sidebarList={sidebarList} />
             </div>
             <div class="act-list-item-right">
+                <Button className="not-print print-btn" color="secondary" variant="contained" onClick={() => window.print()} >Печать</Button>
                 <Header typeAct={typeAct} />
                 <Main typeAct={typeAct} currentAct={currentAct} dateArrival={dateArrival} />
                 <Footer typeAct={typeAct} currentAct={currentAct} />

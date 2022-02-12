@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { getCity } from "./func";
 import { SET_PARAMETRS_ACT } from "./constants";
 import { getAirLine } from "./func";
@@ -14,25 +14,38 @@ import {
 } from "./index";
 
 export const setParametrsActActionThink =
-  (invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput) =>
+  (
+    invoiseListInput,
+    surnamePosition,
+    actFlightNumbersAndArrivalDateInput,
+    checkedFromGA
+  ) =>
   (dispatch, getState) => {
-    const newInvoiseListInput =
-      changeFormatDateUndTimeInInvoiseList(invoiseListInput);
+    const newInvoiseListInput = checkedFromGA
+      ? []
+      : changeFormatDateUndTimeInInvoiseList(invoiseListInput);
     const dateArrival =
-      actFlightNumbersAndArrivalDateInput.datetimeArrival.substring(0, 10);
+      actFlightNumbersAndArrivalDateInput.datetimeArrival?.substring(0, 10) ??
+      "";
     const timeArrival =
-      actFlightNumbersAndArrivalDateInput.datetimeArrival.substring(11, 16);
+      actFlightNumbersAndArrivalDateInput.datetimeArrival?.substring(11, 16) ??
+      "";
     const numberAct =
-      actFlightNumbersAndArrivalDateInput.numberAct.substring(18);
-    const numberFlight = actFlightNumbersAndArrivalDateInput.numberFlight;
+      actFlightNumbersAndArrivalDateInput.numberAct?.substring(18) ?? "";
+    const numberFlight = actFlightNumbersAndArrivalDateInput.numberFlight ?? "";
     const id = `type52${uuidv4()}`;
     const city = getCity(getState, numberFlight);
     const airLine = getAirLine(getState, numberFlight);
     const contract = getContract(getState, numberFlight);
+    const name = !checkedFromGA
+      ? `${dateArrival}  №${numberAct} р${numberFlight}`
+      : `${dateArrival}  №${numberAct}`;
 
     dispatch({
       type: SET_PARAMETRS_ACT,
       payload: {
+        name,
+        fromGA: checkedFromGA,
         invoiseListInput: newInvoiseListInput,
         surnamePosition,
         dateArrival,

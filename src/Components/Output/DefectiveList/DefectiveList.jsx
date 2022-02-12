@@ -6,12 +6,12 @@ export const DefectiveList = ({ defectiveList }) => {
 
     return (
         <>
-            {defectiveList?.length === 1 &&
+            {/* {defectiveList?.length === 1 &&
                 <div class="content-main-defective-list" >
                     {defectiveList[0]?.values.data.typeThing !== "РПО" &&
-                        <span class="content-main-defective-list-indent" >Поступила емкость </span>}
+                        <span class="content-main-defective-list-indent" >Поступила дефектная емкость </span>}
                     {defectiveList[0]?.values.data.typeThing === "РПО" &&
-                        <span class="content-main-defective-list-indent" >Поступило </span>}
+                        <span class="content-main-defective-list-indent" >Поступило дефектное </span>}
                     {defectiveList?.map((defectiveListItem, index) => {
                         return (
                             <>
@@ -22,8 +22,8 @@ export const DefectiveList = ({ defectiveList }) => {
                                     defectiveListLength={defectiveList?.length} />
                             </>)
                     })}
-                </div>}
-            {defectiveList?.length > 1 &&
+                </div>} */}
+            {defectiveList?.length >= 1 &&
                 <div class="content-main-defective-list" >
                     <span class="content-main-defective-list-indent">При </span>
                     <span>

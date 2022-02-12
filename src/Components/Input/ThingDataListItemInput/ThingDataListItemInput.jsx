@@ -132,7 +132,7 @@ export const ThingDataListItemInput = React.memo((props) => {
                                             color="primary"
                                         />
                                     </ListItemIcon>
-                                    <ListItemText>С доступом</ListItemText>
+                                    <ListItemText>С доступом или(и) течью</ListItemText>
                                 </ListItemButton>
                             </ListItem>
                         </List>

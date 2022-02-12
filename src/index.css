@@ -5,7 +5,7 @@ body {
 
 @media print {
   .not-print {
-    display: none;
+    display: none !important;
   }
   .act-list-item {
     padding: 0 !important;

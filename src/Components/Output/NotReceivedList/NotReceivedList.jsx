@@ -4,7 +4,7 @@ import "./style.css";
 export const NotReceivedList = ({ notReceivedList }) => {
     return (
         <>
-            {notReceivedList.length === 1 &&
+            {/* {notReceivedList.length === 1 &&
                 <div class="content-main-not-received-list" >
                     <span class="content-main-not-received-list-indent">При </span>
                     <span>поименной проверке и сличении почты с документами не оказалось </span>
@@ -22,8 +22,8 @@ export const NotReceivedList = ({ notReceivedList }) => {
                                     notReceivedListLength={notReceivedList.length} />
                             </>)
                     })}
-                </div>}
-            {notReceivedList.length > 1 &&
+                </div>} */}
+            {notReceivedList.length >= 1 &&
                 <div class="content-main-not-received-list" >
                     <span class="content-main-not-received-list-indent">При </span>
                     <span>

@@ -35,6 +35,7 @@ export const FROM_WHERE = {
   KYZYL: "Кызыла",
   IRKUTSK: "Иркутска",
   BLAGOVESHCHENSK: "Благовещенска",
+  BRATSK: "Братска",
   ABAKAN: "Абакана",
   SURGUT: "Сургута",
   ULAN_UDE: "Улан-Удэ",
@@ -50,6 +51,7 @@ export const FROM_WHERE = {
   ROSTOV_NA_DONU: "Ростова-на-Дону",
   NOYABRSK: "Ноябрьска",
   VORONEZH: "Воронежа",
+  MINERAL_WATER: "Минеральные воды"
 };
 
 export const NUMBER_ACT_52_CONSTANT = "№7.1.40.2.1.2.1-2/";

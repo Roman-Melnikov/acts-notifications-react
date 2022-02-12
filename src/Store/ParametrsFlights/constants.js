@@ -12,10 +12,10 @@ export const PARAMETRS_FLIGHTS = {
       name: AIR_LINES.SIBIRE,
       flights: [
         2505, 2507, 2509, 2511, 2513, 2515, 5336, 5018, 5002, 5004, 5006, 5020,
-        5352, 5346, 5306, 5308, 5310, 5042, 5058, 5028, 5116, 5156, 5228, 5212,
-        5312, 5262, 5264, 5266, 5268, 5272, 5274, 5276, 5280, 5348, 5256, 5220,
-        5224, 5202, 5204, 5302, 5304, 5236, 5238, 5242, 5250, 5328, 5258, 5332,
-        5050,
+        5352, 5346, 5306, 5308, 5310, 5040, 5042, 5058, 5028, 5116, 5128, 5156,
+        5228, 5212, 5216, 5312, 5262, 5264, 5266, 5268, 5272, 5274, 5276, 5280,
+        5348, 5256, 5220, 5224, 5202, 5204, 5302, 5304, 5236, 5238, 5242, 5250,
+        5328, 5258, 5332, 5050, 8898,
       ],
       contract: "АП-16-20 от 08.04.2020г",
     },
@@ -46,7 +46,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       name: AIR_LINES.ALROSA,
-      flights: [525, 527, 529, 544],
+      flights: [525, 527, 529, 544, 589],
       contract: "АП-21-20 от 14.07.2020г",
     },
     {
@@ -56,7 +56,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       name: AIR_LINES.NORD_AVIA,
-      flights: [237],
+      flights: [237, 1237],
       contract: "АП-20-20/433-Н19-19 от 16.06.2020г",
     },
     {
@@ -133,7 +133,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       fromWhere: FROM_WHERE.PERMIAN,
-      flights: [5042, 5058],
+      flights: [5040, 5042, 5058],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "614962 Цех обмена почтовыми отправлениями",
       fromAddressesAll: ["614962 Цех обмена почтовыми отправлениями"],
@@ -182,6 +182,13 @@ export const PARAMETRS_FLIGHTS = {
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "675962 Благовещенск МСЦ УОПП",
       fromAddressesAll: ["675962 Благовещенск МСЦ УОПП"],
+    },
+    {
+      fromWhere: FROM_WHERE.BRATSK,
+      flights: [5216],
+      ourAddressDefault: OUR_ADDRESSES.PRIMARY,
+      fromAddressDefault: "665798 Братск ЦСПП",
+      fromAddressesAll: ["665798 Братск ЦСПП"],
     },
     {
       fromWhere: FROM_WHERE.ABAKAN,
@@ -241,7 +248,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       fromWhere: FROM_WHERE.MIRNYY,
-      flights: [5242, 525, 527, 529],
+      flights: [5242, 525, 527, 529, 589],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "678179 Мирный ОП",
       fromAddressesAll: ["678179 Мирный ОП"],
@@ -287,6 +294,13 @@ export const PARAMETRS_FLIGHTS = {
       ourAddressDefault: OUR_ADDRESSES.QUATERNARY,
       fromAddressDefault: "394964 Воронеж МСЦ УОПК",
       fromAddressesAll: ["394964 Воронеж МСЦ УОПК"],
+    },
+    {
+      fromWhere: FROM_WHERE.MINERAL_WATER,
+      flights: [5128],
+      ourAddressDefault: OUR_ADDRESSES.PRIMARY,
+      fromAddressDefault: "357270 Минеральные воды АОПП",
+      fromAddressesAll: ["357270 Минеральные воды АОПП"],
     },
   ],
 };

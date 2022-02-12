@@ -2,6 +2,13 @@
     color: red;
 }
 
+.link {
+    text-decoration: none;
+    font-size: 18px;
+}
+
 .breadcrumbs {
+    display: flex;
+    justify-content: center;
     height: 5vh;
 }

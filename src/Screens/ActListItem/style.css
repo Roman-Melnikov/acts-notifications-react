@@ -14,9 +14,17 @@
 }
 
 .act-list-item-right {
+    position:relative;
     padding-left: 2%;
     padding-right: 2%;
+    padding-top: 2%;
     /* max-width: 70%; */
     width: 82%;
     background-color: #fff;
+}
+
+.print-btn {
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
 }

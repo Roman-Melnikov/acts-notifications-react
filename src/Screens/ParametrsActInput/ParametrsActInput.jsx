@@ -23,6 +23,7 @@ export const ParametrsActInput = () => {
         })()
     });
     const [citiAddresses, setCitiAddresses] = useState({});
+    const [checkedFromGA, setCheckedFromGA] = useState(false);
 
     const dispatch = useDispatch();
     const { parametrsFlights } = useSelector(parametrsFlightsSelector);
@@ -98,12 +99,12 @@ export const ParametrsActInput = () => {
      * изменение адреса города, из которого прибыл рейс, в накладных при изменении citiAddresses.default(адрес * * города по умолчанию)
      */
     useEffect(() => {
-        if(actFlightNumbersAndArrivalDateInput.numberFlight !== undefined) {
+        if (actFlightNumbersAndArrivalDateInput.numberFlight !== undefined) {
             setInvoiseListInput(() => {
-            const [...newInvoiseListInput] = invoiseListInput;
-            newInvoiseListInput.forEach((item) => item.citiAddress = citiAddresses.default);
-            return newInvoiseListInput;
-        });
+                const [...newInvoiseListInput] = invoiseListInput;
+                newInvoiseListInput.forEach((item) => item.citiAddress = citiAddresses.default);
+                return newInvoiseListInput;
+            });
         }
     }, [citiAddresses.default]);
 
@@ -139,17 +140,23 @@ export const ParametrsActInput = () => {
         setActFlightNumbersAndArrivalDateInput({ ...actFlightNumbersAndArrivalDateInput, [name]: value });
     }, [actFlightNumbersAndArrivalDateInput]);
 
+    const handleToogleCheckedFromGa = useCallback(() => {
+        setCheckedFromGA(!checkedFromGA);
+    }, [checkedFromGA]);
+
     const transferDataToStore = useCallback(() => {
         window.scrollTo(0, 0);
-        dispatch(setParametrsActActionThink(invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput))
-    }, [invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput]);
+        dispatch(setParametrsActActionThink(invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA))
+    }, [invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA]);
 
     return (
         <Box className="parametrs-act">
-            <ActFlightNumbersAndArrivalDateInput actFlightNumbersAndArrivalDateInput={actFlightNumbersAndArrivalDateInput} changeActFlightNumbersAndArrivalDateInput={changeActFlightNumbersAndArrivalDateInput} />
-            <InvoiseListInput
+            <ActFlightNumbersAndArrivalDateInput actFlightNumbersAndArrivalDateInput={actFlightNumbersAndArrivalDateInput}
+                changeActFlightNumbersAndArrivalDateInput={changeActFlightNumbersAndArrivalDateInput} handleToogleCheckedFromGa={handleToogleCheckedFromGa}
+                checkedFromGA={checkedFromGA} />
+            {!checkedFromGA && <InvoiseListInput
                 invoiseListInput={invoiseListInput} changeInvoiseListInput={changeInvoiseListInput}
-                ourAddresses={ourAddresses} citiAddresses={citiAddresses} />
+                ourAddresses={ourAddresses} citiAddresses={citiAddresses} />}
             <Button className="invoise-list-btn" variant="contained" onClick={addInvoiseItem}>Добавить общую накладную</Button>
             <SurnamePositionInput surnamePosition={surnamePosition} changeSurnamePositionInput={changeSurnamePositionInput} />
             <Button onClick={transferDataToStore} variant="contained" endIcon={<SendIcon />} className="parametrs-act-btn">Отправить данные</Button>

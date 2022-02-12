@@ -69,14 +69,13 @@ export const Main = ({ currentAct, typeAct, dateArrival }) => {
             <HeadingMain dateArrival={dateArrival} numberAct={currentAct?.numberAct ?? " "}
                 surname={currentAct?.surnamePosition?.fourthFamily ?? " "} typeAct={typeAct} />
             <section class="content">
-                {typeAct === "type52" && <Why dateArrival={dateArrival} airLine={currentAct?.flight?.airLine}
+                {((typeAct === "type52") && !currentAct?.fromGA) && <Why dateArrival={dateArrival} airLine={currentAct?.flight?.airLine}
                     contract={currentAct?.flight?.contract} />}
                 <Where invoiseList={currentAct?.invoiseList ?? []} flight={currentAct?.flight}
-                    timeArrival={currentAct?.timeArrival ?? " "} />
-                {currentAct?.reasons?.notReceived &&
-                    <NotReceivedList notReceivedList={currentAct.reasons.notReceived} />}
-                {currentAct?.reasons?.excess &&
-                    <ExcessList excessList={currentAct.reasons.excess} />}
+                    timeArrival={currentAct?.timeArrival ?? " "} fromGA={currentAct?.fromGA}
+                    dateArrival={dateArrival} />
+                <NotReceivedList notReceivedList={currentAct?.reasons?.notReceived ?? []} />
+                <ExcessList excessList={currentAct?.reasons?.excess ?? []} fromGA={currentAct?.fromGA} />
                 <DefectiveList defectiveList={defectiveList} />
                 {((currentAct?.reasons?.excess?.length !== 0 || currentAct?.reasons?.notReceived?.length !== 0) &&
                     (currentAct?.reasons/*иначе,когда только замедление, расписка выходит, т.к. undefined !==0 */)) &&
