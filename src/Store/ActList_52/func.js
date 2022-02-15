@@ -1,4 +1,4 @@
-import { OBJ_FOR_CHECK_TYPE_THING } from ".";
+import { OBJ_FOR_CHECK_TYPE_THING } from "./constants";
 
 export const getCity = (getState, numberFlight) => {
   const { parametrsFlights: state } = getState();

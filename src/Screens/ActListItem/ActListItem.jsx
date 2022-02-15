@@ -9,6 +9,13 @@ import { Main } from "../../Components/Output/Main";
 import { SidebarList } from "../../Components/Output/SidebarList";
 import { actList_51_defectiveSelector } from "../../Store/ActList_51_defective/selectors";
 import { actList_52_Selector } from "../../Store/ActList_52/selectors";
+import { getForTmsEmsWeight } from "./func";
+import { getForTmsTotalWeight } from "./func";
+import { getForTmsThingAmount } from "./func";
+import { getForMonitoringTotalgWeight } from "./func";
+import { getForMonitoringThingAmount } from "./func";
+import { Reference } from "../../Components/Output/Reference";
+import { getForMonitorihgAdditionalInformationIfFromGa } from "./func";
 import "./style.css";
 
 export const ActListItem = () => {
@@ -20,6 +27,15 @@ export const ActListItem = () => {
         day: " ",
         mounthNumber: " ",
         mounthString: " ",
+    });
+    const [dataForReference, setDataForReference] = useState({
+        forTmsTotalWeight: null,
+        forTmsEmsWeight: null,
+        forTmsThingAmount: null,
+        forMonitoringTotalgWeight: null,
+        forMonitoringThingAmount: null,
+        //дополнительная информация для мониторинга, если от ГА
+        forMonitorihgAdditionalInformationIfFromGa: null,
     });
     const { actList_52 } = useSelector(actList_52_Selector);
     const { actList_51_defective } = useSelector(actList_51_defectiveSelector);
@@ -88,11 +104,22 @@ export const ActListItem = () => {
     /**
      * Получение данных для справки(компонент Reference)
      */
-    // useEffect(() => {
-    //     setDateArrival(() => {
-    //         const forTmsTotalWeight = 
-    //     })
-    // }, [currentAct]);
+    useEffect(() => {
+        setDataForReference(() => {
+            let newDataForReference = {};
+            if (currentAct?.reasons) {
+                newDataForReference = {
+                    forTmsTotalWeight: getForTmsTotalWeight(currentAct),
+                    forTmsEmsWeight: getForTmsEmsWeight(currentAct),
+                    forTmsThingAmount: getForTmsThingAmount(currentAct),
+                    forMonitoringTotalgWeight: getForMonitoringTotalgWeight(currentAct),
+                    forMonitoringThingAmount: getForMonitoringThingAmount(currentAct),
+                    forMonitorihgAdditionalInformationIfFromGa: currentAct.fromGA && getForMonitorihgAdditionalInformationIfFromGa(currentAct),
+                }
+            }
+            return newDataForReference;
+        })
+    }, [currentAct]);
 
     return (
         /**
@@ -114,12 +141,13 @@ export const ActListItem = () => {
             <div class="not-print act-list-item-left">
                 <SidebarList sidebarList={sidebarList} />
             </div>
-            <div class="act-list-item-right">
+            {actId && <div class="act-list-item-right">
                 <Button className="not-print print-btn" color="secondary" variant="contained" onClick={() => window.print()} >Печать</Button>
+                {typeAct === "type52" && <Reference dataForReference={dataForReference} />}
                 <Header typeAct={typeAct} />
                 <Main typeAct={typeAct} currentAct={currentAct} dateArrival={dateArrival} />
                 <Footer typeAct={typeAct} currentAct={currentAct} />
-            </div>
+            </div>}
         </div>
     )
 }

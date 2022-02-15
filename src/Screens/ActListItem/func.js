@@ -75,3 +75,187 @@ export const getMounthStringByNumber = (mounthNumber) => {
   }
   return mounthString;
 };
+
+/**
+ * получение общего веса для TMS
+ * вес для TMS меняется если, только количество вещей пришло меньше
+ */
+export const getForTmsTotalWeight = (currentAct) => {
+  let forTmsTotalWeight = 0;
+  if (
+    currentAct?.reasons?.notReceived.length > currentAct?.reasons?.excess.length
+  ) {
+    forTmsTotalWeight =
+      /*сумма веса всех общих */
+      currentAct.invoiseList.reduce((accum, currentValue) => {
+        return accum + parseFloat(currentValue.totalWeight.replace(",", "."));
+      }, 0) -
+      /*сумма веса всех не поступивших вещей */
+      currentAct.reasons.notReceived.reduce((accum, currentValue) => {
+        return (
+          accum +
+          parseFloat(currentValue.values.data.actualWeight.replace(",", "."))
+        );
+      }, 0) +
+      /*сумма веса всех поступивших без приписки вещей */
+      currentAct.reasons.excess.reduce((accum, currentValue) => {
+        return (
+          accum +
+          parseFloat(currentValue.values.data.actualWeight.replace(",", "."))
+        );
+      }, 0);
+  } else {
+    /*сумма веса всех общих */
+    forTmsTotalWeight = currentAct.invoiseList.reduce((accum, currentValue) => {
+      return accum + parseFloat(currentValue.totalWeight.replace(",", "."));
+    }, 0);
+  }
+  return forTmsTotalWeight.toFixed(3);
+};
+
+/**
+ * получение веса EMS-ов для TMS
+ * вес для TMS меняется если, только количество вещей пришло меньше
+ */
+export const getForTmsEmsWeight = (currentAct) => {
+  let forTmsEmsWeight = 0;
+  if (
+    currentAct?.reasons?.notReceived.length > currentAct?.reasons?.excess.length
+  ) {
+    forTmsEmsWeight =
+      /*сумма веса EMS всех общих */
+      currentAct.invoiseList.reduce((accum, currentValue) => {
+        return (
+          accum + parseFloat(currentValue.emsWeight?.replace(",", ".") ?? 0)
+        );
+      }, 0) -
+      /*сумма веса всех не поступивших EMS */
+      currentAct.reasons.notReceived.reduce((accum, currentValue) => {
+        return (
+          accum +
+          parseFloat(
+            currentValue.values?.data?.typeThing === "EMS"
+              ? currentValue.values.data.actualWeight.replace(",", ".")
+              : 0
+          )
+        );
+      }, 0) +
+      /*сумма веса всех поступивших без приписки EMS */
+      currentAct.reasons.excess.reduce((accum, currentValue) => {
+        return (
+          accum +
+          parseFloat(
+            currentValue.values?.data?.typeThing === "EMS"
+              ? currentValue.values.data.actualWeight.replace(",", ".")
+              : 0
+          )
+        );
+      }, 0);
+  } else {
+    /*сумма веса EMS всех общих */
+    forTmsEmsWeight = currentAct.invoiseList.reduce((accum, currentValue) => {
+      return accum + parseFloat(currentValue.emsWeight?.replace(",", ".") ?? 0);
+    }, 0);
+  }
+  return forTmsEmsWeight.toFixed(3);
+};
+
+/**
+ * получение общего количества вещей для TMS
+ * общее количество вещей для TMS меняется если, только количество вещей пришло меньше
+ */
+export const getForTmsThingAmount = (currentAct) => {
+  let forTmsThingAmount = 0;
+  if (
+    currentAct?.reasons?.notReceived.length > currentAct?.reasons?.excess.length
+  ) {
+    forTmsThingAmount =
+      /*сумма количества вещей всех общих */
+      currentAct.invoiseList.reduce((accum, currentValue) => {
+        return accum + parseInt(currentValue.thingAmount);
+      }, 0) -
+      /*количество всех не поступивших вещей */
+      parseInt(currentAct?.reasons?.notReceived?.length ?? 0) +
+      /*количество всех поступивших без приписки вещей */
+      parseInt(currentAct?.reasons?.excess?.length ?? 0);
+  } else {
+    /*сумма количества вещей всех общих */
+    forTmsThingAmount = currentAct.invoiseList.reduce((accum, currentValue) => {
+      return accum + parseInt(currentValue.thingAmount);
+    }, 0);
+  }
+  return forTmsThingAmount;
+};
+
+/**
+ * получение общего веса для журнала мониторинга
+ */
+export const getForMonitoringTotalgWeight = (currentAct) => {
+  let forMonitoringTotalgWeight =
+    /*сумма веса всех общих */
+    currentAct.invoiseList.reduce((accum, currentValue) => {
+      return accum + parseFloat(currentValue.totalWeight.replace(",", "."));
+    }, 0) -
+    /*сумма веса всех не поступивших вещей */
+    currentAct.reasons.notReceived.reduce((accum, currentValue) => {
+      return (
+        accum +
+        parseFloat(currentValue.values.data.actualWeight.replace(",", "."))
+      );
+    }, 0) +
+    /*сумма веса всех поступивших без приписки вещей */
+    currentAct.reasons.excess.reduce((accum, currentValue) => {
+      return (
+        accum +
+        parseFloat(currentValue.values.data.actualWeight.replace(",", "."))
+      );
+    }, 0);
+  return forMonitoringTotalgWeight.toFixed(3);
+};
+
+/**
+ * получение общего количества вещей для журнала мониторинга
+ */
+export const getForMonitoringThingAmount = (currentAct) => {
+  let forMonitoringThingAmount =
+    /*сумма количества вещей всех общих */
+    currentAct.invoiseList.reduce((accum, currentValue) => {
+      return accum + parseInt(currentValue.thingAmount);
+    }, 0) -
+    /*количество всех не поступивших вещей */
+    parseInt(currentAct?.reasons?.notReceived?.length ?? 0) +
+    /*количество всех поступивших без приписки вещей */
+    parseInt(currentAct?.reasons?.excess?.length ?? 0);
+  return forMonitoringThingAmount;
+};
+
+/**
+ * получение справочной информации для журнала мониторинга, если от ГА
+ */
+export const getForMonitorihgAdditionalInformationIfFromGa = (currentAct) => {
+  let emsAmount = 0;
+  let firstClassAmount = 0;
+  let internationalAmount = 0;
+  let parcelAmount = 0;
+  let insuranceAmount = 0;
+  let correspondenceAmount = 0;
+  /* перебор всех вещей массива excess, с целью узнать кол-во поступивших вещей каждого типа */
+  currentAct.reasons.excess.forEach((thing) => {
+    thing.values.data.typeIdForSort === "1" && emsAmount++;
+    thing.values.data.typeIdForSort === "2" && firstClassAmount++;
+    thing.values.data.typeIdForSort === "4" && internationalAmount++;
+    thing.values.data.typeIdForSort === "7" && parcelAmount++;
+    thing.values.data.typeIdForSort === "3" && insuranceAmount++;
+    (thing.values.data.typeIdForSort === "5" ||
+      thing.values.data.typeIdForSort === "6") &&
+      correspondenceAmount++;
+  });
+  return {
+    emsAmount,
+    firstClassAmount,
+    internationalAmount,
+    parcelAmount,
+    insuranceAmount,
+    correspondenceAmount,
+  };
+};

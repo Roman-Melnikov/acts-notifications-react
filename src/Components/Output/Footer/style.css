@@ -55,12 +55,11 @@
 .footer-type-51-defective-first {
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
-    padding-right: 8%;
 }
 
 .footer-type-51-defective-first-position {
-    width: 40%
+    width: 40%;
+    margin-right: 30%;
 }
 
 .footer-type-51-defective-first-family {
@@ -70,12 +69,11 @@
 .footer-type-51-defective-second {
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
-    padding-right: 8%;
 }
 
 .footer-type-51-defective-second-position {
-    width: 40%
+    width: 40%;
+    margin-right: 30%;
 }
 
 .footer-type-51-defective-second-family {

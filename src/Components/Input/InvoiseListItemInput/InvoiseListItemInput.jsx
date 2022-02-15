@@ -29,10 +29,18 @@ export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput, ourA
                 margin="normal"
             />
             <TextField
-                name="weight"
-                label="Вес"
-                value={invoiseItem.weight}
-                onChange={(e) => { changeInvoiseListInput(id, "weight", e.target.value) }}
+                name="totalWeight"
+                label="Вес общий"
+                value={invoiseItem.totalWeight}
+                onChange={(e) => { changeInvoiseListInput(id, "totalWeight", e.target.value) }}
+                fullWidth="true"
+                margin="normal"
+            />
+            <TextField
+                name="emsWeight"
+                label="Вес EMS"
+                value={invoiseItem.emsWeight}
+                onChange={(e) => { changeInvoiseListInput(id, "emsWeight", e.target.value) }}
                 fullWidth="true"
                 margin="normal"
             />

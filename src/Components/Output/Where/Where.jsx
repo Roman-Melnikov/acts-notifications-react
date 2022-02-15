@@ -8,7 +8,7 @@ export const Where = ({ invoiseList, flight, timeArrival, fromGA, dateArrival })
     return (
         <div class="content-header">
             {invoiseList.length === 1 && <div class="content-header-item"><span class="content-header-indent">С</span> рейса {flight?.number ?? " "} из {flight?.city ?? " "} в {hours}ч. {minutes}мин.
-                поступила почта по общей накладной №{invoiseList[0].number} на {invoiseList[0].thingAmount} вещей вес {invoiseList[0].weight}кг
+                поступила почта по общей накладной №{invoiseList[0].number} на {invoiseList[0].thingAmount} вещей вес {invoiseList[0].totalWeight}кг
                 от {invoiseList[0].date}г. {invoiseList[0].time && <span>{invoiseList[0].time} </span>}
                 адресом {invoiseList[0].ourAddress} из {invoiseList[0].citiAddress}.
             </div>
