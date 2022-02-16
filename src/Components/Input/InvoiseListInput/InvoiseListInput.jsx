@@ -7,7 +7,7 @@ export const InvoiseListInput = React.memo(({ invoiseListInput, changeInvoiseLis
         <fieldset className="invoise-list">
             <legend>Общая накладная</legend>
             {invoiseListInput.map((invoiseItem) => {
-                return <InvoiseListItemInput
+                return <InvoiseListItemInput key={invoiseItem.id}
                     invoiseItem={invoiseItem} changeInvoiseListInput={changeInvoiseListInput}
                     ourAddresses={ourAddresses} citiAddresses={citiAddresses} />
             })}

@@ -1,8 +1,8 @@
+import React from "react";
 import { DefectiveListItem } from "../DefectiveListItem/DefectiveListItem";
 import "./style.css";
 
-export const DefectiveList = ({ defectiveList, typeAct, fromGA }) => {
-    console.log(defectiveList);
+export const DefectiveList = React.memo(({ defectiveList, typeAct, fromGA }) => {
 
     return (
         <>
@@ -60,4 +60,4 @@ export const DefectiveList = ({ defectiveList, typeAct, fromGA }) => {
                 </div>}
         </>
     )
-}
+})

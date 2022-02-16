@@ -5,7 +5,6 @@ export const Where = ({ invoiseList, flight, timeArrival, fromGA, dateArrival, t
     const hours = timeArrival.substring(0, 2);
     const minutes = timeArrival.substring(3, 5);
     const { day, mounthNumber, year } = dateArrival;
-    console.log(fromGA);
 
     return (
         <span class="content-header">

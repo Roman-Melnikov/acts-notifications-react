@@ -1,7 +1,8 @@
+import React from "react";
 import { NotReceivedListItem } from "../NotReceivedListItem/NotReceivedListItem";
 import "./style.css";
 
-export const NotReceivedList = ({ notReceivedList }) => {
+export const NotReceivedList = React.memo(({ notReceivedList }) => {
     return (
         <>
             {/* {notReceivedList.length === 1 &&
@@ -43,4 +44,4 @@ export const NotReceivedList = ({ notReceivedList }) => {
                 </div>}
         </>
     )
-}
+})

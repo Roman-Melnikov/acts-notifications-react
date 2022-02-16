@@ -13,7 +13,7 @@ export const SidebarListItem = ({ sidebarListItem }) => {
                 </NavLink>}
             {sidebarListItem.actList_51_defective.map((item) => {
                 return (
-                    <NavLink activeClassName="sidebar-selected" className=
+                    <NavLink key={item.idAct} activeClassName="sidebar-selected" className=
                         {sidebarListItem.actList_52_itemId ? "sidebar-list-defective-item-51" : "sidebar-list-defective-item-51-nouFlight"}
                         exact to={`${ROUTES.ACT_LIST_ITEM}/${item.idAct}`}>
                         {item.numberAct}

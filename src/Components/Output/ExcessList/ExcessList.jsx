@@ -1,7 +1,8 @@
+import React from "react";
 import { ExcessListItem } from "../ExcessListItem/ExcessListItem";
 import "./style.css";
 
-export const ExcessList = ({ excessList, fromGA }) => {
+export const ExcessList = React.memo(({ excessList, fromGA }) => {
     return (
         <>
             {/* {((excessList.length === 1) && !fromGA) &&
@@ -58,4 +59,4 @@ export const ExcessList = ({ excessList, fromGA }) => {
             }
         </>
     )
-}
+})

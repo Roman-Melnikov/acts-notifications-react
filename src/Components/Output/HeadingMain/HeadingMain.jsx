@@ -1,7 +1,8 @@
+import React from "react";
 import { NUMBER_ACT_52_CONSTANT } from "../../../Constants/constants";
 import "./style.css";
 
-export const HeadingMain = ({ dateArrival, numberAct, surname, typeAct }) => {
+export const HeadingMain = React.memo(({ dateArrival, numberAct, surname, typeAct }) => {
     const { year, day, mounthString, mounthNumber } = dateArrival;
     return (
         <>
@@ -41,4 +42,4 @@ export const HeadingMain = ({ dateArrival, numberAct, surname, typeAct }) => {
             }
         </>
     )
-}
+})

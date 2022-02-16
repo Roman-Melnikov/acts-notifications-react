@@ -71,9 +71,9 @@ export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput, ourA
             />
             <label class="our-address-label">Куда адресована</label>
             <datalist id="ourAddress">
-                {ourAddresses.outherOurAddresses.map((item) => {
+                {ourAddresses.outherOurAddresses.map((item, index) => {
                     return (
-                        <option value={item} />
+                        <option value={item} key={index} />
                     )
                 })}
             </datalist>
@@ -86,9 +86,9 @@ export const InvoiseListItemInput = ({ invoiseItem, changeInvoiseListInput, ourA
             />
             <label class="citi-address-label">Откуда адресована</label>
             <datalist id="citiAddress">
-                {citiAddresses.allCitiAddresses?.map((item) => {
+                {citiAddresses.allCitiAddresses?.map((item, index) => {
                     return (
-                        <option value={item} />
+                        <option value={item} key={index} />
                     )
                 })}
             </datalist>
