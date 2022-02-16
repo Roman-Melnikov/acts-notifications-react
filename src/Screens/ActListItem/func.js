@@ -78,6 +78,22 @@ export const getMounthStringByNumber = (mounthNumber) => {
 };
 
 /**
+ * получение массива вещей из массива differenceWeight, которые не дублируются в массиве excess
+ * т.к. актуальный вес вещей из массива excess уже прибавляется, при подсчете веса в функциях
+ */
+export const getThingsFromDifferenceWeightNotDuplicatesInExcess = (
+  currentAct
+) => {
+  const thingsFromDifferenceWeightNotDuplicatesInExcess =
+    currentAct.reasons.differenceWeight.filter((thingDifferenceWeight) => {
+      return !currentAct.reasons.excess.find((thingExcess) => {
+        return thingDifferenceWeight.id === thingExcess.id;
+      });
+    });
+  return thingsFromDifferenceWeightNotDuplicatesInExcess;
+};
+
+/**
  * получение общего веса для TMS
  * вес для TMS меняется если, только количество вещей пришло меньше
  */
@@ -104,7 +120,20 @@ export const getForTmsTotalWeight = (currentAct) => {
           accum +
           parseFloat(currentValue.values.data.actualWeight.replace(",", "."))
         );
-      }, 0);
+      }, 0) +
+      /*сумма разниц, актуального и подавательского весов, вещей из отфильтрованного(вещи не дублирующиеся в excess) массива differenceWeight */
+      getThingsFromDifferenceWeightNotDuplicatesInExcess(currentAct).reduce(
+        (accum, currentValue) => {
+          return (
+            accum +
+            (parseFloat(
+              currentValue.values.data.actualWeight.replace(",", ".")
+            ) -
+              parseFloat(currentValue.values.giviWeight.replace(",", ".")))
+          );
+        },
+        0
+      );
   } else {
     /*сумма веса всех общих */
     forTmsTotalWeight = currentAct.invoiseList.reduce((accum, currentValue) => {
@@ -151,7 +180,24 @@ export const getForTmsEmsWeight = (currentAct) => {
               : 0
           )
         );
-      }, 0);
+      }, 0) +
+      /*сумма разниц, актуального и подавательского весов, вещей из отфильтрованного(вещи не дублирующиеся в excess) массива differenceWeight */
+      getThingsFromDifferenceWeightNotDuplicatesInExcess(currentAct).reduce(
+        (accum, currentValue) => {
+          if (currentValue === "EMS") {
+            return (
+              accum +
+              (parseFloat(
+                currentValue.values.data.actualWeight.replace(",", ".")
+              ) -
+                parseFloat(currentValue.values.giviWeight.replace(",", ".")))
+            );
+          } else {
+            return accum + 0;
+          }
+        },
+        0
+      );
   } else {
     /*сумма веса EMS всех общих */
     forTmsEmsWeight = currentAct.invoiseList.reduce((accum, currentValue) => {
@@ -210,7 +256,18 @@ export const getForMonitoringTotalgWeight = (currentAct) => {
         accum +
         parseFloat(currentValue.values.data.actualWeight.replace(",", "."))
       );
-    }, 0);
+    }, 0) +
+    /*сумма разниц, актуального и подавательского весов, вещей из отфильтрованного(вещи не дублирующиеся в excess) массива differenceWeight */
+    getThingsFromDifferenceWeightNotDuplicatesInExcess(currentAct).reduce(
+      (accum, currentValue) => {
+        return (
+          accum +
+          (parseFloat(currentValue.values.data.actualWeight.replace(",", ".")) -
+            parseFloat(currentValue.values.giviWeight.replace(",", ".")))
+        );
+      },
+      0
+    );
   return forMonitoringTotalgWeight.toFixed(3);
 };
 
