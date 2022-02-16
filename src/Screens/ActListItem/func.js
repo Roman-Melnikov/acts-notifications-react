@@ -84,8 +84,15 @@ export const getMounthStringByNumber = (mounthNumber) => {
 export const getThingsFromDifferenceWeightNotDuplicatesInExcess = (
   currentAct
 ) => {
+  /*объединение двух массивов: differenceWeight и defective */
+  const concatenatedDifferenceWeightAndDefective = [
+    ...currentAct?.reasons?.differenceWeight,
+    ...currentAct?.reasons?.defective.filter((thingDefective) => {
+      return thingDefective.values.differenceWeight;
+    }),
+  ];
   const thingsFromDifferenceWeightNotDuplicatesInExcess =
-    currentAct.reasons.differenceWeight.filter((thingDifferenceWeight) => {
+    concatenatedDifferenceWeightAndDefective.filter((thingDifferenceWeight) => {
       return !currentAct.reasons.excess.find((thingExcess) => {
         return thingDifferenceWeight.id === thingExcess.id;
       });
