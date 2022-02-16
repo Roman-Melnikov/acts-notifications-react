@@ -11,7 +11,7 @@ import "./style.css";
 export const Router = () => {
     return (
         <BrowserRouter>
-            <Container className="container" >
+            <Container className="container" maxWidth="xl">
                 <Navigation />
                 <Switch>
                     <Route exact path={ROUTES.PARAMETRS_ACT}>
