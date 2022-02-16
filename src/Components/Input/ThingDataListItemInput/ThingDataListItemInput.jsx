@@ -35,7 +35,7 @@ export const ThingDataListItemInput = React.memo((props) => {
             {(props.item.values.data || props.item.values.data === "") &&
                 <Grid container>
                     <Grid item xs={8} container>
-                        <Grid item xs={12}>
+                        <Grid item xs={10} style={{marginLeft: "auto", marginRight: "auto"}} >
                             <TextField
                                 name="data"
                                 label="Данные емкости"
@@ -46,11 +46,11 @@ export const ThingDataListItemInput = React.memo((props) => {
                                 fullWidth="true"
                                 margin="normal"
                                 autoFocus="true"
-                                maxRows="4"
-                                minRows="4"
+                                maxRows="5"
+                                minRows="5"
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={10} style={{marginLeft: "auto", marginRight: "auto"}}>
                             {(props.item.values.defective || props.item.values.differenceWeight) && <TextField
                                 className="thing-data-description"
                                 name="description"
@@ -61,8 +61,8 @@ export const ThingDataListItemInput = React.memo((props) => {
                                 multiline="true"
                                 fullWidth="true"
                                 margin="normal"
-                                maxRows="4"
-                                minRows="4"
+                                maxRows="5"
+                                minRows="5"
                             />}
                         </Grid>
                         <Grid item xs={3}>
