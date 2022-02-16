@@ -26,7 +26,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       name: AIR_LINES.URAL_AIRLINES,
-      flights: [100],
+      flights: [100, 103],
       contract: "АП-19-20 от 16.06.2020г",
     },
     {
@@ -69,7 +69,7 @@ export const PARAMETRS_FLIGHTS = {
     {
       fromWhere: FROM_WHERE.DOMODEDOVO,
       flights: [
-        100, 237, 1237, 437, 544, 2501, 2505, 2507, 2509, 2511, 2513, 2515,
+        100, 103, 237, 1237, 437, 544, 2501, 2505, 2507, 2509, 2511, 2513, 2515,
       ],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "102322 Домодедово АОПП",

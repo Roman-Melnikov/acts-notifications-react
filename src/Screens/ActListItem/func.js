@@ -28,6 +28,7 @@ export const getDataForActType_51_defective = (
     timeArrival: actList_52_item.timeArrival,
     invoiseList: actList_52_item.invoiseList,
     flight: actList_52_item.flight,
+    fromGA: actList_52_item.fromGA,
   };
 };
 

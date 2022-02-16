@@ -73,10 +73,11 @@ export const Main = ({ currentAct, typeAct, dateArrival }) => {
                     contract={currentAct?.flight?.contract} />}
                 <Where invoiseList={currentAct?.invoiseList ?? []} flight={currentAct?.flight}
                     timeArrival={currentAct?.timeArrival ?? " "} fromGA={currentAct?.fromGA}
-                    dateArrival={dateArrival} />
+                    dateArrival={dateArrival} typeAct={typeAct} />
                 <NotReceivedList notReceivedList={currentAct?.reasons?.notReceived ?? []} />
                 <ExcessList excessList={currentAct?.reasons?.excess ?? []} fromGA={currentAct?.fromGA} />
-                <DefectiveList defectiveList={defectiveList} typeAct={typeAct} />
+                <DefectiveList defectiveList={defectiveList} typeAct={typeAct}
+                    fromGA={currentAct?.fromGA} />
                 {((currentAct?.reasons?.excess?.length !== 0 || currentAct?.reasons?.notReceived?.length !== 0) &&
                     (currentAct?.reasons/*иначе,когда только замедление, расписка выходит, т.к. undefined !==0 */)) &&
                     <p class="content-main-receipt">Расписка дана за {amountThingReceived} вещей.</p>}
