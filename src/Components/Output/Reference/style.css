@@ -34,24 +34,11 @@
     border-collapse: collapse;
     border: 2px solid black;
     box-sizing: border-box;
-    width:770px
-}
-
-.reference-table-monitoring-from-ga-col {
-    max-width: 120px;
-    padding: 0;
-    border-right: 2px solid black;
-    border-bottom: 1px solid black;
-    box-sizing: border-box;
-}
-
-.reference-table-monitoring-from-ga-type-thing {
-    display: block;
-    height: 35px;
+    /* width:770px */
 }
 
 .reference-table-monitoring-from-ga-col-things {
-    width: 35px;
+    width: 55px;
     height: 35px;
     border-right: 1px solid black;
     border-top: 1px solid black;
@@ -59,7 +46,8 @@
 }
 
 .reference-table-monitoring-from-ga-col-weight {
-    width: 75px;
+    width: 60px;
     height: 35px;
+    border-right: 1px solid black;
     border-top: 1px solid black;
 }

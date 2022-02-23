@@ -312,11 +312,9 @@ export const getForMonitorihgAdditionalInformationIfFromGa = (currentAct) => {
   let correspondenceWeight = 0;
   /* перебор всех вещей массива excess, с целью узнать кол-во и вес поступивших вещей каждого типа */
   currentAct.reasons.excess.forEach((thing) => {
-    console.log(thing);
     switch (thing.values.data.typeIdForSort) {
       case "1":
         emsAmount++;
-        console.log(parseFloat(thing.values.data.actualWeight));
         emsWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
         break;
       case "2":
@@ -347,6 +345,18 @@ export const getForMonitorihgAdditionalInformationIfFromGa = (currentAct) => {
         alert(`Тип вещи №${thing.values.data.numberThing} не определен`);
     }
   });
+    (emsAmount === 0) && (emsAmount = "");
+    (emsWeight === 0) && (emsWeight = "");
+    (firstClassAmount === 0) && (firstClassAmount = "");
+    (firstClassWeight === 0) && (firstClassWeight = "");
+    (internationalAmount === 0) && (internationalAmount = "");
+    (internationalWeight === 0) && (internationalWeight = "");
+    (parcelAmount === 0) && (parcelAmount = "");
+    (parcelWeight === 0) && (parcelWeight ="");
+    (insuranceAmount === 0) && (insuranceAmount = "");
+    (insuranceWeight === 0) && (insuranceWeight = "");
+    (correspondenceAmount === 0) && (correspondenceAmount = "");
+    (correspondenceWeight === 0) && (correspondenceWeight = "");
   return {
     emsAmount,
     emsWeight,
