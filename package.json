@@ -22,7 +22,8 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "uuid": "^8.3.2",
-    "web-vitals": "^2.1.2"
+    "web-vitals": "^2.1.2",
+    "xlsx": "^0.18.2"
   },
   "scripts": {
     "start": "react-scripts start",

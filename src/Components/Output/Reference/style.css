@@ -1,5 +1,65 @@
 .reference {
-    text-align: left;
-    margin-left: 50%;
+    text-align: center;
+    margin-left: 30%;
     font-size: 18px;
+    
+}
+
+.reference-table-tms {
+    border-collapse: collapse;
+    border: 2px solid black;
+    margin-bottom: 2%;
+}
+
+.reference-table-tms-col {
+    width: 155px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.reference-table-monitoring-col {
+    min-width: 155px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.reference-table-monitoring {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.reference-table-monitoring-from-ga {
+    table-layout: fixed;
+    border-collapse: collapse;
+    border: 2px solid black;
+    box-sizing: border-box;
+    width:770px
+}
+
+.reference-table-monitoring-from-ga-col {
+    max-width: 120px;
+    padding: 0;
+    border-right: 2px solid black;
+    border-bottom: 1px solid black;
+    box-sizing: border-box;
+}
+
+.reference-table-monitoring-from-ga-type-thing {
+    display: block;
+    height: 35px;
+}
+
+.reference-table-monitoring-from-ga-col-things {
+    width: 35px;
+    height: 35px;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    box-sizing: border-box;
+}
+
+.reference-table-monitoring-from-ga-col-weight {
+    width: 75px;
+    height: 35px;
+    border-top: 1px solid black;
 }

@@ -299,28 +299,66 @@ export const getForMonitoringThingAmount = (currentAct) => {
  */
 export const getForMonitorihgAdditionalInformationIfFromGa = (currentAct) => {
   let emsAmount = 0;
+  let emsWeight = 0;
   let firstClassAmount = 0;
+  let firstClassWeight = 0;
   let internationalAmount = 0;
+  let internationalWeight = 0;
   let parcelAmount = 0;
+  let parcelWeight = 0;
   let insuranceAmount = 0;
+  let insuranceWeight = 0;
   let correspondenceAmount = 0;
-  /* перебор всех вещей массива excess, с целью узнать кол-во поступивших вещей каждого типа */
+  let correspondenceWeight = 0;
+  /* перебор всех вещей массива excess, с целью узнать кол-во и вес поступивших вещей каждого типа */
   currentAct.reasons.excess.forEach((thing) => {
-    thing.values.data.typeIdForSort === "1" && emsAmount++;
-    thing.values.data.typeIdForSort === "2" && firstClassAmount++;
-    thing.values.data.typeIdForSort === "4" && internationalAmount++;
-    thing.values.data.typeIdForSort === "7" && parcelAmount++;
-    thing.values.data.typeIdForSort === "3" && insuranceAmount++;
-    (thing.values.data.typeIdForSort === "5" ||
-      thing.values.data.typeIdForSort === "6") &&
-      correspondenceAmount++;
+    console.log(thing);
+    switch (thing.values.data.typeIdForSort) {
+      case "1":
+        emsAmount++;
+        console.log(parseFloat(thing.values.data.actualWeight));
+        emsWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
+        break;
+      case "2":
+        firstClassAmount++;
+        firstClassWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
+        break;
+      case "4":
+        internationalAmount++;
+        internationalWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
+        break;
+      case "7":
+        parcelAmount++;
+        parcelWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
+        break;
+      case "3":
+        insuranceAmount++;
+        insuranceWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
+        break;
+      case "5":
+        correspondenceAmount++;
+        correspondenceWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
+        break;
+      case "6":
+        correspondenceAmount++;
+        correspondenceWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));
+        break;
+      default:
+        alert(`Тип вещи №${thing.values.data.numberThing} не определен`);
+    }
   });
   return {
     emsAmount,
+    emsWeight,
     firstClassAmount,
+    firstClassWeight,
     internationalAmount,
+    internationalWeight,
     parcelAmount,
+    parcelWeight,
     insuranceAmount,
+    insuranceWeight,
     correspondenceAmount,
+    correspondenceWeight,
   };
 };
