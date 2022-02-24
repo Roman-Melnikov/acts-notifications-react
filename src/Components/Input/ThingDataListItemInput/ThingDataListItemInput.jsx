@@ -15,6 +15,12 @@ export const ThingDataListItemInput = React.memo((props) => {
         props.handleToogleReasons(id, checked);
     }, [checked]);
 
+    useEffect(() => {
+        if(props.fromGA) {
+            setChecked({...checked, excess: true})
+        }
+    }, [props.fromGA]);
+
     const handleToogle = (name) => {
         setChecked((checked) => {
             checked[name] = !checked[name];
@@ -106,7 +112,7 @@ export const ThingDataListItemInput = React.memo((props) => {
                                 <ListItemButton onClick={() => handleToogle("excess")}>
                                     <ListItemIcon>
                                         <Checkbox
-                                            checked={props.fromGA || checked.excess}
+                                            checked={checked.excess}
                                             color="primary"
                                         />
                                     </ListItemIcon>
