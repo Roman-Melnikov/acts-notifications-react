@@ -159,7 +159,8 @@ export const ParametrsActInput = () => {
             {!checkedFromGA && <InvoiseListInput
                 invoiseListInput={invoiseListInput} changeInvoiseListInput={changeInvoiseListInput}
                 ourAddresses={ourAddresses} citiAddresses={citiAddresses} />}
-            <Button className="invoise-list-btn" variant="contained" onClick={addInvoiseItem}>Добавить общую накладную</Button>
+            {!checkedFromGA && <Button className="invoise-list-btn" variant="contained" onClick={addInvoiseItem}>
+                Добавить общую накладную</Button>}
             <SurnamePositionInput surnamePosition={surnamePosition} changeSurnamePositionInput={changeSurnamePositionInput} />
             <Button onClick={transferDataToStore} variant="contained" endIcon={<SendIcon />} className="parametrs-act-btn">Отправить данные</Button>
         </Box>

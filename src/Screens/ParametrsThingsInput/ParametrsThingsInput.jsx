@@ -124,8 +124,7 @@ export const ParametrsThingsInput = () => {
             <ThingDataListInput things={things} changeThingData={changeThingData} handleToogleReasons={handleToogleReasons}
                 changeNumberAct_51_defective={changeNumberAct_51_defective}
                 numberAct_51_defectiveAndIdThing={numberAct_51_defectiveAndIdThing}
-                fromGA={fromGA} />
-            <Button onClick={addThing} variant="contained">Добавить емкость</Button>
+                fromGA={fromGA} addThing={addThing} />
             <Box className="parametrs-things-btn-send">
                 <Button onClick={() => {
                     transferActList_52_ParametrsThingToStore();
