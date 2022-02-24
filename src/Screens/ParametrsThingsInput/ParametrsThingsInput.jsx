@@ -19,6 +19,7 @@ export const ParametrsThingsInput = () => {
     const { actList_52 } = useSelector(actList_52_Selector);
     const dispatch = useDispatch();
     const [numberAct_51_defectiveAndIdThing, setNumberAct_51_defectiveAndIdThing] = useState([]);
+    const [fromGA, setFromGA] = useState(false);
 
     useEffect(() => {
         setThings([...things, {
@@ -48,6 +49,13 @@ export const ParametrsThingsInput = () => {
     useEffect(() => {
         setValueSelectionAct_52_Input(actList_52[actList_52.length - 1]?.name ?? "");
     }, []);
+
+    useEffect(() => {
+        const actList_52_item = actList_52.find((item) => {
+            return item.name === valueSelectionAct_52_Input;
+        });
+        setFromGA(actList_52_item?.fromGA);
+    }, [valueSelectionAct_52_Input])
 
     const changeValueSelectionAct_52_Input = (e) => {
         setValueSelectionAct_52_Input(e.target.value);
@@ -115,7 +123,8 @@ export const ParametrsThingsInput = () => {
                 changeValueSelectionAct_52_Input={changeValueSelectionAct_52_Input} />
             <ThingDataListInput things={things} changeThingData={changeThingData} handleToogleReasons={handleToogleReasons}
                 changeNumberAct_51_defective={changeNumberAct_51_defective}
-                numberAct_51_defectiveAndIdThing={numberAct_51_defectiveAndIdThing} />
+                numberAct_51_defectiveAndIdThing={numberAct_51_defectiveAndIdThing}
+                fromGA={fromGA} />
             <Button onClick={addThing} variant="contained">Добавить емкость</Button>
             <Box className="parametrs-things-btn-send">
                 <Button onClick={() => {

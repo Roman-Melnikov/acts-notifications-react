@@ -35,7 +35,7 @@ export const ThingDataListItemInput = React.memo((props) => {
             {(props.item.values.data || props.item.values.data === "") &&
                 <Grid container>
                     <Grid item xs={8} container>
-                        <Grid item xs={10} style={{marginLeft: "auto", marginRight: "auto"}} >
+                        <Grid item xs={10} style={{ marginLeft: "auto", marginRight: "auto" }} >
                             <TextField
                                 name="data"
                                 label="Данные емкости"
@@ -50,7 +50,7 @@ export const ThingDataListItemInput = React.memo((props) => {
                                 minRows="5"
                             />
                         </Grid>
-                        <Grid item xs={10} style={{marginLeft: "auto", marginRight: "auto"}}>
+                        <Grid item xs={10} style={{ marginLeft: "auto", marginRight: "auto" }}>
                             {(props.item.values.defective || props.item.values.differenceWeight) && <TextField
                                 className="thing-data-description"
                                 name="description"
@@ -106,7 +106,7 @@ export const ThingDataListItemInput = React.memo((props) => {
                                 <ListItemButton onClick={() => handleToogle("excess")}>
                                     <ListItemIcon>
                                         <Checkbox
-                                            checked={checked.excess}
+                                            checked={props.fromGA || checked.excess}
                                             color="primary"
                                         />
                                     </ListItemIcon>
