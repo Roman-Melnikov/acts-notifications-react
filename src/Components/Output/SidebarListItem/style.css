@@ -36,3 +36,17 @@
 .sidebar-list-defective-item-51:hover:focus {
     color: red;
 }
+
+.sidebar-list-item-monitoring-dispatch {
+    margin-bottom: 0.5%;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.sidebar-list-item-monitoring-dispatch:hover {
+    color: rgb(0, 195, 255);
+}
+
+.sidebar-list-item-monitoring-dispatch:hover:focus {
+    color: red;
+}

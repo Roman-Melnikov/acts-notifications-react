@@ -10,6 +10,7 @@ export const Navigation = () => {
       <NavLink exact activeClassName="selected" className="link" to={ROUTES.PARAMETRS_THINGS}>ParametrsThingsInput</NavLink>
       <NavLink exact activeClassName="selected" className="link" to={ROUTES.ACT_LIST_ITEM}>ActListItem</NavLink>
       <NavLink exact activeClassName="selected" className="link" to={ROUTES.ADD_FLIGHT}>AddFlight</NavLink>
+      <NavLink exact activeClassName="selected" className="link" to={ROUTES.MONITORING_DISPATCH}>MonitoringDispatch</NavLink>
     </Breadcrumbs>
   )
 }

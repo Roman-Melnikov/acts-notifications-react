@@ -1,0 +1,8 @@
+.monitoring-dispatch-number-flight-and-direction {
+    margin: 0 auto;
+    padding-bottom: 3%;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-around; 
+    max-width: 70%;
+}

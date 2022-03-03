@@ -6,6 +6,7 @@ import { ParametrsActInput } from "../Screens/ParametrsActInput/ParametrsActInpu
 import { AddFlight } from "../Screens/AddFlight";
 import { ParametrsThingsInput } from "../Screens/ParametrsThingsInput/ParametrsThingsInput";
 import { ActListItem } from "../Screens/ActListItem/ActListItem";
+import { MonitoringDispatch } from "../Screens/MonitoringDispatch/MonitoringDispatch";
 import "./style.css";
 
 export const Router = () => {
@@ -25,6 +26,9 @@ export const Router = () => {
                     </Route>
                     <Route exact path={ROUTES.ADD_FLIGHT}>
                         <AddFlight />
+                    </Route>
+                    <Route exact path={`${ROUTES.MONITORING_DISPATCH}/:monitoringDispatchId?`}>
+                        <MonitoringDispatch />
                     </Route>
                 </Switch>
             </Container>

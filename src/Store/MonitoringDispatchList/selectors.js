@@ -1,0 +1,1 @@
+export const monitoringDispatchListSelector = (store) => store.monitoringDispatch;

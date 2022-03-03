@@ -40,6 +40,7 @@ export const ActListItem = () => {
     const { actList_52 } = useSelector(actList_52_Selector);
     const { actList_51_defective } = useSelector(actList_51_defectiveSelector);
     const { actId } = useParams();
+    const [typeForSidebar, setTypeForSidebar] = useState("acts");//тип данных для sidebara
 
     console.log(currentAct);
 
@@ -139,7 +140,7 @@ export const ActListItem = () => {
         // </Grid>
         <div class="act-list-item" >
             <div class="not-print act-list-item-left">
-                <SidebarList sidebarList={sidebarList} />
+                <SidebarList sidebarList={sidebarList} type={typeForSidebar} />
             </div>
             {actId && <div class="act-list-item-right">
                 <Button className="not-print print-btn" color="secondary" variant="contained" onClick={() => window.print()} >Печать</Button>

@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage'
 import { actList_52_Reducer } from "./ActList_52";
 import { parametrsFlightsReducer } from "./ParametrsFlights/reducer";
 import { actList_51_defectiveReducer } from "./ActList_51_defective";
+import { monitoringDispatchListReducer } from "./MonitoringDispatchList";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   actList_52: actList_52_Reducer,
   actList_51_defective: actList_51_defectiveReducer,
   parametrsFlights: parametrsFlightsReducer, 
+  monitoringDispatch: monitoringDispatchListReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
