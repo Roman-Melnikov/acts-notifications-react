@@ -1,3 +1,4 @@
+import { ADD_INVOICE_LIST_ITEM } from ".";
 import {
   MONITORING_DISPATCH_LIST_ITEM,
   UPDATE_TIME_DISPATCH_CAR,
@@ -27,6 +28,10 @@ export const monitoringDispatchListReducer = (
         ],
       };
     case UPDATE_TIME_DISPATCH_CAR:
+      return {
+        monitoringDispatchList: payload,
+      };
+    case ADD_INVOICE_LIST_ITEM:
       return {
         monitoringDispatchList: payload,
       };

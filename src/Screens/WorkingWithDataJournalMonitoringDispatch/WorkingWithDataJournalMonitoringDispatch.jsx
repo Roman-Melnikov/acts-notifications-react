@@ -6,7 +6,7 @@ import { AddInvoiceListItemFlightMonitoringDispatch } from "../../Components/Inp
 import { NumberFlightAndDirectionMonitoringDispatch } from "../../Components/InputMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch";
 import { TimeDispatchCar } from "../../Components/InputMonitoringDispatch/TimeDispatchCar/TimeDispatchCar";
 import { InvoiceListFlightDispatch } from "../../Components/OutputMonitoringDispatch/InvoiceListFlightDispatch/InvoiceListFlightDispatch";
-import { updateTimeDispatchCarActionThink } from "../../Store/MonitoringDispatchList/action";
+import { addInvoiceListItemFlightMonitoringDispatchActionThink, updateTimeDispatchCarActionThink } from "../../Store/MonitoringDispatchList/action";
 import "./style.css";
 
 export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchList }) => {
@@ -39,7 +39,7 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
             });
             if (newMonitoringDispatchListItem === undefined) {
                 monitoringDispatchList && (
-                newMonitoringDispatchListItem = monitoringDispatchList[monitoringDispatchList?.length - 1]);
+                    newMonitoringDispatchListItem = monitoringDispatchList[monitoringDispatchList?.length - 1]);
             }
             return newMonitoringDispatchListItem;
         });
@@ -113,6 +113,10 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
         dispatch(updateTimeDispatchCarActionThink(monitoringDispatchListItem, numberFlight, timeDispatchCar))
     }, [monitoringDispatchListItem, numberFlight, timeDispatchCar]);
 
+    const transferDataInvoiceListItemToStore = useCallback(() => {
+        dispatch(addInvoiceListItemFlightMonitoringDispatchActionThink(monitoringDispatchListItem, numberFlight, transitDirection, dataInvoiceListItem, direction))
+    }, [monitoringDispatchListItem, numberFlight, transitDirection, dataInvoiceListItem, direction]);
+
     return (
         <>
             <span className="monitoring-dispatch-data" >
@@ -127,7 +131,7 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
             <InvoiceListFlightDispatch invoiceListFlight={invoiceListFlight} numberFlight={numberFlight} />
             <AddInvoiceListItemFlightMonitoringDispatch changeTransitDirection={changeTransitDirection} transitDirection={transitDirection}
                 dataInvoiceListItem={dataInvoiceListItem} changeDataInvoiceListItem={changeDataInvoiceListItem} />
-            <Button variant="contained" >Добавить накладную</Button>
+            <Button variant="contained" onClick={() => transferDataInvoiceListItemToStore()} >Добавить накладную</Button>
         </>
     )
 }
