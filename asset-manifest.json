@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/acts-notifications-react/static/css/main.73f94d17.css",
-    "main.js": "/acts-notifications-react/static/js/main.d989cfc9.js",
+    "main.css": "/acts-notifications-react/static/css/main.b52bb65d.css",
+    "main.js": "/acts-notifications-react/static/js/main.caf2da88.js",
     "static/js/787.d79a1915.chunk.js": "/acts-notifications-react/static/js/787.d79a1915.chunk.js",
     "index.html": "/acts-notifications-react/index.html",
-    "main.73f94d17.css.map": "/acts-notifications-react/static/css/main.73f94d17.css.map",
-    "main.d989cfc9.js.map": "/acts-notifications-react/static/js/main.d989cfc9.js.map",
+    "main.b52bb65d.css.map": "/acts-notifications-react/static/css/main.b52bb65d.css.map",
+    "main.caf2da88.js.map": "/acts-notifications-react/static/js/main.caf2da88.js.map",
     "787.d79a1915.chunk.js.map": "/acts-notifications-react/static/js/787.d79a1915.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.73f94d17.css",
-    "static/js/main.d989cfc9.js"
+    "static/css/main.b52bb65d.css",
+    "static/js/main.caf2da88.js"
   ]
 }
