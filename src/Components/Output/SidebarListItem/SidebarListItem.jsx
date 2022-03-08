@@ -5,7 +5,6 @@ import "./style.css";
 
 export const SidebarListItem = ({ sidebarListItem, type }) => {
 
-    console.log(type);
     return (
         <>
             {

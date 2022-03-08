@@ -12,7 +12,6 @@ export const Main = ({ currentAct, typeAct, dateArrival }) => {
     const [defectiveList, setDefectiveList] = useState([]);
     const [amountThingReceived, setAmountThingReceived] = useState(null);
     const [deceleration, setDeceleration] = useState(null);
-    console.log(currentAct);
 
     /**
      * объединение массивов "разница в весе" и "с доступом" для формы 52

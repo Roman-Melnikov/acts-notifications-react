@@ -15,8 +15,6 @@ export const monitoringDispatchListReducer = (
 ) => {
   switch (type) {
     case ADD_MONITORING_DISPATCH_LIST_ITEM:
-      console.log(state);
-      console.log(state.monitoringDispatchList);
       return {
         monitoringDispatchList: [
           ...state.monitoringDispatchList,

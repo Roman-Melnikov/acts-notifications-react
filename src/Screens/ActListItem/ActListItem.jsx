@@ -42,8 +42,6 @@ export const ActListItem = () => {
     const { actId } = useParams();
     const [typeForSidebar, setTypeForSidebar] = useState("acts");//тип данных для sidebara
 
-    console.log(currentAct);
-
     useEffect(() => {
         setSidebarList(() => {
             const newSidebarList = actList_52.map((itemActList_52) => {

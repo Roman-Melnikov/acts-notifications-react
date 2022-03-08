@@ -6,7 +6,7 @@ export const InvoiceListItemFlightDispatch = ({invoiceListItemFlight}) => {
             <ListItem>
                     <ListItemText>{invoiceListItemFlight.number}</ListItemText>
                     <ListItemText>{invoiceListItemFlight.direction}</ListItemText>
-                    <ListItemText>{invoiceListItemFlight.weight}</ListItemText>
+                    <ListItemText>{invoiceListItemFlight.totalWeight}</ListItemText>
                     <ListItemButton>
                     <ListItemIcon>
                         <DeleteOutlinedIcon />

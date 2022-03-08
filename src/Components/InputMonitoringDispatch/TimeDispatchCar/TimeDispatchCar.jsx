@@ -14,10 +14,11 @@ export const TimeDispatchCar = ({ changeTimeDispatchCar, timeDispatchCar,
                     onChange={(e) => { changeTimeDispatchCar(e.target.value) }}
                     fullWidth="true"
                     margin="normal"
+                    disabled={timeDispatchCar === "такого рейса нет"}
                 />
             </Grid>
             <Grid item xs={3} className="time-dispatch-car-btn">
-                <Button variant="contained" onClick={() => transferTimeDispatchCarToStore()} >
+                <Button variant="contained" disabled={timeDispatchCar === "такого рейса нет"} onClick={() => transferTimeDispatchCarToStore()} >
                     обновить
                 </Button>
             </Grid>

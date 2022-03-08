@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 import { AddInvoiceListItemFlightMonitoringDispatch } from "../../Components/InputMonitoringDispatch/AddInvoiceListItemFlightMonitoringDispatch/AddInvoiceListItemFlightMonitoringDispatch";
 import { NumberFlightAndDirectionMonitoringDispatch } from "../../Components/InputMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch";
 import { TimeDispatchCar } from "../../Components/InputMonitoringDispatch/TimeDispatchCar/TimeDispatchCar";
@@ -9,45 +8,20 @@ import { InvoiceListFlightDispatch } from "../../Components/OutputMonitoringDisp
 import { addInvoiceListItemFlightMonitoringDispatchActionThink, updateTimeDispatchCarActionThink } from "../../Store/MonitoringDispatchList/action";
 import "./style.css";
 
-export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchList }) => {
-    const [monitoringDispatchListItem, setMonitoringDispatchListItem] = useState([]);//текущий лист журнала мониторинга
+export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchListItem }) => {
     const [numberFlight, setNumberFlight] = useState("");
     const [direction, setDirection] = useState("");
     const [transitDirection, setTransitDirection] = useState("");
     const [timeDispatchCar, setTimeDispatchCar] = useState("");
     const [invoiceListFlight, setInvoiceListFlight] = useState([]);
     const [dataInvoiceListItem, setDataInvoiceListItem] = useState("");
-    const { monitoringDispatchId } = useParams();//id листа мониторинга отправки
     const dispatch = useDispatch();
-
-    console.log(monitoringDispatchList);
-    console.log(monitoringDispatchListItem);
-    console.log(monitoringDispatchId);
-    console.log(timeDispatchCar);
-
-    /**
-     * получение текущего листа журнала мониторинга
-     * зависит от url-параметра
-     * также зависит от propsa monitoringDispatchList, чтобы, когда url-параметр тот же,
-     *  обновление текущего листа происходило
-     */
-    useEffect(() => {
-        let newMonitoringDispatchListItem = [];
-        setMonitoringDispatchListItem(() => {
-            newMonitoringDispatchListItem = monitoringDispatchList?.find((item) => {
-                return item.id === monitoringDispatchId;
-            });
-            if (newMonitoringDispatchListItem === undefined) {
-                monitoringDispatchList && (
-                    newMonitoringDispatchListItem = monitoringDispatchList[monitoringDispatchList?.length - 1]);
-            }
-            return newMonitoringDispatchListItem;
-        });
-    }, [monitoringDispatchId, monitoringDispatchList]);
 
     /**
      * получение списка накладных рейса
-     * этот список меняется при изменении numberFlight - номер рейса
+     * этот список меняется:
+     *  при изменении numberFlight - номер рейса
+     *  при изменении листа мониторинга отправки
      */
     useEffect(() => {
         const currentFlight = monitoringDispatchListItem?.data?.find((item) => {
@@ -58,21 +32,19 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
         } else {
             setInvoiceListFlight([]);
         }
-    }, [numberFlight]);
+    }, [numberFlight, monitoringDispatchListItem]);
 
     /**
      * изменение направления, при изменении номера рейса
      */
     useEffect(() => {
-        monitoringDispatchList?.forEach((dispatchListItem) => {
-            const currentFlight = dispatchListItem.data.find((item) => item.numberFlight === numberFlight);
-            if (currentFlight) {
-                setDirection(currentFlight.direction);
-                return;
-            } else {
-                setDirection("");
-            }
-        })
+        const currentFlight = monitoringDispatchListItem?.data?.find((item) => item?.numberFlight === numberFlight);
+        if (currentFlight) {
+            setDirection(currentFlight.direction);
+            return;
+        } else {
+            setDirection("");
+        }
     }, [numberFlight]);
 
     /**
@@ -88,7 +60,7 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
         if (currentFlight) {
             setTimeDispatchCar(currentFlight.factDeliveryTime);
         } else {
-            setTimeDispatchCar("");
+            setTimeDispatchCar("такого рейса нет");
         }
     }, [numberFlight, monitoringDispatchListItem])
 
@@ -114,7 +86,10 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
     }, [monitoringDispatchListItem, numberFlight, timeDispatchCar]);
 
     const transferDataInvoiceListItemToStore = useCallback(() => {
-        dispatch(addInvoiceListItemFlightMonitoringDispatchActionThink(monitoringDispatchListItem, numberFlight, transitDirection, dataInvoiceListItem, direction))
+        dispatch(addInvoiceListItemFlightMonitoringDispatchActionThink(monitoringDispatchListItem, numberFlight, transitDirection,
+            dataInvoiceListItem, direction));
+        setDataInvoiceListItem("");
+        setTransitDirection("");
     }, [monitoringDispatchListItem, numberFlight, transitDirection, dataInvoiceListItem, direction]);
 
     return (
