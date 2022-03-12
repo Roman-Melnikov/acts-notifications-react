@@ -28,6 +28,7 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
             return item.numberFlight === numberFlight;
         });
         if (currentFlight) {
+            console.log(currentFlight);
             setInvoiceListFlight(currentFlight.invoices);
         } else {
             setInvoiceListFlight([]);

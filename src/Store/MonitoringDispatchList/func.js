@@ -6,9 +6,15 @@ export const getNumberInvoice = (dataInvoiceListItem) => {
 };
 
 export const getWeightInvoice = (dataInvoiceListItem) => {
-  const regExp =
+  let regExp =
+    //если мешки авиа есть, то работает следующее рег.выражение
     /итого\sв\sтом\sчисле\sмешков\sавиа\s{1,2}\d{1,3}\s\d{1,3}\s(.+?)\s/gim;
-  const arrResult = regExp.exec(dataInvoiceListItem);
+  let arrResult = regExp.exec(dataInvoiceListItem);
+  //если мешков авиа нет, то будет работать другое рег.выражение
+  if (!arrResult) {
+    regExp = /итого\sв\sтом\sчисле\sмешков\sавиа\s{1,2}\d{1,3}\s(.+?)\s/gim;
+    arrResult = regExp.exec(dataInvoiceListItem);
+  }
   arrResult[1] = arrResult[1].replaceAll(",", ".");
   return arrResult[1];
 };
@@ -81,7 +87,7 @@ export const getDataСorrespondence = (dataInvoiceListItem) => {
 
   //получаем данные о правительственных отправлениях
   const regExpGovernment =
-    /мешки\sс\sправительственной\sкорреспонденцией\s(\d{1,3})\s(.+)/gim;
+    /мешки\sс\sправительственными\sотправлениями\s\s(\d{1,3})\s(.+)/gim;
   let government = regExpGovernment.exec(dataInvoiceListItem);
   if (government !== null) {
     government[2] = government[2].replaceAll(",", ".");
@@ -90,11 +96,6 @@ export const getDataСorrespondence = (dataInvoiceListItem) => {
   }
 
   //суммирование всех видов корреспонденции
-  console.log(
-    parseFloat(simple[2]),
-    parseFloat(customized[2]),
-    parseFloat(government[2])
-  );
   const correspondenceAmount =
     parseFloat(simple[1]) +
     parseFloat(customized[1]) +
@@ -103,7 +104,10 @@ export const getDataСorrespondence = (dataInvoiceListItem) => {
     parseFloat(simple[2]) +
     parseFloat(customized[2]) +
     parseFloat(government[2]);
-  const arrResult = [correspondenceAmount, parseFloat(correspondenceWeight.toFixed(3))];//сделал toFixed, потому что в одном из примеров 
+  const arrResult = [
+    correspondenceAmount,
+    parseFloat(correspondenceWeight.toFixed(3)),
+  ]; //сделал toFixed, потому что в одном из примеров
   //вес после сложения 1.485 5.315 0 выходил 6.800000000000001
   return arrResult;
 };
@@ -131,8 +135,9 @@ export const getDataParcel = (dataInvoiceListItem) => {
 };
 
 export const getDataAirBags = (dataInvoiceListItem) => {
-  const regExp = /мешков\sавиа\s\s\d{1,3}\s(\d{1,3})/gim;
+  const regExp = /мешков\sавиа\s\s\d{1,3}\s(\d{1,3})\s/gim;
   let arrResult = regExp.exec(dataInvoiceListItem);
-  const airBagsAmount = arrResult[1] ?? 0;
+  //если рег.выражение не найдено, то мешков авиа 0
+  const airBagsAmount = arrResult ? arrResult[1] : 0;
   return airBagsAmount;
 };
