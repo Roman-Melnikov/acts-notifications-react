@@ -8,7 +8,7 @@ import { InvoiceListFlightDispatch } from "../../Components/OutputMonitoringDisp
 import { addInvoiceListItemFlightMonitoringDispatchActionThink, updateTimeDispatchCarActionThink } from "../../Store/MonitoringDispatchList/action";
 import "./style.css";
 
-export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchListItem }) => {
+export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchListItem, exportToExcel }) => {
     const [numberFlight, setNumberFlight] = useState("");
     const [direction, setDirection] = useState("");
     const [transitDirection, setTransitDirection] = useState("");
@@ -98,6 +98,9 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
             <span className="monitoring-dispatch-data" >
                 {monitoringDispatchListItem?.name}
             </span>
+            <Button className="monitoring-dispatch-btn-to-excel" variant="contained" color="secondary" onClick={() => exportToExcel()} >
+                В Excel
+            </Button>
             <NumberFlightAndDirectionMonitoringDispatch
                 numberFlight={numberFlight}
                 direction={direction}

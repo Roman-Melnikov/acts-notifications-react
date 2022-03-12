@@ -1,5 +1,9 @@
 .monitoring-dispatch-data {
-    display: block;
-    margin-bottom: 2%;
+    display:block;
     font-size: 22px;
+    margin-bottom: 1%;
+}
+
+.monitoring-dispatch-btn-to-excel {
+    margin-bottom: 2% !important;
 }

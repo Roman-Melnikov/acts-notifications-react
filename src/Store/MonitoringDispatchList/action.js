@@ -71,10 +71,10 @@ export const addInvoiceListItemFlightMonitoringDispatchActionThink =
         direction: direction,
         numberFlight: numberFlight,
         invoices: [],
-        frequencyMovement: "",
-        takeoffTime: "",
-        contractDeliveryTime: "",
-        factDeliveryTime: "",
+        frequencyMovement: undefined,
+        takeoffTime: undefined,
+        contractDeliveryTime: undefined,
+        factDeliveryTime: undefined,
       };
       monitoringDispatchListItem.data.push(flight);
     }
