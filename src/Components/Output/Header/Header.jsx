@@ -9,12 +9,12 @@ export const Header = React.memo(({ typeAct }) => {
                     <div class="header-wrp">
                         <p class="header-left">
                             <span class="header-left-txt-uppercase">утверждаю</span>
-                            <span class="header-left-txt">генеральный директор</span>
+                            <span class="header-left-txt" >генеральный директор</span>
                         </p>
                         <p class="header-right">
-                            <span class="header-right-txt-uppercase">согласовано</span>
-                            <span class="header-right-txt">Заместитель начальника центра по производству</span>
-                            <span class="header-right-leader">Казаков Д.А.</span>
+                            <span class="header-right-txt-uppercase" >согласовано</span>
+                            <span class="header-right-txt" >Заместитель начальника центра по производству</span>
+                            <span class="header-right-leader" >Казаков Д.А.</span>
                         </p>
                     </div>
                     <div class="header-date">

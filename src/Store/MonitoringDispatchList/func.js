@@ -19,6 +19,19 @@ export const getWeightInvoice = (dataInvoiceListItem) => {
   return arrResult[1];
 };
 
+export const getAmountTotalInvoice = (dataInvoiceListItem) => {
+  let regExp =
+    //если мешки авиа есть, то работает следующее рег.выражение
+    /итого\sв\sтом\sчисле\sмешков\sавиа\s{1,2}(\d{1,3})/gim;
+  let arrResult = regExp.exec(dataInvoiceListItem);
+  //если мешков авиа нет, то будет работать другое рег.выражение
+  if (!arrResult) {
+    regExp = /итого\sв\sтом\sчисле\sмешков\sавиа\s{1,2}\d{1,3}\s(.+?)\s/gim;
+    arrResult = regExp.exec(dataInvoiceListItem);
+  }
+  return arrResult[1];
+};
+
 export const getDataEms = (dataInvoiceListItem) => {
   const regExp = /мешки\sems\s(\d{1,3})\s(.+)/gim;
   let arrResult = regExp.exec(dataInvoiceListItem);
@@ -31,7 +44,7 @@ export const getDataEms = (dataInvoiceListItem) => {
 };
 
 export const getDataFirstClass = (dataInvoiceListItem) => {
-  const regExp = /1-го\sкласса\s\s(\d{1,3})\s(.+)/gim;
+  const regExp = /1-го\sкласса\s(\d{1,3})\s(.+)/gim;
   let arrResult = regExp.exec(dataInvoiceListItem);
   if (arrResult !== null) {
     arrResult[2] = arrResult[2].replaceAll(",", ".");
@@ -42,7 +55,7 @@ export const getDataFirstClass = (dataInvoiceListItem) => {
 };
 
 export const getDataInsurance = (dataInvoiceListItem) => {
-  const regExp = /мешки\sсо\sстраховыми\sотправлениями\s\s(\d{1,3})\s(.+)/gim;
+  const regExp = /мешки\sсо\sстраховыми\sотправлениями\s(\d{1,3})\s(.+)/gim;
   let arrResult = regExp.exec(dataInvoiceListItem);
   if (arrResult !== null) {
     arrResult[2] = arrResult[2].replaceAll(",", ".");
@@ -54,7 +67,7 @@ export const getDataInsurance = (dataInvoiceListItem) => {
 
 export const getDataInternational = (dataInvoiceListItem) => {
   const regExp =
-    /мешки\sс\sмеждународными\sотправлениями\s\s(\d{1,3})\s(.+)/gim;
+    /мешки\sс\sмеждународными\sотправлениями\s(\d{1,3})\s(.+)/gim;
   let arrResult = regExp.exec(dataInvoiceListItem);
   if (arrResult !== null) {
     arrResult[2] = arrResult[2].replaceAll(",", ".");
@@ -87,7 +100,7 @@ export const getDataСorrespondence = (dataInvoiceListItem) => {
 
   //получаем данные о правительственных отправлениях
   const regExpGovernment =
-    /мешки\sс\sправительственными\sотправлениями\s\s(\d{1,3})\s(.+)/gim;
+    /мешки\sс\sправительственными\sотправлениями\s(\d{1,3})\s(.+)/gim;
   let government = regExpGovernment.exec(dataInvoiceListItem);
   if (government !== null) {
     government[2] = government[2].replaceAll(",", ".");
@@ -113,7 +126,7 @@ export const getDataСorrespondence = (dataInvoiceListItem) => {
 };
 
 export const getDataJournal = (dataInvoiceListItem) => {
-  const regExp = /мешки\sс\sпериодическими\sизданиями\s\s(\d{1,3})\s(.+)/gim;
+  const regExp = /мешки\sс\sпериодическими\sизданиями\s(\d{1,3})\s(.+)/gim;
   let arrResult = regExp.exec(dataInvoiceListItem);
   if (arrResult !== null) {
     arrResult[2] = arrResult[2].replaceAll(",", ".");
@@ -135,7 +148,7 @@ export const getDataParcel = (dataInvoiceListItem) => {
 };
 
 export const getDataAirBags = (dataInvoiceListItem) => {
-  const regExp = /мешков\sавиа\s\s\d{1,3}\s(\d{1,3})\s/gim;
+  const regExp = /мешков\sавиа\s\d{1,3}\s(\d{1,3})\s/gim;
   let arrResult = regExp.exec(dataInvoiceListItem);
   //если рег.выражение не найдено, то мешков авиа 0
   const airBagsAmount = arrResult ? arrResult[1] : 0;

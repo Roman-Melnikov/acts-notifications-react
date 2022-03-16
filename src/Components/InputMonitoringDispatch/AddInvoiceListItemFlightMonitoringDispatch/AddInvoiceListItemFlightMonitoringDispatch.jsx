@@ -2,17 +2,24 @@ import { TextField } from "@mui/material";
 import "./style.css";
 
 export const AddInvoiceListItemFlightMonitoringDispatch = ({ transitDirection, changeTransitDirection, dataInvoiceListItem,
-    changeDataInvoiceListItem }) => {
+    changeDataInvoiceListItem, arrForDatalist }) => {
     return (
         <fieldset className="add-invoice-list-item-flight-monitoring-dispatch" >
-            <TextField
+            <input
                 name="transitDirection"
-                label="Транзитное направление, если есть"
+                class="add-invoice-list-item-flight-monitoring-dispatch-input"
+                list="transitDirection"
                 value={transitDirection}
                 onChange={(e) => { changeTransitDirection(e.target.value) }}
-                fullWidth="true"
-                margin="normal"
             />
+            <label class="add-invoice-list-item-flight-monitoring-dispatch-label">Куда адресована</label>
+            <datalist id="transitDirection">
+                {arrForDatalist.map((item, index) => {
+                    return (
+                        <option value={item} key={index} />
+                    )
+                })}
+            </datalist>
             <TextField
                 name="data"
                 label="Данные накладной"

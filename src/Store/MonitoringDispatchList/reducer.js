@@ -1,6 +1,7 @@
 import { ADD_INVOICE_LIST_ITEM } from ".";
 import {
   MONITORING_DISPATCH_LIST_ITEM,
+  REMOVE_INVOICE_LIST_ITEM,
   UPDATE_TIME_DISPATCH_CAR,
 } from "./constants";
 import { ADD_MONITORING_DISPATCH_LIST_ITEM } from "./constants";
@@ -33,6 +34,10 @@ export const monitoringDispatchListReducer = (
       return {
         monitoringDispatchList: payload,
       };
+    case REMOVE_INVOICE_LIST_ITEM:
+      return {
+        monitoringDispatchList: payload,
+      }
     default:
       return state;
   }

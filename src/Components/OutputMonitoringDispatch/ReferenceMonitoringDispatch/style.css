@@ -1,0 +1,10 @@
+.reference-dispatch-table-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    max-width: 95%;
+}
+
+.reference-dispatch-table {
+    background-color: rgba(238, 14, 14, 0.5);
+}

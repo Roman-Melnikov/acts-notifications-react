@@ -4,6 +4,8 @@ export const UPDATE_TIME_DISPATCH_CAR =
   "MONITORING_DISPATCH::UPDATE_TIME_DISPATCH_CAR";
 export const ADD_INVOICE_LIST_ITEM =
   "MONITORING_DISPATCH::ADD_INVOICE_LIST_ITEM";
+export const REMOVE_INVOICE_LIST_ITEM =
+  "MONITORING_DISPATCH::REMOVE_INVOICE_LIST_ITEM";
 
 export const MONITORING_DISPATCH_LIST_ITEM = [
   {
@@ -12,7 +14,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "7:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "3:00",
   },
   {
@@ -21,7 +23,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,2,4,6,7",
     takeoffTime: "4:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "0:55",
   },
   {
@@ -30,7 +32,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "23:40",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "19:40",
   },
   {
@@ -39,7 +41,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "23:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "19:15",
   },
   {
@@ -48,7 +50,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "20:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "16:00",
   },
   {
@@ -57,7 +59,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "14:20",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "10:20",
   },
   {
@@ -66,7 +68,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "2:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "22:15",
   },
   {
@@ -75,7 +77,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,2,4,5,6,7",
     takeoffTime: "13:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "9:55",
   },
   {
@@ -84,7 +86,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "3,5,7",
     takeoffTime: "17:20",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "13:20",
   },
   {
@@ -93,7 +95,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "11:25",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "7:25",
   },
   {
@@ -102,7 +104,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "9:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "5:00",
   },
   {
@@ -111,7 +113,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "17:45",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "13:45",
   },
   {
@@ -120,7 +122,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "0:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "20:55",
   },
   {
@@ -129,7 +131,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "2,6",
     takeoffTime: "13:10",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "9:10",
   },
   {
@@ -138,7 +140,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "23:10",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "19:10",
   },
   {
@@ -147,7 +149,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,3,5,6",
     takeoffTime: "3:30",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "23:30",
   },
   {
@@ -156,7 +158,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,3",
     takeoffTime: "4:10",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "0:10",
   },
   {
@@ -165,7 +167,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "5",
     takeoffTime: "6:30",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "2:30",
   },
   {
@@ -174,7 +176,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "6:25",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "2:25",
   },
   {
@@ -183,7 +185,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "8:40",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "4:40",
   },
   {
@@ -192,7 +194,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "11:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "7:55",
   },
   {
@@ -201,7 +203,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "15:20",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "11:20",
   },
   {
@@ -210,7 +212,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "20:40",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "16:40",
   },
   {
@@ -219,7 +221,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,4,5,6",
     takeoffTime: "9:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "5:15",
   },
   {
@@ -228,7 +230,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,3,6",
     takeoffTime: "8:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "4:00",
   },
   {
@@ -237,7 +239,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "18:25",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "14:25",
   },
   {
@@ -246,7 +248,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "16:20",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "12:20",
   },
   {
@@ -255,7 +257,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "6:25",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "2:25",
   },
   {
@@ -264,7 +266,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "10:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "6:15",
   },
   {
@@ -273,7 +275,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "7:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "3:15",
   },
   {
@@ -282,7 +284,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,2,3,4,5,7",
     takeoffTime: "13:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "9:55",
   },
   {
@@ -291,7 +293,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,2,3,4,5,6",
     takeoffTime: "5:10",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "1:10",
   },
   {
@@ -300,7 +302,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "4",
     takeoffTime: "4:30",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "0:30",
   },
   {
@@ -309,7 +311,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "17:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "13:55",
   },
   {
@@ -318,7 +320,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,3,6",
     takeoffTime: "15:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "11:00",
   },
   {
@@ -327,7 +329,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "5",
     takeoffTime: "15:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "11:00",
   },
   {
@@ -336,7 +338,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,2,4,5,6,7",
     takeoffTime: "23:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "19:00",
   },
   {
@@ -345,7 +347,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "2,5",
     takeoffTime: "12:05",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "8:05",
   },
   {
@@ -354,7 +356,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,4,6",
     takeoffTime: "9:20",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "5:20",
   },
   {
@@ -363,7 +365,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,2,4,6",
     takeoffTime: "6:50",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "2:50",
   },
   {
@@ -372,7 +374,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "11:25",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "7:25",
   },
   {
@@ -381,7 +383,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "20:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "16:55",
   },
   {
@@ -390,7 +392,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "3,5,7",
     takeoffTime: "10:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "6:15",
   },
   {
@@ -399,7 +401,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,3,5,7",
     takeoffTime: "21:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "17:00",
   },
   {
@@ -408,7 +410,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "12:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "8:15",
   },
   {
@@ -417,7 +419,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "14:15",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "10:15",
   },
   {
@@ -426,7 +428,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "2:25",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "22:25",
   },
   {
@@ -435,7 +437,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "13:05",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "9:05",
   },
   {
@@ -444,7 +446,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1,3,5,6",
     takeoffTime: "22:55",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "18:55",
   },
   {
@@ -453,7 +455,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "22:50",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "18:50",
   },
   {
@@ -462,7 +464,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "15:20",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "11:20",
   },
   {
@@ -471,7 +473,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "2:30",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "22:30",
   },
   {
@@ -480,7 +482,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "23:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "19:00",
   },
   {
@@ -489,7 +491,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "ежд",
     takeoffTime: "23:20",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "19:20",
   },
   {
@@ -498,7 +500,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1",
     takeoffTime: "0:05",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "20:05",
   },
   {
@@ -507,7 +509,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "1",
     takeoffTime: "22:00",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "18:00",
   },
   {
@@ -516,7 +518,7 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     invoices: [],
     frequencyMovement: "6",
     takeoffTime: "0:10",
-    factDeliveryTime: undefined,
+    factDeliveryTime: null,
     contractDeliveryTime: "20:10",
   },
 ];

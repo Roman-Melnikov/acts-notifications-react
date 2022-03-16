@@ -3,3 +3,34 @@
     margin-bottom: 2%;
     max-width: 70%;
 }
+
+.add-invoice-list-item-flight-monitoring-dispatch-input {
+    width: 100%;
+    background-color: #cfe8fc;
+    border-radius: 5px;
+    border: 0.5px solid rgb(133, 130, 130);
+    padding: 20px 14px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.add-invoice-list-item-flight-monitoring-dispatch-input:focus {
+    border: 2px solid rgb(52, 122, 212);
+    outline: none;
+    padding: 19px 13px;
+}
+
+.add-invoice-list-item-flight-monitoring-dispatch-label {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+    text-align: left;
+    display: block;
+    margin-top: 3px;
+    margin-bottom: 14px;
+    margin-right: 14px;
+    margin-left: 14px;
+}

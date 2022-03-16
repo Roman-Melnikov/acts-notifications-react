@@ -10,7 +10,7 @@ export const TimeDispatchCar = ({ changeTimeDispatchCar, timeDispatchCar,
                     name="time"
                     helperText="время отправки а/м"
                     type="time"
-                    value={timeDispatchCar}
+                    value={timeDispatchCar || ""}//если будет null, то пустая строка, т.к. значение null почему-то не меняет поле вывода TextField
                     onChange={(e) => { changeTimeDispatchCar(e.target.value) }}
                     fullWidth="true"
                     margin="normal"

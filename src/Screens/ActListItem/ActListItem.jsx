@@ -136,11 +136,11 @@ export const ActListItem = () => {
         //         <Footer typeAct={typeAct} currentAct={currentAct} />
         //     </Grid>
         // </Grid>
-        <div class="act-list-item" >
+        <div class="act-list-item">
             <div class="not-print act-list-item-left">
                 <SidebarList sidebarList={sidebarList} type={typeForSidebar} />
             </div>
-            {actId && <div class="act-list-item-right">
+            {actId && <div class="act-list-item-right" contentEditable>
                 <Button className="not-print print-btn" color="secondary" variant="contained" onClick={() => window.print()} >Печать</Button>
                 {typeAct === "type52" && <Reference dataForReference={dataForReference} />}
                 <Header typeAct={typeAct} />

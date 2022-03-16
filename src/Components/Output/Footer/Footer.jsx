@@ -26,7 +26,7 @@ export const Footer = ({ typeAct, currentAct }) => {
                             <div class="footer-family-item">
                                 <p class="footer-family-item-position">
                                     {currentAct.surnamePosition?.fourthPosition}</p>
-                                <span class="footer-family-item-name" contentEditable="true" >{currentAct.surnamePosition?.fourthFamily}</span>
+                                <span class="footer-family-item-name">{currentAct.surnamePosition?.fourthFamily}</span>
                             </div>
                         </div>
                     </div>
