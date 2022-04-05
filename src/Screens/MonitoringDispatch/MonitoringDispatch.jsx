@@ -228,7 +228,7 @@ export const MonitoringDispatch = () => {
 
             //вызов функции добавления формул
             addExcelFormula(worksheet);
-            
+
             // eslint-disable-next-line react-hooks/exhaustive-deps
             workbook = {
                 SheetNames: [],
@@ -251,7 +251,8 @@ export const MonitoringDispatch = () => {
         <Grid container className="monitoring-dispatch">
             <Grid item xs={3} container direction="column" justifyContent="space-between"
                 alignItems="center">
-                <SidebarList sidebarList={monitoringDispatchList} type={typeForSidebar} />
+                <SidebarList sidebarList={monitoringDispatchList} type={typeForSidebar}
+                    monitoringDispatchListItemName={monitoringDispatchListItem.name} />
                 <AddMonitoringDispatchListItemModal addMonitoringDispatchListItem={addMonitoringDispatchListItem} />
             </Grid>
             <Grid item xs={9}>

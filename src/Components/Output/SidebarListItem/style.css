@@ -7,6 +7,8 @@
 
 .sidebar-selected {
     color: red;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 .sidebar-list-item-52 {
@@ -38,7 +40,6 @@
 }
 
 .sidebar-list-item-monitoring-dispatch {
-    margin-bottom: 0.5%;
     text-decoration: none;
     font-size: 20px;
 }

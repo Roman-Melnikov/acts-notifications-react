@@ -3,7 +3,7 @@ import { Box } from "@material-ui/core";
 import { ROUTES } from "../../../Routing/constants";
 import "./style.css";
 
-export const SidebarListItem = ({ sidebarListItem, type }) => {
+export const SidebarListItem = ({ sidebarListItem, type, monitoringDispatchListItemName }) => {
 
     return (
         <>
@@ -29,10 +29,11 @@ export const SidebarListItem = ({ sidebarListItem, type }) => {
             {
                 type === "monitoringDispatch" &&
                 <Box className="sidebar-list-item">
-                        <NavLink activeClassName="sidebar-selected" className="sidebar-list-item-monitoring-dispatch"
-                            exact to={`${ROUTES.MONITORING_DISPATCH}/${sidebarListItem.id}`}>
-                            {sidebarListItem.name}
-                        </NavLink>
+                    <NavLink activeClassName="sidebar-selected" className={
+                        sidebarListItem.name === monitoringDispatchListItemName ? "sidebar-selected" : "sidebar-list-item-monitoring-dispatch"}
+                        exact to={`${ROUTES.MONITORING_DISPATCH}/${sidebarListItem.id}`}>
+                        {sidebarListItem.name}
+                    </NavLink>
                 </Box>
             }
         </>

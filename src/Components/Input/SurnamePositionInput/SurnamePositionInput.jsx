@@ -112,6 +112,7 @@ export const SurnamePositionInput = ({ surnamePosition, changeSurnamePositionInp
                     <option value="Донцов К.А." />
                     <option value="Филиппов Д.А." />
                     <option value="Черепанов М.В." />
+                    <option value="Борисенко Г.А." />
                     <option value="с вагона" />
                 </datalist>
             </section>

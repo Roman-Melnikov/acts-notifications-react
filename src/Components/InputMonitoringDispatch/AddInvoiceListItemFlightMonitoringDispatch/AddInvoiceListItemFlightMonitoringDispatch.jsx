@@ -12,7 +12,7 @@ export const AddInvoiceListItemFlightMonitoringDispatch = ({ transitDirection, c
                 value={transitDirection}
                 onChange={(e) => { changeTransitDirection(e.target.value) }}
             />
-            <label class="add-invoice-list-item-flight-monitoring-dispatch-label">Куда адресована</label>
+            <label class="add-invoice-list-item-flight-monitoring-dispatch-label">Транзитное направление, если оно есть</label>
             <datalist id="transitDirection">
                 {arrForDatalist.map((item, index) => {
                     return (

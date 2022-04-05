@@ -36,7 +36,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       name: AIR_LINES.KRAS_AVIA,
-      flights: [79],
+      flights: [79, 261],
       contract: "9804 от 31.12.2019г",
     },
     {
@@ -69,7 +69,7 @@ export const PARAMETRS_FLIGHTS = {
     {
       fromWhere: FROM_WHERE.DOMODEDOVO,
       flights: [
-        100, 103, 237, 1237, 437, 544, 2501, 2505, 2507, 2509, 2511, 2513, 2515,
+        100, 103, 1237, 437, 544, 2501, 2505, 2507, 2509, 2511, 2513, 2515,
       ],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "102322 Домодедово АОПП",
@@ -77,7 +77,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       fromWhere: FROM_WHERE.SCHEREMETEVO,
-      flights: [1306, 1460, 1462],
+      flights: [237, 1306, 1460, 1462],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "104040 Шереметьево АОПП",
       fromAddressesAll: ["104040 Шереметьево АОПП"],
@@ -164,10 +164,10 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       fromWhere: FROM_WHERE.KYZYL,
-      flights: [79],
+      flights: [79, 261],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
-      fromAddressDefault: "667965 Кызыл МСЦ",
-      fromAddressesAll: ["667965 Кызыл МСЦ"],
+      fromAddressDefault: "667965 Кызыл МСО ОДО",
+      fromAddressesAll: ["667965 Кызыл МСО ОДО", "667965 Кызыл МСЦ"],
     },
     {
       fromWhere: FROM_WHERE.IRKUTSK,
