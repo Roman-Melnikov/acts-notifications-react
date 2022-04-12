@@ -54,7 +54,7 @@ export const ActListItem = () => {
                         })
                     }
                 )
-            }).reverse();
+            });
             return newSidebarList;
         })
     }, [actList_52, actList_51_defective]);
