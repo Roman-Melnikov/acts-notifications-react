@@ -27,6 +27,22 @@
     table-layout: fixed;
     border-collapse: collapse;
     border: 2px solid black;
+    box-sizing: border-box;
+}
+
+.reference-table-monitoring-col-things {
+    width: 55px;
+    height: 35px;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    box-sizing: border-box;
+}
+
+.reference-table-monitoring-col-weight {
+    width: 60px;
+    height: 35px;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
 }
 
 .reference-table-monitoring-from-ga {
