@@ -13,16 +13,16 @@ export const PARAMETRS_FLIGHTS = {
       flights: [
         2505, 2507, 2509, 2511, 2513, 2515, 5336, 5018, 5002, 5004, 5006, 5020,
         5352, 5346, 5306, 5308, 5310, 5040, 5042, 5058, 5028, 5116, 5128, 5156,
-        5228, 5212, 5216, 5244, 5312, 5262, 5264, 5266, 5268, 5272, 5274, 5276,
-        5280, 5348, 5256, 5220, 5224, 5202, 5204, 5302, 5304, 5236, 5238, 5242,
-        5250, 5328, 5258, 5332, 5050, 8898,
+        5228, 5212, 5216, 5244, 5246, 5312, 5314, 5322, 5262, 5264, 5266, 5268, 5272, 5274,
+        5276, 5280, 5348, 5256, 5220, 5224, 5202, 5204, 5302, 5304, 5236, 5238,
+        5242, 5250, 5328, 5258, 5332, 5050, 8898,
       ],
       contract: "АП-16-20 от 08.04.2020г",
     },
     {
       name: AIR_LINES.AEROFLOT,
       flights: [1306, 1460, 1462, 6541, 5642],
-      contract: "29063984/Р25-18 от 14.01.2020г",
+      contract: "29063984/Р1007-18/01.11.2022 от 31.10.2022 г",
     },
     {
       name: AIR_LINES.URAL_AIRLINES,
@@ -147,7 +147,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       fromWhere: FROM_WHERE.NERYUNGRI,
-      flights: [484],
+      flights: [484, 5246],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "678985 Нерюнгри УМСЦ",
       fromAddressesAll: ["678985 Нерюнгри УМСЦ"],
@@ -192,7 +192,7 @@ export const PARAMETRS_FLIGHTS = {
     },
     {
       fromWhere: FROM_WHERE.ABAKAN,
-      flights: [5312],
+      flights: [5312, 5314, 5322],
       ourAddressDefault: OUR_ADDRESSES.PRIMARY,
       fromAddressDefault: "655965 Абакан МСО",
       fromAddressesAll: ["655965 Абакан МСО"],
@@ -257,8 +257,8 @@ export const PARAMETRS_FLIGHTS = {
       fromWhere: FROM_WHERE.PETROPAVLOVSK_KAMCHATSKY,
       flights: [5250],
       ourAddressDefault: OUR_ADDRESSES.SECONDARY,
-      fromAddressDefault: "683962 Петропавловск-Камчатчкий МСЦ УООП",
-      fromAddressesAll: ["683962 Петропавловск-Камчатчкий МСЦ УООП"],
+      fromAddressDefault: "683962 Петропавловск-Камчатcкий МСЦ УООП",
+      fromAddressesAll: ["683962 Петропавловск-Камчатcкий МСЦ УООП"],
     },
     {
       fromWhere: FROM_WHERE.NIZHNEVARTOVSK,

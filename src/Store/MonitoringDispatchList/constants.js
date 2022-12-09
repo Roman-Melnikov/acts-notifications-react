@@ -18,6 +18,15 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     contractDeliveryTime: "3:00",
   },
   {
+    direction: "Абакан",
+    numberFlight: "5313",
+    invoices: [],
+    frequencyMovement: "ежд",
+    takeoffTime: "6:50",
+    factDeliveryTime: null,
+    contractDeliveryTime: "2:50",
+  },
+  {
     direction: "Братск",
     numberFlight: "5215",
     invoices: [],
@@ -358,6 +367,15 @@ export const MONITORING_DISPATCH_LIST_ITEM = [
     takeoffTime: "9:20",
     factDeliveryTime: null,
     contractDeliveryTime: "5:20",
+  },
+  {
+    direction: "Сочи",
+    numberFlight: "5101",
+    invoices: [],
+    frequencyMovement: "ежд",
+    takeoffTime: "15:20",
+    factDeliveryTime: null,
+    contractDeliveryTime: "11:20",
   },
   {
     direction: "С.Петербург",
