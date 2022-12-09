@@ -2,7 +2,12 @@ import { Button, Grid } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getMounthStringByNumber, getDataForActType_51_defective } from "./func";
+import {
+    getMounthStringByNumber,
+    getDataForActType_51_defective,
+    getForMonitoringTypeThingAmount,
+    getForMonitoringTypeThingWeight
+} from "./func";
 import { Footer } from "../../Components/Output/Footer/Footer";
 import { Header } from "../../Components/Output/Header";
 import { Main } from "../../Components/Output/Main";
@@ -113,6 +118,22 @@ export const ActListItem = () => {
                     forTmsThingAmount: getForTmsThingAmount(currentAct),
                     forMonitoringTotalgWeight: getForMonitoringTotalgWeight(currentAct),
                     forMonitoringThingAmount: getForMonitoringThingAmount(currentAct),
+                    forMonitoringEmsAmount: getForMonitoringTypeThingAmount(currentAct, "EMS", "emsQuantity"),
+                    forMonitoringEmsWeight: getForMonitoringTypeThingWeight(currentAct, "EMS", "emsWeight"),
+                    forMonitoringFirstAmount: getForMonitoringTypeThingAmount(currentAct, "1-ый класс", "firstClassQuantity"),
+                    forMonitoringFirstWeight: getForMonitoringTypeThingWeight(currentAct, "1-ый класс", "firstClassWeight"),
+                    forMonitoringInsuranceAmount: getForMonitoringTypeThingAmount(currentAct, "со страховыми отправлениями", "insuranceQuantity"),
+                    forMonitoringInsuranceWeight: getForMonitoringTypeThingWeight(currentAct, "со страховыми отправлениями", "insuranceWeight"),
+                    forMonitoringInternationalAmount: getForMonitoringTypeThingAmount(currentAct, "с международными отправлениями", "internationalQuantity"),
+                    forMonitoringInternationalWeight: getForMonitoringTypeThingWeight(currentAct, "с международными отправлениями", "internationalWeight"),
+                    forMonitoringCorrespondenceAmount: getForMonitoringTypeThingAmount(currentAct, "с заказной корреспонденцией", "customizedQuantity")
+                                                       +
+                                                       getForMonitoringTypeThingAmount(currentAct, "с простой корреспонденцией", "simpleQuantity") || " ",
+                    forMonitoringCorrespondenceWeight: +getForMonitoringTypeThingWeight(currentAct, "с заказной корреспонденцией", "customizedWeight")
+                                                       +
+                                                       +getForMonitoringTypeThingWeight(currentAct, "с простой корреспонденцией", "simpleWeight") || " ",
+                    forMonitoringParcelAmount: getForMonitoringTypeThingAmount(currentAct, "РПО", "parcelQuantity"),
+                    forMonitoringParcelWeight: getForMonitoringTypeThingWeight(currentAct, "РПО", "parcelWeight"),
                     forMonitorihgAdditionalInformationIfFromGa: currentAct.fromGA && getForMonitorihgAdditionalInformationIfFromGa(currentAct),
                 }
             }
