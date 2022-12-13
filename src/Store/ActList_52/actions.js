@@ -18,10 +18,11 @@ export const setParametrsActActionThink =
     invoiseListInput,
     surnamePosition,
     actFlightNumbersAndArrivalDateInput,
-    checkedFromGA
+    checkedFromGA,
+    checkedWithoutDocuments
   ) =>
   (dispatch, getState) => {
-    const newInvoiseListInput = checkedFromGA
+    const newInvoiseListInput = (checkedFromGA || checkedWithoutDocuments)
       ? []
       : changeFormatDateUndTimeInInvoiseList(invoiseListInput);
     const dateArrival =
@@ -46,6 +47,7 @@ export const setParametrsActActionThink =
       payload: {
         name,
         fromGA: checkedFromGA,
+        withoutDocuments: checkedWithoutDocuments,
         invoiseListInput: newInvoiseListInput,
         surnamePosition,
         dateArrival,

@@ -16,7 +16,7 @@ export const ThingDataListItemInput = React.memo((props) => {
     }, [checked]);
 
     useEffect(() => {
-        if(props.fromGA) {
+        if(props.fromGA || props.withoutDocuments) {
             setChecked({...checked, excess: true})
         }
     }, [props.fromGA]);

@@ -11,6 +11,7 @@ export const actList_52_Reducer = (state = initialState, { type, payload }) => {
     case SET_PARAMETRS_ACT:
       const {
         fromGA,
+        withoutDocuments,
         name,
         invoiseListInput,
         surnamePosition,
@@ -32,6 +33,7 @@ export const actList_52_Reducer = (state = initialState, { type, payload }) => {
             numberAct: numberAct,
             name: name,
             fromGA: fromGA,
+            withoutDocuments: withoutDocuments,
             flight: {
               number: numberFlight,
               airLine: airLine,

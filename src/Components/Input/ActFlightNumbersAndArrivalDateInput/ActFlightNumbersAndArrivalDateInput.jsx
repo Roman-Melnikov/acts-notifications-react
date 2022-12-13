@@ -3,7 +3,7 @@ import { NUMBER_ACT_52_CONSTANT } from "../../../Constants/constants";
 import "./style.css";
 
 export const ActFlightNumbersAndArrivalDateInput = ({ actFlightNumbersAndArrivalDateInput, changeActFlightNumbersAndArrivalDateInput,
-    handleToogleCheckedFromGa, checkedFromGA }) => {
+    handleToogleCheckedFromGa,handleToogleCheckedWithoutDocuments, checkedFromGA, checkedWithoutDocuments }) => {
 
     return (
         <fieldset className="act-flight-numbers-arrival">
@@ -43,6 +43,19 @@ export const ActFlightNumbersAndArrivalDateInput = ({ actFlightNumbersAndArrival
                             />
                         </ListItemIcon>
                         <ListItemText>От органов ГА</ListItemText>
+                    </ListItemButton>
+                </ListItem>
+            </List>
+            <List>
+                <ListItem>
+                    <ListItemButton onClick={() => handleToogleCheckedWithoutDocuments()}>
+                        <ListItemIcon>
+                            <Checkbox
+                                checked={checkedWithoutDocuments}
+                                color="primary"
+                            />
+                        </ListItemIcon>
+                        <ListItemText>Без документов, рейс известен</ListItemText>
                     </ListItemButton>
                 </ListItem>
             </List>

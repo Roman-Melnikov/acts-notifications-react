@@ -4,14 +4,14 @@ import "./style.css";
 
 export const ThingDataListInput =
     ({ things, changeThingData, handleToogleReasons, changeNumberAct_51_defective,
-         numberAct_51_defectiveAndIdThing, fromGA, addThing }) => {
+         numberAct_51_defectiveAndIdThing, fromGA, withoutDocuments, addThing }) => {
         return (
             <Box className="thing-data-list-input">
                 {things.map((item) => <ThingDataListItemInput item={item} key={item.id}
                     changeThingData={changeThingData} handleToogleReasons={handleToogleReasons}
                     changeNumberAct_51_defective={changeNumberAct_51_defective}
                     numberAct_51_defectiveAndIdThing={numberAct_51_defectiveAndIdThing}
-                    fromGA={fromGA} />)}
+                    fromGA={fromGA} withoutDocuments={withoutDocuments}/>)}
                     <Button onClick={addThing} variant="contained">Добавить емкость</Button>
             </Box>
         )

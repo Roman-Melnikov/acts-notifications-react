@@ -2,7 +2,7 @@ import React from "react";
 import { ExcessListItem } from "../ExcessListItem/ExcessListItem";
 import "./style.css";
 
-export const ExcessList = React.memo(({ excessList, fromGA }) => {
+export const ExcessList = React.memo(({ excessList, fromGA, withoutDocuments }) => {
     return (
         <>
             {/* {((excessList.length === 1) && !fromGA) &&
@@ -24,7 +24,7 @@ export const ExcessList = React.memo(({ excessList, fromGA }) => {
                             </>)
                     })}
                 </div>} */}
-            {((excessList.length >= 1) && !fromGA) &&
+            {((excessList.length >= 1) && (!fromGA && !withoutDocuments)) &&
                 <div class="content-main-excess-list" >
                     <span class="content-main-excess-list-indent">Без </span>
                     <span>
@@ -43,7 +43,7 @@ export const ExcessList = React.memo(({ excessList, fromGA }) => {
                     })}
                 </div>}
             {
-                fromGA && <div class="content-main-excess-list" >
+                (fromGA || withoutDocuments) && <div class="content-main-excess-list" >
                     {excessList.map((excessListItem, index) => {
                         return (
                             <p class="content-main-excess-list-p-item">

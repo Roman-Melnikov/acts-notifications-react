@@ -126,11 +126,11 @@ export const ActListItem = () => {
                     forMonitoringInsuranceAmount:
                         +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceQuantity")
                         +
-                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceQuantity"),
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceQuantity") || " ",
                     forMonitoringInsuranceWeight:
                         +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceWeight")
                         +
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceWeight"),
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceWeight") || " ",
                     forMonitoringInternationalAmount: getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalQuantity"),
                     forMonitoringInternationalWeight: getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalWeight"),
                     forMonitoringCorrespondenceAmount:
@@ -144,11 +144,11 @@ export const ActListItem = () => {
                     forMonitoringParcelAmount:
                         +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelQuantity")
                         +
-                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelQuantity"),
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelQuantity") || " ",
                     forMonitoringParcelWeight:
                         +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelWeight")
                         +
-                        getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelWeight"),
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelWeight") || " ",
                     forMonitorihgAdditionalInformationIfFromGa: currentAct.fromGA && getForMonitorihgAdditionalInformationIfFromGa(currentAct),
                 }
             }

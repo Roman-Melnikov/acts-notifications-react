@@ -1,14 +1,16 @@
-import { Box, Button } from "@mui/material";
+import {Box, Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { v4 as uuidv4 } from 'uuid';
-import { useDispatch, useSelector } from "react-redux";
-import { setParametrsActActionThink } from "../../Store/ActList_52";
-import { InvoiseListInput } from "../../Components/Input/InvoiseListInput";
-import { useCallback, useEffect, useState } from "react";
-import { SurnamePositionInput } from "../../Components/Input/SurnamePositionInput";
-import { ActFlightNumbersAndArrivalDateInput } from "../../Components/Input/ActFlightNumbersAndArrivalDateInput/ActFlightNumbersAndArrivalDateInput";
-import { parametrsFlightsSelector } from "../../Store/ParametrsFlights/selectors";
-import { OUR_ADDRESSES } from "../../Constants";
+import {v4 as uuidv4} from 'uuid';
+import {useDispatch, useSelector} from "react-redux";
+import {setParametrsActActionThink} from "../../Store/ActList_52";
+import {InvoiseListInput} from "../../Components/Input/InvoiseListInput";
+import {useCallback, useEffect, useState} from "react";
+import {SurnamePositionInput} from "../../Components/Input/SurnamePositionInput";
+import {
+    ActFlightNumbersAndArrivalDateInput
+} from "../../Components/Input/ActFlightNumbersAndArrivalDateInput/ActFlightNumbersAndArrivalDateInput";
+import {parametrsFlightsSelector} from "../../Store/ParametrsFlights/selectors";
+import {OUR_ADDRESSES} from "../../Constants";
 import "./style.css";
 
 export const ParametrsActInput = () => {
@@ -18,15 +20,16 @@ export const ParametrsActInput = () => {
     const [ourAddresses, setOurAddresses] = useState({
         default: OUR_ADDRESSES.PRIMARY,
         outherOurAddresses: (() => {
-            const { PRIMARY: toDelete, ...rest } = OUR_ADDRESSES;
+            const {PRIMARY: toDelete, ...rest} = OUR_ADDRESSES;
             return Object.values(rest);
         })()
     });
     const [citiAddresses, setCitiAddresses] = useState({});
     const [checkedFromGA, setCheckedFromGA] = useState(false);
+    const [checkedWithoutDocuments, setCheckedWithoutDocuments] = useState(false);
 
     const dispatch = useDispatch();
-    const { parametrsFlights } = useSelector(parametrsFlightsSelector);
+    const {parametrsFlights} = useSelector(parametrsFlightsSelector);
 
     useEffect(() => {
         setInvoiseListInput([{
@@ -74,7 +77,8 @@ export const ParametrsActInput = () => {
                     return newOurAddresses;
                 });
                 return;
-            };
+            }
+            ;
         })
     }, [actFlightNumbersAndArrivalDateInput.numberFlight]);
 
@@ -105,7 +109,8 @@ export const ParametrsActInput = () => {
                     return newCitiAddresses;
                 });
                 return;
-            };
+            }
+            ;
         })
     }, [actFlightNumbersAndArrivalDateInput.numberFlight]);
 
@@ -161,34 +166,45 @@ export const ParametrsActInput = () => {
     }, [invoiseListInput]);
 
     const changeSurnamePositionInput = useCallback((name, value) => {
-        setSurnamePositionInput({ ...surnamePosition, [name]: value });
+        setSurnamePositionInput({...surnamePosition, [name]: value});
     }, [surnamePosition]);
 
     const changeActFlightNumbersAndArrivalDateInput = useCallback((name, value) => {
-        setActFlightNumbersAndArrivalDateInput({ ...actFlightNumbersAndArrivalDateInput, [name]: value });
+        setActFlightNumbersAndArrivalDateInput({...actFlightNumbersAndArrivalDateInput, [name]: value});
     }, [actFlightNumbersAndArrivalDateInput]);
 
     const handleToogleCheckedFromGa = useCallback(() => {
         setCheckedFromGA(!checkedFromGA);
     }, [checkedFromGA]);
 
+    const handleToogleCheckedWithoutDocuments = useCallback(() => {
+        setCheckedWithoutDocuments(!checkedWithoutDocuments);
+    }, [checkedWithoutDocuments]);
+
     const transferDataToStore = useCallback(() => {
         window.scrollTo(0, 0);
-        dispatch(setParametrsActActionThink(invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA))
-    }, [invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA]);
+        dispatch(setParametrsActActionThink(invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA, checkedWithoutDocuments))
+    }, [invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA, checkedWithoutDocuments]);
 
     return (
         <Box className="parametrs-act">
-            <ActFlightNumbersAndArrivalDateInput actFlightNumbersAndArrivalDateInput={actFlightNumbersAndArrivalDateInput}
-                changeActFlightNumbersAndArrivalDateInput={changeActFlightNumbersAndArrivalDateInput} handleToogleCheckedFromGa={handleToogleCheckedFromGa}
-                checkedFromGA={checkedFromGA} />
-            {!checkedFromGA && <InvoiseListInput
-                invoiseListInput={invoiseListInput} changeInvoiseListInput={changeInvoiseListInput}
-                ourAddresses={ourAddresses} citiAddresses={citiAddresses} />}
-            {!checkedFromGA && <Button className="invoise-list-btn" variant="contained" onClick={addInvoiseItem}>
-                Добавить общую накладную</Button>}
-            <SurnamePositionInput surnamePosition={surnamePosition} changeSurnamePositionInput={changeSurnamePositionInput} />
-            <Button onClick={transferDataToStore} variant="contained" endIcon={<SendIcon />} className="parametrs-act-btn">Отправить данные</Button>
+            <ActFlightNumbersAndArrivalDateInput
+                actFlightNumbersAndArrivalDateInput={actFlightNumbersAndArrivalDateInput}
+                changeActFlightNumbersAndArrivalDateInput={changeActFlightNumbersAndArrivalDateInput}
+                handleToogleCheckedFromGa={handleToogleCheckedFromGa}
+                handleToogleCheckedWithoutDocuments={handleToogleCheckedWithoutDocuments}
+                checkedFromGA={checkedFromGA}
+                checkedWithoutDocuments={checkedWithoutDocuments}/>
+            {!checkedFromGA && !checkedWithoutDocuments &&
+                <InvoiseListInput invoiseListInput={invoiseListInput} changeInvoiseListInput={changeInvoiseListInput}
+                                  ourAddresses={ourAddresses} citiAddresses={citiAddresses}/>}
+            {!checkedFromGA && !checkedWithoutDocuments &&
+                <Button className="invoise-list-btn" variant="contained" onClick={addInvoiseItem}>
+                    Добавить общую накладную</Button>}
+            <SurnamePositionInput surnamePosition={surnamePosition}
+                                  changeSurnamePositionInput={changeSurnamePositionInput}/>
+            <Button onClick={transferDataToStore} variant="contained" endIcon={<SendIcon/>}
+                    className="parametrs-act-btn">Отправить данные</Button>
         </Box>
     )
 } 

@@ -20,6 +20,7 @@ export const ParametrsThingsInput = () => {
     const dispatch = useDispatch();
     const [numberAct_51_defectiveAndIdThing, setNumberAct_51_defectiveAndIdThing] = useState([]);
     const [fromGA, setFromGA] = useState(false);
+    const [withoutDocuments, setWithoutDocuments] = useState(false);
 
     useEffect(() => {
         setThings([...things, {
@@ -55,6 +56,13 @@ export const ParametrsThingsInput = () => {
             return item.name === valueSelectionAct_52_Input;
         });
         setFromGA(actList_52_item?.fromGA);
+    }, [valueSelectionAct_52_Input])
+
+    useEffect(() => {
+        const actList_52_item = actList_52.find((item) => {
+            return item.name === valueSelectionAct_52_Input;
+        });
+        setWithoutDocuments(actList_52_item?.withoutDocuments);
     }, [valueSelectionAct_52_Input])
 
     const changeValueSelectionAct_52_Input = (e) => {
@@ -124,7 +132,7 @@ export const ParametrsThingsInput = () => {
             <ThingDataListInput things={things} changeThingData={changeThingData} handleToogleReasons={handleToogleReasons}
                 changeNumberAct_51_defective={changeNumberAct_51_defective}
                 numberAct_51_defectiveAndIdThing={numberAct_51_defectiveAndIdThing}
-                fromGA={fromGA} addThing={addThing} />
+                fromGA={fromGA} addThing={addThing} withoutDocuments={withoutDocuments}/>
             <Box className="parametrs-things-btn-send">
                 <Button onClick={() => {
                     transferActList_52_ParametrsThingToStore();
