@@ -1,3 +1,5 @@
+import {logDOM} from "@testing-library/react";
+
 export const getDataForActType_51_defective = (
     actList_52,
     actList_51_defectiveItem
@@ -171,7 +173,7 @@ export const getForTmsEmsWeight = (currentAct) => {
                 return (
                     accum +
                     parseFloat(
-                        currentValue.values?.data?.typeThing === "EMS"
+                        currentValue.values?.data?.typeId === "1"
                             ? currentValue.values.data.actualWeight.replace(",", ".")
                             : 0
                     )
@@ -182,7 +184,7 @@ export const getForTmsEmsWeight = (currentAct) => {
                 return (
                     accum +
                     parseFloat(
-                        currentValue.values?.data?.typeThing === "EMS"
+                        currentValue.values?.data?.typeId === "1"
                             ? currentValue.values.data.actualWeight.replace(",", ".")
                             : 0
                     )
@@ -191,7 +193,7 @@ export const getForTmsEmsWeight = (currentAct) => {
             /*сумма разниц, актуального и подавательского весов, вещей из отфильтрованного(вещи не дублирующиеся в excess) массива differenceWeight */
             getThingsFromDifferenceWeightNotDuplicatesInExcess(currentAct).reduce(
                 (accum, currentValue) => {
-                    if (currentValue === "EMS") {
+                    if (currentValue.values.data.typeId === "1") {
                         return (
                             accum +
                             (parseFloat(
@@ -297,7 +299,7 @@ export const getForMonitoringThingAmount = (currentAct) => {
 /**
  * получение количества вещей заданного типа для журнала мониторинга
  */
-export const getForMonitoringTypeThingAmount = (currentAct, typeThing, propertyInInvoice) => {
+export const getForMonitoringtypeIdAmount = (currentAct, typeId, propertyInInvoice) => {
     let forMonitoringAmount = 0;
     forMonitoringAmount =
         /*сумма количества propertyInInvoice всех общих */
@@ -306,23 +308,23 @@ export const getForMonitoringTypeThingAmount = (currentAct, typeThing, propertyI
                 accum + parseFloat(currentValue[propertyInInvoice] ?? 0)
             );
         }, 0) -
-        /*сумма всех не поступивших typeThing */
+        /*сумма всех не поступивших typeId */
         currentAct.reasons.notReceived.reduce((accum, currentValue) => {
             return (
                 accum +
                 parseFloat(
-                    currentValue.values?.data?.typeThing === typeThing
+                    currentValue.values?.data?.typeId === typeId
                         ? 1
                         : 0
                 )
             );
         }, 0) +
-        /*сумма всех поступивших без приписки typeThing */
+        /*сумма всех поступивших без приписки typeId */
         currentAct.reasons.excess.reduce((accum, currentValue) => {
             return (
                 accum +
                 parseFloat(
-                    currentValue.values?.data?.typeThing === typeThing
+                    currentValue.values?.data?.typeId === typeId
                         ? 1
                         : 0
                 )
@@ -334,7 +336,7 @@ export const getForMonitoringTypeThingAmount = (currentAct, typeThing, propertyI
 /**
  * получение веса вещей заданного типа для журнала мониторинга
  */
-export const getForMonitoringTypeThingWeight = (currentAct, typeThing, propertyInInvoice) => {
+export const getForMonitoringtypeIdWeight = (currentAct, typeId, propertyInInvoice) => {
     let forMonitoringWeight = 0;
     forMonitoringWeight =
         /*сумма веса propertyInInvoice всех общих */
@@ -343,23 +345,23 @@ export const getForMonitoringTypeThingWeight = (currentAct, typeThing, propertyI
                 accum + parseFloat(currentValue[propertyInInvoice]?.replace(",", ".") ?? 0)
             );
         }, 0) -
-        /*сумма веса всех не поступивших typeThing */
+        /*сумма веса всех не поступивших typeId */
         currentAct.reasons.notReceived.reduce((accum, currentValue) => {
             return (
                 accum +
                 parseFloat(
-                    currentValue.values?.data?.typeThing === typeThing
+                    currentValue.values?.data?.typeId === typeId
                         ? currentValue.values.data.actualWeight.replace(",", ".")
                         : 0
                 )
             );
         }, 0) +
-        /*сумма веса всех поступивших без приписки typeThing */
+        /*сумма веса всех поступивших без приписки typeId */
         currentAct.reasons.excess.reduce((accum, currentValue) => {
             return (
                 accum +
                 parseFloat(
-                    currentValue.values?.data?.typeThing === typeThing
+                    currentValue.values?.data?.typeId === typeId
                         ? currentValue.values.data.actualWeight.replace(",", ".")
                         : 0
                 )
@@ -368,7 +370,7 @@ export const getForMonitoringTypeThingWeight = (currentAct, typeThing, propertyI
         /*сумма разниц, актуального и подавательского весов, вещей из отфильтрованного(вещи не дублирующиеся в excess) массива differenceWeight */
         getThingsFromDifferenceWeightNotDuplicatesInExcess(currentAct).reduce(
             (accum, currentValue) => {
-                if (currentValue === typeThing) {
+                if (currentValue.values.data.typeId === typeId) {
                     return (
                         accum +
                         (parseFloat(
@@ -403,7 +405,7 @@ export const getForMonitorihgAdditionalInformationIfFromGa = (currentAct) => {
     let correspondenceWeight = 0;
     /* перебор всех вещей массива excess, с целью узнать кол-во и вес поступивших вещей каждого типа */
     currentAct.reasons.excess.forEach((thing) => {
-        switch (thing.values.data.typeIdForSort) {
+        switch (thing.values.data.typeId) {
             case "1":
                 emsAmount++;
                 emsWeight += parseFloat(thing.values.data.actualWeight.replace(",", "."));

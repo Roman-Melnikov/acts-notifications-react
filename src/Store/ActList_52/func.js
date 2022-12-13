@@ -42,7 +42,7 @@ export const getTypeThing = (thingData) => {
     if (bool) {
       return {
         typeThing: OBJ_FOR_CHECK_TYPE_THING[key][1],
-        typeIdForSort: OBJ_FOR_CHECK_TYPE_THING[key][2],
+        typeId: OBJ_FOR_CHECK_TYPE_THING[key][2],
       };
     }
   }

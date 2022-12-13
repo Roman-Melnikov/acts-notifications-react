@@ -1,27 +1,28 @@
-import { Button, Grid } from "@material-ui/core";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import {Button, Grid} from "@material-ui/core";
+import {useState, useEffect} from "react";
+import {useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
 import {
     getMounthStringByNumber,
     getDataForActType_51_defective,
-    getForMonitoringTypeThingAmount,
-    getForMonitoringTypeThingWeight
+    getForMonitoringtypeIdAmount,
+    getForMonitoringtypeIdWeight
 } from "./func";
-import { Footer } from "../../Components/Output/Footer/Footer";
-import { Header } from "../../Components/Output/Header";
-import { Main } from "../../Components/Output/Main";
-import { SidebarList } from "../../Components/Output/SidebarList";
-import { actList_51_defectiveSelector } from "../../Store/ActList_51_defective/selectors";
-import { actList_52_Selector } from "../../Store/ActList_52/selectors";
-import { getForTmsEmsWeight } from "./func";
-import { getForTmsTotalWeight } from "./func";
-import { getForTmsThingAmount } from "./func";
-import { getForMonitoringTotalgWeight } from "./func";
-import { getForMonitoringThingAmount } from "./func";
-import { Reference } from "../../Components/Output/Reference";
-import { getForMonitorihgAdditionalInformationIfFromGa } from "./func";
+import {Footer} from "../../Components/Output/Footer/Footer";
+import {Header} from "../../Components/Output/Header";
+import {Main} from "../../Components/Output/Main";
+import {SidebarList} from "../../Components/Output/SidebarList";
+import {actList_51_defectiveSelector} from "../../Store/ActList_51_defective/selectors";
+import {actList_52_Selector} from "../../Store/ActList_52/selectors";
+import {getForTmsEmsWeight} from "./func";
+import {getForTmsTotalWeight} from "./func";
+import {getForTmsThingAmount} from "./func";
+import {getForMonitoringTotalgWeight} from "./func";
+import {getForMonitoringThingAmount} from "./func";
+import {Reference} from "../../Components/Output/Reference";
+import {getForMonitorihgAdditionalInformationIfFromGa} from "./func";
 import "./style.css";
+import {OBJ_FOR_CHECK_TYPE_THING} from "../../Store/ActList_52";
 
 export const ActListItem = () => {
     const [sidebarList, setSidebarList] = useState([]);
@@ -42,9 +43,9 @@ export const ActListItem = () => {
         //дополнительная информация для мониторинга, если от ГА
         forMonitorihgAdditionalInformationIfFromGa: null,
     });
-    const { actList_52 } = useSelector(actList_52_Selector);
-    const { actList_51_defective } = useSelector(actList_51_defectiveSelector);
-    const { actId } = useParams();
+    const {actList_52} = useSelector(actList_52_Selector);
+    const {actList_51_defective} = useSelector(actList_51_defectiveSelector);
+    const {actId} = useParams();
     const [typeForSidebar, setTypeForSidebar] = useState("acts");//тип данных для sidebara
 
     useEffect(() => {
@@ -75,7 +76,7 @@ export const ActListItem = () => {
         if (typeAct === "type52") {
             setCurrentAct(() => {
                 let newCurrentAct = actList_52.find((actList_52_item) => actList_52_item.id === actId);
-                return { ...newCurrentAct };
+                return {...newCurrentAct};
             });
         }
         if (typeAct === "tp51-d") {
@@ -85,7 +86,7 @@ export const ActListItem = () => {
                 if (actList_51_defectiveItem) {
                     dataForActType_51_defective = getDataForActType_51_defective(actList_52, actList_51_defectiveItem);
                 }
-                return { ...actList_51_defectiveItem, ...dataForActType_51_defective };
+                return {...actList_51_defectiveItem, ...dataForActType_51_defective};
             })
         }
     }, [actId, typeAct]);
@@ -118,22 +119,36 @@ export const ActListItem = () => {
                     forTmsThingAmount: getForTmsThingAmount(currentAct),
                     forMonitoringTotalgWeight: getForMonitoringTotalgWeight(currentAct),
                     forMonitoringThingAmount: getForMonitoringThingAmount(currentAct),
-                    forMonitoringEmsAmount: getForMonitoringTypeThingAmount(currentAct, "EMS", "emsQuantity"),
-                    forMonitoringEmsWeight: getForMonitoringTypeThingWeight(currentAct, "EMS", "emsWeight"),
-                    forMonitoringFirstAmount: getForMonitoringTypeThingAmount(currentAct, "1-ый класс", "firstClassQuantity"),
-                    forMonitoringFirstWeight: getForMonitoringTypeThingWeight(currentAct, "1-ый класс", "firstClassWeight"),
-                    forMonitoringInsuranceAmount: getForMonitoringTypeThingAmount(currentAct, "со страховыми отправлениями", "insuranceQuantity"),
-                    forMonitoringInsuranceWeight: getForMonitoringTypeThingWeight(currentAct, "со страховыми отправлениями", "insuranceWeight"),
-                    forMonitoringInternationalAmount: getForMonitoringTypeThingAmount(currentAct, "с международными отправлениями", "internationalQuantity"),
-                    forMonitoringInternationalWeight: getForMonitoringTypeThingWeight(currentAct, "с международными отправлениями", "internationalWeight"),
-                    forMonitoringCorrespondenceAmount: getForMonitoringTypeThingAmount(currentAct, "с заказной корреспонденцией", "customizedQuantity")
-                                                       +
-                                                       getForMonitoringTypeThingAmount(currentAct, "с простой корреспонденцией", "simpleQuantity") || " ",
-                    forMonitoringCorrespondenceWeight: +getForMonitoringTypeThingWeight(currentAct, "с заказной корреспонденцией", "customizedWeight")
-                                                       +
-                                                       +getForMonitoringTypeThingWeight(currentAct, "с простой корреспонденцией", "simpleWeight") || " ",
-                    forMonitoringParcelAmount: getForMonitoringTypeThingAmount(currentAct, "РПО", "parcelQuantity"),
-                    forMonitoringParcelWeight: getForMonitoringTypeThingWeight(currentAct, "РПО", "parcelWeight"),
+                    forMonitoringEmsAmount: getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ems[2], "emsQuantity"),
+                    forMonitoringEmsWeight: getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ems[2], "emsWeight"),
+                    forMonitoringFirstAmount: getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.firstClass[2], "firstClassQuantity"),
+                    forMonitoringFirstWeight: getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.firstClass[2], "firstClassWeight"),
+                    forMonitoringInsuranceAmount:
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceQuantity")
+                        +
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceQuantity"),
+                    forMonitoringInsuranceWeight:
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceWeight")
+                        +
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceWeight"),
+                    forMonitoringInternationalAmount: getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalQuantity"),
+                    forMonitoringInternationalWeight: getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalWeight"),
+                    forMonitoringCorrespondenceAmount:
+                        getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.customized[2], "customizedQuantity")
+                        +
+                        getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleQuantity") || " ",
+                    forMonitoringCorrespondenceWeight:
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.customized[2], "customizedWeight")
+                        +
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleWeight") || " ",
+                    forMonitoringParcelAmount:
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelQuantity")
+                        +
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelQuantity"),
+                    forMonitoringParcelWeight:
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelWeight")
+                        +
+                        getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelWeight"),
                     forMonitorihgAdditionalInformationIfFromGa: currentAct.fromGA && getForMonitorihgAdditionalInformationIfFromGa(currentAct),
                 }
             }
@@ -145,7 +160,7 @@ export const ActListItem = () => {
         /**
          * не смог сделать увеличение ширины второго Grid item при выводе на печать, для акта ф51-д.
          *  Хотя,для акта ф52 ширина менялась.
-         *  Поэтому переделал на divы. 
+         *  Поэтому переделал на divы.
          */
         // <Grid container >
         //     <Grid item xs={0} className="not-print">
@@ -159,14 +174,15 @@ export const ActListItem = () => {
         // </Grid>
         <div class="act-list-item">
             <div class="not-print act-list-item-left">
-                <SidebarList sidebarList={sidebarList} type={typeForSidebar} />
+                <SidebarList sidebarList={sidebarList} type={typeForSidebar}/>
             </div>
             {actId && <div class="act-list-item-right" contentEditable>
-                <Button className="not-print print-btn" color="secondary" variant="contained" onClick={() => window.print()} >Печать</Button>
-                {typeAct === "type52" && <Reference dataForReference={dataForReference} />}
-                <Header typeAct={typeAct} />
-                <Main typeAct={typeAct} currentAct={currentAct} dateArrival={dateArrival} />
-                <Footer typeAct={typeAct} currentAct={currentAct} />
+                <Button className="not-print print-btn" color="secondary" variant="contained"
+                        onClick={() => window.print()}>Печать</Button>
+                {typeAct === "type52" && <Reference dataForReference={dataForReference}/>}
+                <Header typeAct={typeAct}/>
+                <Main typeAct={typeAct} currentAct={currentAct} dateArrival={dateArrival}/>
+                <Footer typeAct={typeAct} currentAct={currentAct}/>
             </div>}
         </div>
     )

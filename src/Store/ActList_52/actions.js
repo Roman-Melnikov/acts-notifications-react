@@ -69,7 +69,7 @@ export const setParametrsThingsActionThink =
     things.forEach((thing) => {
       const newDataThing = {
         typeThing: getTypeThing(thing.values.data).typeThing,
-        typeIdForSort: getTypeThing(thing.values.data).typeIdForSort,
+        typeId: getTypeThing(thing.values.data).typeId,
         numberThing: getNumberThing(thing.values.data),
         actualWeight: getActualWeightThing(thing.values.data),
         whereAddress: getWhereAddress(thing.values.data),
