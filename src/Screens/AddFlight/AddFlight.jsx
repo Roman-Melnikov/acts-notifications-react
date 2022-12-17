@@ -3,7 +3,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useDispatch } from "react-redux";
 import { SimpleForm } from "../../Components/SimpleForm";
 import { addFlightActionThunk } from "../../Store/ParametrsFlights/actions";
-import { AIR_LINES, FROM_WHERE } from "../../Constants/constants";
+import { AIR_LINES, WHERE_FROM_WHERE } from "../../Constants/constants";
 
 export const AddFlight = () => {
     const dispatch = useDispatch();
@@ -28,37 +28,37 @@ export const AddFlight = () => {
                                 onChange={(e) => { props.setFieldValue("fromWhere", e.target.value) }}
                             />
                             <datalist id="fromWhere">
-                                <option value={FROM_WHERE.DOMODEDOVO} />
-                                <option value={FROM_WHERE.NEW_URENGOY} />
-                                <option value={FROM_WHERE.SCHEREMETEVO} />
-                                <option value={FROM_WHERE.YAKUTSK} />
-                                <option value={FROM_WHERE.EKATERINBURG} />
-                                <option value={FROM_WHERE.TYUMEN} />
-                                <option value={FROM_WHERE.OMSK} />
-                                <option value={FROM_WHERE.SAINT_PETERSBURG} />
-                                <option value={FROM_WHERE.KRASNOYARSK} />
-                                <option value={FROM_WHERE.PERMIAN} />
-                                <option value={FROM_WHERE.CHELYABINSK} />
-                                <option value={FROM_WHERE.NERYUNGRI} />
-                                <option value={FROM_WHERE.KRASNODAR} />
-                                <option value={FROM_WHERE.KYZYL} />
-                                <option value={FROM_WHERE.IRKUTSK} />
-                                <option value={FROM_WHERE.BLAGOVESHCHENSK} />
-                                <option value={FROM_WHERE.ABAKAN} />
-                                <option value={FROM_WHERE.SURGUT} />
-                                <option value={FROM_WHERE.ULAN_UDE} />
-                                <option value={FROM_WHERE.MAGADAN} />
-                                <option value={FROM_WHERE.VLADIVOSTOK} />
-                                <option value={FROM_WHERE.CHITA} />
-                                <option value={FROM_WHERE.NORILSK} />
-                                <option value={FROM_WHERE.KHABAROVSK} />
-                                <option value={FROM_WHERE.MIRNYY} />
-                                <option value={FROM_WHERE.PETROPAVLOVSK_KAMCHATSKY} />
-                                <option value={FROM_WHERE.YUZHNO_SAKHALINSK} />
-                                <option value={FROM_WHERE.ROSTOV_NA_DONU} />
-                                <option value={FROM_WHERE.NIZHNEVARTOVSK} />
-                                <option value={FROM_WHERE.NOYABRSK} />
-                                <option value={FROM_WHERE.VORONEZH} />
+                                <option value={WHERE_FROM_WHERE.DOMODEDOVO.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.NEW_URENGOY.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.SCHEREMETEVO.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.YAKUTSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.EKATERINBURG.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.TYUMEN.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.OMSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.SAINT_PETERSBURG.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.KRASNOYARSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.PERMIAN.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.CHELYABINSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.NERYUNGRI.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.KRASNODAR.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.KYZYL.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.IRKUTSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.BLAGOVESHCHENSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.ABAKAN.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.SURGUT.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.ULAN_UDE.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.MAGADAN.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.VLADIVOSTOK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.CHITA.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.NORILSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.KHABAROVSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.MIRNYY.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.PETROPAVLOVSK_KAMCHATSKY.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.YUZHNO_SAKHALINSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.ROSTOV_NA_DONU.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.NIZHNEVARTOVSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.NOYABRSK.FROM_WHERE} />
+                                <option value={WHERE_FROM_WHERE.VORONEZH.FROM_WHERE} />
                             </datalist>
                             <label class="position-label">Авиакомпания</label>
                             <input

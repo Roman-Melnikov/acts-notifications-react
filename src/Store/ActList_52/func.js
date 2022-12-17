@@ -5,7 +5,7 @@ export const getCity = (getState, numberFlight) => {
   let city = null;
   state.parametrsFlights.cities.forEach((item) => {
     if (item.flights.includes(+numberFlight)) {
-      city = item.fromWhere;
+      city = item.whereFromWhere;
       return;
     }
   });

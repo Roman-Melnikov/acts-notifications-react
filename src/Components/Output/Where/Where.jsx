@@ -23,7 +23,7 @@ export const Where = ({
     return (
         <span class="content-header">
             {invoiseList.length === 1 && !refund && <div class="content-header-item"><span
-                class="content-header-indent">С</span> рейса {flight?.number ?? " "} из {flight?.city ?? " "} в {hoursArrival}ч. {minutesArrival}мин.
+                class="content-header-indent">С</span> рейса {flight?.number ?? " "} из {flight?.city.FROM_WHERE ?? " "} в {hoursArrival}ч. {minutesArrival}мин.
                 поступила почта по общей накладной №{invoiseList[0].number} на {invoiseList[0].thingAmount} вещей
                 вес {invoiseList[0].totalWeight}кг
                 от {invoiseList[0].date}г. {invoiseList[0].time && <span>{invoiseList[0].time} </span>}
@@ -32,7 +32,7 @@ export const Where = ({
             }
             {invoiseList.length > 1 && !refund && <div>
                 <p class="content-header-item"><span
-                    class="content-header-indent">С</span> рейса {flight?.number ?? " "} из {flight?.city ?? " "} в {hoursArrival}ч. {minutesArrival}мин.
+                    class="content-header-indent">С</span> рейса {flight?.number ?? " "} из {flight?.city.FROM_WHERE ?? " "} в {hoursArrival}ч. {minutesArrival}мин.
                     поступила почта по общим накладным:</p>
                 <InvoiseListOutput invoiseList={invoiseList}/>
             </div>
@@ -48,7 +48,7 @@ export const Where = ({
             {
                 (withoutDocuments && typeAct === "type52") &&
                 <div class="content-header-item"><span
-                    class="content-header-indent">С</span> рейса {flight?.number ?? " "} из {flight?.city ?? " "} в {hoursArrival}ч. {minutesArrival}мин.
+                    class="content-header-indent">С</span> рейса {flight?.number ?? " "} из {flight?.city.FROM_WHERE ?? " "} в {hoursArrival}ч. {minutesArrival}мин.
                     без сопроводительных документов поступили следующие емкости и РПО:
                 </div>
             }
@@ -60,10 +60,10 @@ export const Where = ({
                         class="content-header-mounth">{transportationScheduleOfRefund?.mounthString} </span>{`${transportationScheduleOfRefund?.year}г. `}
                     была приготовлена и сдана
                     почта {`${dateDelivery?.day}.${dateDelivery?.mounthNumber}.${dateDelivery?.year}г.`} в {hoursDelivery}ч. {minutesDelivery}мин.
-                    на рейс {flight?.number ?? " "} адресом {flight?.city ?? " "} по общей накладной
+                    на рейс {flight?.number ?? " "} адресом {flight?.city.WHERE ?? " "} по общей накладной
                     №{invoiseList[0].number} на {invoiseList[0].thingAmount} вещей
-                    вес {invoiseList[0].totalWeight}кг
-                    <p class="content-header-indent">Органами ГА в {hoursArrival}ч. {minutesArrival}мин. {`${day}.${mounthNumber}.${year}г. `}
+                    вес {invoiseList[0].totalWeight}кг.
+                    <p class="content-header-indent content-header-refund">Органами ГА в {hoursArrival}ч. {minutesArrival}мин. {`${day}.${mounthNumber}.${year}г. `}
                         почта была возвращена.</p>
                 </div>
             }
@@ -75,7 +75,7 @@ export const Where = ({
                         class="content-header-mounth">{transportationScheduleOfRefund?.mounthString} </span>{`${transportationScheduleOfRefund?.year}г. `}
                     была приготовлена и сдана
                     почта {`${dateDelivery?.day}.${dateDelivery?.mounthNumber}.${dateDelivery?.year}г.`} в {hoursDelivery}ч. {minutesDelivery}мин.
-                    на рейс {flight?.number ?? " "} адресом {flight?.city ?? " "} по общим накладным:</p>
+                    на рейс {flight?.number ?? " "} адресом {flight?.city.WHERE ?? " "} по общим накладным:</p>
                     <InvoiseListOutput invoiseList={invoiseList}/>
                     <p class="content-header-indent">Органами ГА в {hoursArrival}ч. {minutesArrival}мин. {`${day}.${mounthNumber}.${year}г. `}
                         почта была возвращена.</p>

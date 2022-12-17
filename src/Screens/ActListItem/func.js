@@ -165,7 +165,7 @@ export const getForTmsEmsWeight = (currentAct) => {
             /*сумма веса EMS всех общих */
             currentAct.invoiseList.reduce((accum, currentValue) => {
                 return (
-                    accum + parseFloat(currentValue.emsWeight?.replace(",", ".") ?? 0)
+                    accum + parseFloat(currentValue.emsWeight?.replace(",", ".") || 0)
                 );
             }, 0) -
             /*сумма веса всех не поступивших EMS */
@@ -305,7 +305,7 @@ export const getForMonitoringtypeIdAmount = (currentAct, typeId, propertyInInvoi
         /*сумма количества propertyInInvoice всех общих */
         currentAct.invoiseList.reduce((accum, currentValue) => {
             return (
-                accum + parseFloat(currentValue[propertyInInvoice] ?? 0)
+                accum + parseFloat(currentValue[propertyInInvoice] || 0)
             );
         }, 0) -
         /*сумма всех не поступивших typeId */
@@ -330,7 +330,7 @@ export const getForMonitoringtypeIdAmount = (currentAct, typeId, propertyInInvoi
                 )
             );
         }, 0);
-    return forMonitoringAmount || " ";
+    return forMonitoringAmount || "";
 };
 
 /**
@@ -342,7 +342,7 @@ export const getForMonitoringtypeIdWeight = (currentAct, typeId, propertyInInvoi
         /*сумма веса propertyInInvoice всех общих */
         currentAct.invoiseList.reduce((accum, currentValue) => {
             return (
-                accum + parseFloat(currentValue[propertyInInvoice]?.replace(",", ".") ?? 0)
+                accum + parseFloat(currentValue[propertyInInvoice]?.replace(",", ".") || 0)
             );
         }, 0) -
         /*сумма веса всех не поступивших typeId */

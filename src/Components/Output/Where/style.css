@@ -15,3 +15,8 @@
 .content-header-mounth {
     text-transform: lowercase;
 }
+
+.content-header-refund {
+    margin-top: 0;
+    margin-bottom: 0;
+}
