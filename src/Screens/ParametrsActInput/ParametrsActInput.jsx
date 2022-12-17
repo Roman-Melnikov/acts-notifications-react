@@ -27,6 +27,8 @@ export const ParametrsActInput = () => {
     const [citiAddresses, setCitiAddresses] = useState({});
     const [checkedFromGA, setCheckedFromGA] = useState(false);
     const [checkedWithoutDocuments, setCheckedWithoutDocuments] = useState(false);
+    const [checkedRefund, setCheckedRefund] = useState(false);
+    const [transportationScheduleOfRefund, setTransportationScheduleOfRefund] = useState({});
 
     const dispatch = useDispatch();
     const {parametrsFlights} = useSelector(parametrsFlightsSelector);
@@ -173,6 +175,10 @@ export const ParametrsActInput = () => {
         setActFlightNumbersAndArrivalDateInput({...actFlightNumbersAndArrivalDateInput, [name]: value});
     }, [actFlightNumbersAndArrivalDateInput]);
 
+    const changeTransportationScheduleOfRefund = useCallback((name, value) => {
+        setTransportationScheduleOfRefund({...transportationScheduleOfRefund, [name]: value});
+    }, [transportationScheduleOfRefund]);
+
     const handleToogleCheckedFromGa = useCallback(() => {
         setCheckedFromGA(!checkedFromGA);
     }, [checkedFromGA]);
@@ -181,20 +187,38 @@ export const ParametrsActInput = () => {
         setCheckedWithoutDocuments(!checkedWithoutDocuments);
     }, [checkedWithoutDocuments]);
 
+    const handleToogleCheckedRefund = useCallback(() => {
+        setCheckedRefund(!checkedRefund);
+    }, [checkedRefund]);
+
     const transferDataToStore = useCallback(() => {
         window.scrollTo(0, 0);
-        dispatch(setParametrsActActionThink(invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA, checkedWithoutDocuments))
-    }, [invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA, checkedWithoutDocuments]);
+        dispatch(setParametrsActActionThink(
+                invoiseListInput,
+                surnamePosition,
+                actFlightNumbersAndArrivalDateInput,
+                checkedFromGA,
+                checkedWithoutDocuments,
+                checkedRefund,
+            transportationScheduleOfRefund
+            )
+        )
+    }, [invoiseListInput, surnamePosition, actFlightNumbersAndArrivalDateInput, checkedFromGA, checkedWithoutDocuments, checkedRefund]);
 
     return (
         <Box className="parametrs-act">
             <ActFlightNumbersAndArrivalDateInput
                 actFlightNumbersAndArrivalDateInput={actFlightNumbersAndArrivalDateInput}
                 changeActFlightNumbersAndArrivalDateInput={changeActFlightNumbersAndArrivalDateInput}
+                changeTransportationScheduleOfRefund={changeTransportationScheduleOfRefund}
                 handleToogleCheckedFromGa={handleToogleCheckedFromGa}
                 handleToogleCheckedWithoutDocuments={handleToogleCheckedWithoutDocuments}
                 checkedFromGA={checkedFromGA}
-                checkedWithoutDocuments={checkedWithoutDocuments}/>
+                checkedWithoutDocuments={checkedWithoutDocuments}
+                checkedRefund={checkedRefund}
+                handleToogleCheckedRefund={handleToogleCheckedRefund}
+                transportationScheduleOfRefund={transportationScheduleOfRefund}
+            />
             {!checkedFromGA && !checkedWithoutDocuments &&
                 <InvoiseListInput invoiseListInput={invoiseListInput} changeInvoiseListInput={changeInvoiseListInput}
                                   ourAddresses={ourAddresses} citiAddresses={citiAddresses}/>}

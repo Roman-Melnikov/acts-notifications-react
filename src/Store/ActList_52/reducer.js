@@ -12,11 +12,15 @@ export const actList_52_Reducer = (state = initialState, { type, payload }) => {
       const {
         fromGA,
         withoutDocuments,
+        refund,
+        transportationScheduleOfRefund,
         name,
         invoiseListInput,
         surnamePosition,
         dateArrival,
+        dateDelivery,
         timeArrival,
+        timeDelivery,
         numberAct,
         numberFlight,
         id,
@@ -34,6 +38,8 @@ export const actList_52_Reducer = (state = initialState, { type, payload }) => {
             name: name,
             fromGA: fromGA,
             withoutDocuments: withoutDocuments,
+            transportationScheduleOfRefund: transportationScheduleOfRefund,
+            refund: refund,
             flight: {
               number: numberFlight,
               airLine: airLine,
@@ -41,6 +47,8 @@ export const actList_52_Reducer = (state = initialState, { type, payload }) => {
               contract: contract,
             },
             dateArrival: dateArrival,
+            dateDelivery: dateDelivery,
+            timeDelivery: timeDelivery,
             timeArrival: timeArrival,
             surnamePosition: {
               firstPosition: surnamePosition.firstPosition ?? CHIEF_FIRST_POSITION,

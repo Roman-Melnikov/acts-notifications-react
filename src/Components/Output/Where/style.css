@@ -11,3 +11,7 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.content-header-mounth {
+    text-transform: lowercase;
+}

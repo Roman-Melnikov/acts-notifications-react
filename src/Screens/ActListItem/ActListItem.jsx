@@ -34,14 +34,24 @@ export const ActListItem = () => {
         mounthNumber: " ",
         mounthString: " ",
     });
+    const [dateDelivery, setDateDelivery] = useState({
+        year: " ",
+        day: " ",
+        mounthNumber: " ",
+        mounthString: " ",
+    });
+    const [transportationScheduleOfRefund, setTransportationScheduleOfRefund] = useState({
+        year: " ",
+        day: " ",
+        mounthNumber: " ",
+        mounthString: " ",
+    });
     const [dataForReference, setDataForReference] = useState({
         forTmsTotalWeight: null,
         forTmsEmsWeight: null,
         forTmsThingAmount: null,
         forMonitoringTotalgWeight: null,
         forMonitoringThingAmount: null,
-        //дополнительная информация для мониторинга, если от ГА
-        forMonitorihgAdditionalInformationIfFromGa: null,
     });
     const {actList_52} = useSelector(actList_52_Selector);
     const {actList_51_defective} = useSelector(actList_51_defectiveSelector);
@@ -106,6 +116,34 @@ export const ActListItem = () => {
         })
     }, [currentAct]);
 
+    useEffect(() => {
+        setDateDelivery(() => {
+            const year = currentAct?.dateDelivery?.substring(0, 4) ?? " ";
+            const day = currentAct?.dateDelivery?.substring(8, 10) ?? " ";
+            const mounthNumber = currentAct?.dateDelivery?.substring(5, 7) ?? " ";
+            const mounthString = getMounthStringByNumber(mounthNumber);
+            return {
+                year,
+                day,
+                mounthNumber,
+                mounthString,
+            }
+        })
+    }, [currentAct]);
+
+    useEffect(() => {
+        setTransportationScheduleOfRefund(() => {
+            const year = currentAct?.dateArrival?.substring(0, 4) ?? " ";
+            const mounthNumber = currentAct?.dateArrival?.substring(5, 7) ?? " ";
+            const mounthString = getMounthStringByNumber(mounthNumber);
+            return {
+                year,
+                mounthNumber,
+                mounthString,
+            }
+        })
+    }, [currentAct]);
+
     /**
      * Получение данных для справки(компонент Reference)
      */
@@ -126,30 +164,29 @@ export const ActListItem = () => {
                     forMonitoringInsuranceAmount:
                         +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceQuantity")
                         +
-                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceQuantity") || " ",
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], undefined) || "",
                     forMonitoringInsuranceWeight:
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceWeight")
+                        +(+getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceWeight")
                         +
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], "insuranceWeight") || " ",
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], undefined)).toFixed(3) || "",
                     forMonitoringInternationalAmount: getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalQuantity"),
                     forMonitoringInternationalWeight: getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalWeight"),
                     forMonitoringCorrespondenceAmount:
-                        getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.customized[2], "customizedQuantity")
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.customized[2], "customizedQuantity")
                         +
-                        getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleQuantity") || " ",
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleQuantity") || "",
                     forMonitoringCorrespondenceWeight:
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.customized[2], "customizedWeight")
+                        +(+getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.customized[2], "customizedWeight")
                         +
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleWeight") || " ",
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleWeight")).toFixed(3) || "",
                     forMonitoringParcelAmount:
                         +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelQuantity")
                         +
-                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelQuantity") || " ",
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], undefined) || "",
                     forMonitoringParcelWeight:
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelWeight")
+                        +(+getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelWeight")
                         +
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], "parcelWeight") || " ",
-                    forMonitorihgAdditionalInformationIfFromGa: currentAct.fromGA && getForMonitorihgAdditionalInformationIfFromGa(currentAct),
+                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], undefined)).toFixed(3) || "",
                 }
             }
             return newDataForReference;
@@ -181,7 +218,12 @@ export const ActListItem = () => {
                         onClick={() => window.print()}>Печать</Button>
                 {typeAct === "type52" && <Reference dataForReference={dataForReference}/>}
                 <Header typeAct={typeAct}/>
-                <Main typeAct={typeAct} currentAct={currentAct} dateArrival={dateArrival}/>
+                <Main
+                    typeAct={typeAct}
+                    currentAct={currentAct}
+                    dateArrival={dateArrival}
+                    dateDelivery={dateDelivery}
+                    transportationScheduleOfRefund={transportationScheduleOfRefund}/>
                 <Footer typeAct={typeAct} currentAct={currentAct}/>
             </div>}
         </div>

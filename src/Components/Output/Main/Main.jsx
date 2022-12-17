@@ -8,7 +8,7 @@ import {DefectiveList} from "../DefectiveList/DefectiveList";
 import {FooterMain} from "../FooterMain/FooterMain";
 import "./style.css";
 
-export const Main = ({currentAct, typeAct, dateArrival}) => {
+export const Main = ({currentAct, typeAct, dateArrival, dateDelivery, transportationScheduleOfRefund}) => {
     const [defectiveList, setDefectiveList] = useState([]);
     const [amountThingReceived, setAmountThingReceived] = useState(null);
     const [deceleration, setDeceleration] = useState(null);
@@ -74,9 +74,15 @@ export const Main = ({currentAct, typeAct, dateArrival}) => {
                 <Where invoiseList={currentAct?.invoiseList ?? []}
                        flight={currentAct?.flight}
                        timeArrival={currentAct?.timeArrival ?? " "}
+                       timeDelivery={currentAct?.timeDelivery ?? " "}
                        fromGA={currentAct?.fromGA}
                        withoutDocuments={currentAct?.withoutDocuments}
-                       dateArrival={dateArrival} typeAct={typeAct}/>
+                       dateArrival={dateArrival}
+                       dateDelivery={dateDelivery}
+                       typeAct={typeAct}
+                       transportationScheduleOfRefund={transportationScheduleOfRefund}
+                       refund={currentAct?.refund}
+                />
                 <NotReceivedList notReceivedList={currentAct?.reasons?.notReceived ?? []}/>
                 <ExcessList excessList={currentAct?.reasons?.excess ?? []} fromGA={currentAct?.fromGA} withoutDocuments={currentAct?.withoutDocuments}/>
                 <DefectiveList defectiveList={defectiveList} typeAct={typeAct}
