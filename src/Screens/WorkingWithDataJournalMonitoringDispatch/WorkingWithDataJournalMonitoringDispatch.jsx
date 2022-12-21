@@ -1,16 +1,28 @@
-import { Button } from "@mui/material";
-import { useEffect, useState, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { AddInvoiceListItemFlightMonitoringDispatch } from "../../Components/InputMonitoringDispatch/AddInvoiceListItemFlightMonitoringDispatch/AddInvoiceListItemFlightMonitoringDispatch";
-import { NumberFlightAndDirectionMonitoringDispatch } from "../../Components/InputMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch";
-import { TimeDispatchCar } from "../../Components/InputMonitoringDispatch/TimeDispatchCar/TimeDispatchCar";
-import { InvoiceListFlightDispatch } from "../../Components/OutputMonitoringDispatch/InvoiceListFlightDispatch/InvoiceListFlightDispatch";
-import { addInvoiceListItemFlightMonitoringDispatchActionThink, updateTimeDispatchCarActionThink, removeInvoiceListItemFlightMonitoringDispatchActionThink } from "../../Store/MonitoringDispatchList/action";
-import { MONITORING_DISPATCH_LIST_ITEM } from "../../Store/MonitoringDispatchList";
+import {Button} from "@mui/material";
+import {useEffect, useState, useCallback} from "react";
+import {useDispatch} from "react-redux";
+import {
+    AddInvoiceListItemFlightMonitoringDispatch
+} from "../../Components/InputMonitoringDispatch/AddInvoiceListItemFlightMonitoringDispatch/AddInvoiceListItemFlightMonitoringDispatch";
+import {
+    NumberFlightAndDirectionMonitoringDispatch
+} from "../../Components/InputMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch/NumberFlightAndDirectionMonitoringDispatch";
+import {TimeDispatchCar} from "../../Components/InputMonitoringDispatch/TimeDispatchCar/TimeDispatchCar";
+import {
+    InvoiceListFlightDispatch
+} from "../../Components/OutputMonitoringDispatch/InvoiceListFlightDispatch/InvoiceListFlightDispatch";
+import {
+    addInvoiceListItemFlightMonitoringDispatchActionThink,
+    updateTimeDispatchCarActionThink,
+    removeInvoiceListItemFlightMonitoringDispatchActionThink
+} from "../../Store/MonitoringDispatchList/action";
+import {MONITORING_DISPATCH_LIST_ITEM} from "../../Store/MonitoringDispatchList";
 import "./style.css";
-import { ReferenceMonitoringDispatch } from "../../Components/OutputMonitoringDispatch/ReferenceMonitoringDispatch/ReferenceMonitoringDispatch";
+import {
+    ReferenceMonitoringDispatch
+} from "../../Components/OutputMonitoringDispatch/ReferenceMonitoringDispatch/ReferenceMonitoringDispatch";
 
-export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchListItem, exportToExcel }) => {
+export const WorkingWithDataJournalMonitoringDispatch = ({monitoringDispatchListItem, exportToExcel}) => {
     const [numberFlight, setNumberFlight] = useState("");
     const [direction, setDirection] = useState("");
     const [transitDirection, setTransitDirection] = useState("");
@@ -52,10 +64,10 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
     }, [numberFlight]);
 
     /**
-     * получение времени отправки а/м 
+     * получение времени отправки а/м
      * меняется:
      *   при изменении номера рейса;
-     *   при изменении или обновлении текущего листа мониторинга отправки.   
+     *   при изменении или обновлении текущего листа мониторинга отправки.
      */
     useEffect(() => {
         const currentFlight = monitoringDispatchListItem?.data?.find((item) => {
@@ -79,14 +91,14 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
     }, [invoiceListFlight]);
 
     /**
-     * обнуленное время, предыдущим useEffect-ом, диспатчим в store 
+     * обнуленное время, предыдущим useEffect-ом, диспатчим в store
      */
     useEffect(() => {
         invoiceListFlight.length === 0 && transferTimeDispatchCarToStore();
     }, [timeDispatchCar]);
 
     /**
-     * отфильтровываем, чтобы не было одинаковых направлений 
+     * отфильтровываем, чтобы не было одинаковых направлений
      * в массиве с транзитными направлениями для datalist
      */
     useEffect(() => {
@@ -94,7 +106,7 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
         setArrForDatalist(() => {
             arrForDatalist.forEach((item) => {
                 !newArrForDatalist.includes(item.direction) &&
-                    newArrForDatalist.push(item.direction);
+                newArrForDatalist.push(item.direction);
             });
             return newArrForDatalist;
         })
@@ -107,7 +119,7 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
     useEffect(() => {
         setDataForReferenceDispatch(() => {
             let newDataForReferenceDispatch = {};
-            if (invoiceListFlight.length > 1) {
+            if (invoiceListFlight.length >= 1) {
                 invoiceListFlight.forEach((invoice) => {
                     newDataForReferenceDispatch.numbers =
                         `${(newDataForReferenceDispatch.numbers === undefined ? "" :
@@ -119,8 +131,9 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
                     newDataForReferenceDispatch.totalAmount =
                         (newDataForReferenceDispatch.totalAmount ?? 0) + invoice.totalAmount;
                 });
-            };
-            return { ...newDataForReferenceDispatch };
+            }
+            ;
+            return {...newDataForReferenceDispatch};
         });
     }, [invoiceListFlight]);
 
@@ -159,24 +172,30 @@ export const WorkingWithDataJournalMonitoringDispatch = ({ monitoringDispatchLis
 
     return (
         <>
-            <span className="monitoring-dispatch-data" >
+            <span className="monitoring-dispatch-data">
                 {monitoringDispatchListItem?.name}
             </span>
-            <Button className="monitoring-dispatch-btn-to-excel" variant="contained" color="secondary" onClick={() => exportToExcel()} >
+            <Button className="monitoring-dispatch-btn-to-excel" variant="contained" color="secondary"
+                    onClick={() => exportToExcel()}>
                 В Excel
             </Button>
-            <NumberFlightAndDirectionMonitoringDispatch
-                numberFlight={numberFlight}
-                direction={direction}
-                changeNumberFlightAndDirection={changeNumberFlightAndDirection}
+            <NumberFlightAndDirectionMonitoringDispatch numberFlight={numberFlight}
+                                                        direction={direction}
+                                                        changeNumberFlightAndDirection={changeNumberFlightAndDirection}
             />
-            <TimeDispatchCar changeTimeDispatchCar={changeTimeDispatchCar} timeDispatchCar={timeDispatchCar} transferTimeDispatchCarToStore={transferTimeDispatchCarToStore} />
-            <InvoiceListFlightDispatch invoiceListFlight={invoiceListFlight} numberFlight={numberFlight}
-                invoiceListItemFlightDelete={invoiceListItemFlightDelete} />
-            <ReferenceMonitoringDispatch dataForReferenceDispatch={dataForReferenceDispatch} />
-            <AddInvoiceListItemFlightMonitoringDispatch changeTransitDirection={changeTransitDirection} transitDirection={transitDirection}
-                dataInvoiceListItem={dataInvoiceListItem} changeDataInvoiceListItem={changeDataInvoiceListItem} arrForDatalist={arrForDatalist} />
-            <Button variant="contained" onClick={() => transferDataInvoiceListItemToStore()} >Добавить накладную</Button>
+            <TimeDispatchCar changeTimeDispatchCar={changeTimeDispatchCar}
+                             timeDispatchCar={timeDispatchCar}
+                             transferTimeDispatchCarToStore={transferTimeDispatchCarToStore}/>
+            <ReferenceMonitoringDispatch dataForReferenceDispatch={dataForReferenceDispatch}/>
+            <InvoiceListFlightDispatch invoiceListFlight={invoiceListFlight}
+                                       numberFlight={numberFlight}
+                                       invoiceListItemFlightDelete={invoiceListItemFlightDelete}/>
+            <AddInvoiceListItemFlightMonitoringDispatch changeTransitDirection={changeTransitDirection}
+                                                        transitDirection={transitDirection}
+                                                        dataInvoiceListItem={dataInvoiceListItem}
+                                                        changeDataInvoiceListItem={changeDataInvoiceListItem}
+                                                        arrForDatalist={arrForDatalist}/>
+            <Button variant="contained" onClick={() => transferDataInvoiceListItemToStore()}>Добавить накладную</Button>
         </>
     )
 }
