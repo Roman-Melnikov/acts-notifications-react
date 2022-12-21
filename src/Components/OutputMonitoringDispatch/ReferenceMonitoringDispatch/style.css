@@ -1,10 +1,37 @@
-.reference-dispatch-table-container {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2%;
-    max-width: 95%;
+/*.reference-dispatch-table-container {*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    margin-bottom: 2%;*/
+/*    max-width: 95%;*/
+/*}*/
+
+/*.reference-dispatch-table {*/
+/*    background-color: cadetblue;*/
+/*}*/
+
+.reference-monitoring-dispatch {
+    text-align: center;
+    margin-left: 13%;
+    font-size: 18px;
+    width: 100%;
 }
 
-.reference-dispatch-table {
-    background-color: cadetblue;
+.reference-table-tms {
+    border-collapse: collapse;
+    border: 2px solid black;
+    margin-bottom: 2%;
+    max-width: 100%;
+    min-width: 50%;
+}
+
+.reference-table-tms-col {
+    min-width: 180px;
+}
+
+.reference-table-tms-col-value {
+    text-align: left;
+    border: 1px solid black;
+    box-sizing: border-box;
+    /*padding-left: 2%;*/
+    /*padding-right: 2%;*/
 }
