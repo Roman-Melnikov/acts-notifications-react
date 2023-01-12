@@ -162,13 +162,9 @@ export const ActListItem = () => {
                     forMonitoringFirstAmount: getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.firstClass[2], "firstClassQuantity"),
                     forMonitoringFirstWeight: getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.firstClass[2], "firstClassWeight"),
                     forMonitoringInsuranceAmount:
-                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceQuantity")
-                        +
-                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], undefined) || "",
+                        getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceQuantity"),
                     forMonitoringInsuranceWeight:
-                        +(+getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceWeight")
-                        +
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], undefined)).toFixed(3) || "",
+                        getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.insurance[2], "insuranceWeight"),
                     forMonitoringInternationalAmount: getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalQuantity"),
                     forMonitoringInternationalWeight: getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.international[2], "internationalWeight"),
                     forMonitoringCorrespondenceAmount:
@@ -177,16 +173,21 @@ export const ActListItem = () => {
                         +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleQuantity") || "",
                     forMonitoringCorrespondenceWeight:
                         +(+getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.customized[2], "customizedWeight")
-                        +
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleWeight")).toFixed(3) || "",
+                            +
+                            +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.simple[2], "simpleWeight")).toFixed(3) || "",
                     forMonitoringParcelAmount:
                         +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelQuantity")
                         +
-                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], undefined) || "",
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], undefined)
+                        +
+                        +getForMonitoringtypeIdAmount(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], undefined) || "",
                     forMonitoringParcelWeight:
                         +(+getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.parcel[2], "parcelWeight")
-                        +
-                        +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], undefined)).toFixed(3) || "",
+                            +
+                            +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.departureEms[2], undefined)
+                            +
+                            +getForMonitoringtypeIdWeight(currentAct, OBJ_FOR_CHECK_TYPE_THING.ecom[2], undefined)
+                        ).toFixed(3) || "",
                 }
             }
             return newDataForReference;
