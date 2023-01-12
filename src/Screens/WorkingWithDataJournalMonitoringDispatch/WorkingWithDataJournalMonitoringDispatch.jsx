@@ -189,7 +189,11 @@ export const WorkingWithDataJournalMonitoringDispatch = ({monitoringDispatchList
             <InvoiceListFlightDispatch invoiceListFlight={invoiceListFlight}
                                        numberFlight={numberFlight}
                                        invoiceListItemFlightDelete={invoiceListItemFlightDelete}/>
-            <ReferenceMonitoringDispatch dataForReferenceDispatch={dataForReferenceDispatch}/>
+            {
+                invoiceListFlight.length > 1 &&
+                <ReferenceMonitoringDispatch dataForReferenceDispatch={dataForReferenceDispatch}/>
+            }
+
             <AddInvoiceListItemFlightMonitoringDispatch changeTransitDirection={changeTransitDirection}
                                                         transitDirection={transitDirection}
                                                         dataInvoiceListItem={dataInvoiceListItem}
