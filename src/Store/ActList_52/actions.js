@@ -40,7 +40,7 @@ export const setParametrsActActionThink =
                 actFlightNumbersAndArrivalDateInput.datetimeDelivery?.substring(11, 16) ??
                 "";
             const numberAct =
-                actFlightNumbersAndArrivalDateInput.numberAct?.substring(18) ?? "";
+                actFlightNumbersAndArrivalDateInput.numberAct ?? "";
             const numberFlight = actFlightNumbersAndArrivalDateInput.numberFlight ?? "";
             const id = `type52${uuidv4()}`;
             const city = getCity(getState, numberFlight);
@@ -48,11 +48,17 @@ export const setParametrsActActionThink =
             const contract = getContract(getState, numberFlight);
             let name = " ";
             if (checkedFromGA) {
-                name = `${dateArrival}  №${numberAct} от ГА`;
+                name =
+                    `${actFlightNumbersAndArrivalDateInput.datetimeArrival?.substring(5, 10).split('-').reverse().join('/') || ""} 
+                    ${numberAct} от ГА`;
             } else if (checkedRefund) {
-                name = `${dateArrival}  №${numberAct} р${numberFlight} возврат`;
+                name =
+                    `${actFlightNumbersAndArrivalDateInput.datetimeArrival?.substring(5, 10).split('-').reverse().join('/') || ""} 
+                    ${numberAct} р${numberFlight} возврат`;
             } else {
-                name = `${dateArrival}  №${numberAct} р${numberFlight}`;
+                name =
+                    `${actFlightNumbersAndArrivalDateInput.datetimeArrival?.substring(5, 10).split('-').reverse().join('/') || ""} 
+                    ${numberAct} р${numberFlight}`;
             }
 
             dispatch({

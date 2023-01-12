@@ -165,5 +165,5 @@ export const WHERE_FROM_WHERE = {
     }
 };
 
-export const NUMBER_ACT_52_CONSTANT = "№7.1.40.2.1.2.1-2/";
-export const NUMBER_ACT_51_DEFECTIVE_CONSTANT = "№7.1.40.2.1.2.1-3/";
+export const NUMBER_ACT_52_CONSTANT = "№7.1.39.2.1.2.1-02/";
+export const NUMBER_ACT_51_DEFECTIVE_CONSTANT = "№7.1.39.2.1.2.1-03/";

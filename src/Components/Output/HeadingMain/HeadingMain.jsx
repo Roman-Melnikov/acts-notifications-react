@@ -10,7 +10,7 @@ export const HeadingMain = React.memo(({ dateArrival, numberAct, surname, typeAc
                 <section class="heading">
                     <span class="heading-title">
                         <span class="heading-title-txt">акт</span>
-                        <span class="heading-title-number">{`${NUMBER_ACT_52_CONSTANT}${numberAct}`}</span>
+                        <span class="heading-title-number">{numberAct}</span>
                     </span>
                     <span class="heading-wrp-date">
                         <span class="heading-date">{`${day} ${mounthString} ${year}г.`}</span>
