@@ -101,18 +101,14 @@ export const SurnamePositionInput = ({ surnamePosition, changeSurnamePositionInp
                 />
                 <label class="family-name-label">Фамилия</label>
                 <datalist id="fourthFamily">
-                    <option value="Чурилов В.В." />
                     <option value="Шевченко С.Н." />
                     <option value="Андреев А.П." />
                     <option value="Андрианов А.С." />
                     <option value="Сергеев С.К." />
                     <option value="Надежкин Е.В." />
-                    <option value="Винников А.Д." />
+                    <option value="Шапошников Е.О." />
                     <option value="Марандин В.Н." />
-                    <option value="Донцов К.А." />
-                    <option value="Филиппов Д.А." />
                     <option value="Черепанов М.В." />
-                    <option value="Борисенко Г.А." />
                     <option value="с вагона" />
                 </datalist>
             </section>
