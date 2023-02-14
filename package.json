@@ -2,7 +2,6 @@
   "name": "acts-notifications-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://roman-melnikov.github.io/acts-notifications-react/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
